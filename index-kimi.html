@@ -112,7 +112,7 @@
             animation: gradientMove 4s ease infinite;
         }
 
-        /* 彩虹光泽扫过效果 */
+        /* 微光效果 - 更克制 */
         .shimmer-effect {
             position: relative;
             overflow: hidden;
@@ -125,8 +125,8 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            animation: shimmerPass 3s infinite;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            animation: shimmerPass 8s infinite;
         }
 
         @keyframes shimmerPass {
@@ -148,13 +148,13 @@
             border: 1px solid rgba(99, 102, 241, 0.2);
         }
 
-        /* 悬浮球装饰 */
+        /* 悬浮球装饰 - 更淡 */
         .floating-orb {
             position: absolute;
             border-radius: 50%;
-            filter: blur(60px);
-            opacity: 0.5;
-            animation: float 8s ease-in-out infinite;
+            filter: blur(80px);
+            opacity: 0.25;
+            animation: float 10s ease-in-out infinite;
         }
 
         /* 波浪背景 */
@@ -209,14 +209,14 @@
             transform: translateY(-2px);
         }
 
-        /* 项目卡片悬浮 */
+        /* 项目卡片悬浮 - 更克制 */
         .project-card-candy {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .project-card-candy:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.2);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(99, 102, 241, 0.12);
         }
 
         /* 技能雷达图 */
@@ -255,7 +255,7 @@
     <!-- 导航栏 -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200/50">
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="font-display text-2xl font-bold text-gradient">LC 🎯</a>
+            <a href="#" class="font-display text-2xl font-bold text-slate-800">LC.</a>
             <div class="hidden md:flex items-center space-x-1">
                 <a href="#about" class="px-4 py-2 text-slate-600 hover:text-candy-blue transition-colors rounded-full hover:bg-slate-100">关于</a>
                 <a href="#experience" class="px-4 py-2 text-slate-600 hover:text-candy-blue transition-colors rounded-full hover:bg-slate-100">经历</a>
@@ -277,33 +277,33 @@
             <!-- 左侧文字 -->
             <div class="space-y-6">
                 <div class="hero-element inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-lg shadow-indigo-500/10 border border-slate-100">
-                    <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-                    <span class="text-sm text-slate-600">🎓 2027届应届生 · 正在寻找AI产品机会</span>
+                    <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+                    <span class="text-sm text-slate-500">2027届应届生 · 正在寻找AI产品机会</span>
                 </div>
 
                 <h1 class="hero-element font-display text-5xl md:text-7xl font-bold leading-tight">
                     Hi, I'm <br>
-                    <span class="text-gradient">林承列</span> 
-                    <span class="text-4xl">👋</span>
+                    <span class="text-gradient">林承列</span>
+                    <span class="text-3xl opacity-80">👋</span>
                 </h1>
 
                 <p class="hero-element text-xl text-slate-600 font-light">
-                    AI 产品经理 <span class="text-candy-pink">✦</span> 数据驱动 <span class="text-candy-blue">✦</span> 创新实践者
+                    AI 产品经理 <span class="text-slate-300">·</span> 数据驱动 <span class="text-slate-300">·</span> 创新实践者
                 </p>
 
                 <p class="hero-element text-slate-500 leading-relaxed max-w-lg">
                     拥有句子互动 & 一起教育实习经验，专注大模型应用落地与数据驱动增长。
-                    擅长 Agent 构建、数据分析，具备 Python/Figma 快速原型能力。 🚀
+                    擅长 Agent 构建、数据分析，具备 Python/Figma 快速原型能力。
                 </p>
 
                 <!-- CTA 按钮组 -->
                 <div class="hero-element flex flex-wrap gap-4 pt-4">
-                    <a href="#" class="shimmer-effect btn-gradient text-white px-8 py-4 rounded-2xl font-medium shadow-xl shadow-indigo-500/30 flex items-center gap-2">
-                        <i class="fas fa-file-pdf"></i>
+                    <a href="#" class="btn-gradient text-white px-8 py-4 rounded-2xl font-medium shadow-lg shadow-indigo-500/20 flex items-center gap-2 hover:shadow-xl hover:shadow-indigo-500/30 transition-all">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                         下载简历 PDF
                     </a>
-                    <a href="#projects" class="btn-gradient-2 text-white px-8 py-4 rounded-2xl font-medium shadow-xl shadow-pink-500/30 flex items-center gap-2">
-                        <i class="fas fa-rocket"></i>
+                    <a href="#projects" class="bg-slate-800 text-white px-8 py-4 rounded-2xl font-medium shadow-lg shadow-slate-500/20 flex items-center gap-2 hover:bg-slate-700 transition-all">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         查看项目 Demo
                     </a>
                 </div>
@@ -352,9 +352,9 @@
         <div class="max-w-5xl mx-auto px-6">
             <!-- 标题 -->
             <div class="text-center mb-16 reveal-element">
-                <p class="text-candy-purple font-medium mb-2">💼 Work Experience</p>
+                <p class="text-slate-400 text-sm font-medium tracking-wider uppercase mb-2">Work Experience</p>
                 <h2 class="font-display text-4xl md:text-5xl font-bold text-slate-800 mb-4">实习经历</h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-candy-blue via-candy-purple to-candy-pink mx-auto rounded-full"></div>
+                <div class="w-16 h-0.5 bg-gradient-to-r from-candy-blue via-candy-purple to-candy-pink mx-auto rounded-full opacity-60"></div>
             </div>
 
             <!-- Tab 选择器 -->
@@ -484,9 +484,9 @@
         <div class="max-w-6xl mx-auto px-6">
             <!-- 标题 -->
             <div class="text-center mb-16 reveal-element">
-                <p class="text-candy-purple font-medium mb-2">🚀 Featured Projects</p>
+                <p class="text-slate-400 text-sm font-medium tracking-wider uppercase mb-2">Featured Projects</p>
                 <h2 class="font-display text-4xl md:text-5xl font-bold text-slate-800 mb-4">重点项目</h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-candy-blue via-candy-purple to-candy-pink mx-auto rounded-full"></div>
+                <div class="w-16 h-0.5 bg-gradient-to-r from-candy-blue via-candy-purple to-candy-pink mx-auto rounded-full opacity-60"></div>
             </div>
 
             <!-- 瀑布流布局 -->
@@ -497,7 +497,7 @@
                         <img src="images/project_stats.png" alt="统计建模大赛" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
                         <div class="absolute top-4 left-4">
-                            <span class="candy-tag bg-white/90 text-slate-800 backdrop-blur">🏆 数据分析竞赛</span>
+                            <span class="candy-tag bg-white/90 text-slate-800 backdrop-blur text-xs">数据分析竞赛</span>
                         </div>
                     </div>
                     <div class="p-6">
@@ -507,9 +507,9 @@
                             基于真实业务数据进行增长洞察分析，使用 LSTM 时间序列模型预测用户行为，结合高德 API 进行选址优化。
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="candy-tag bg-blue-100 text-blue-600">🐍 Python</span>
-                            <span class="candy-tag bg-purple-100 text-purple-600">🧠 LSTM</span>
-                            <span class="candy-tag bg-cyan-100 text-cyan-600">📍 高德API</span>
+                            <span class="candy-tag bg-slate-100 text-slate-600">Python</span>
+                            <span class="candy-tag bg-slate-100 text-slate-600">LSTM</span>
+                            <span class="candy-tag bg-slate-100 text-slate-600">高德API</span>
                         </div>
                         <div class="flex gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
                             <a href="#" class="flex-1 bg-slate-800 text-white py-2 rounded-xl text-center text-sm hover:bg-slate-700 transition-colors">
@@ -528,7 +528,7 @@
                         <img src="images/project_dashboard.jpg" alt="数据看板" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
                         <div class="absolute top-4 left-4">
-                            <span class="candy-tag bg-white/90 text-slate-800 backdrop-blur">📊 数据实践</span>
+                            <span class="candy-tag bg-white/90 text-slate-800 backdrop-blur text-xs">数据实践</span>
                         </div>
                     </div>
                     <div class="p-5">
@@ -537,8 +537,8 @@
                             协同业务与数据团队统一指标口径，构建实时数据可视化看板。
                         </p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="candy-tag bg-indigo-100 text-indigo-600">📈 DataEase</span>
-                            <span class="candy-tag bg-slate-100 text-slate-600">🗄️ SQL</span>
+                            <span class="candy-tag bg-slate-100 text-slate-600">DataEase</span>
+                            <span class="candy-tag bg-slate-100 text-slate-600">SQL</span>
                         </div>
                     </div>
                 </div>
@@ -552,17 +552,17 @@
                         </div>
                         <div class="md:col-span-2 p-6 flex flex-col justify-center">
                             <div class="flex items-center gap-3 mb-3">
-                                <span class="candy-tag bg-gradient-to-r from-candy-pink to-candy-orange text-white">🤖 AI 应用创新</span>
-                                <span class="text-candy-purple font-medium text-sm">校级一等奖 🥇</span>
+                                <span class="candy-tag bg-slate-800 text-white text-xs">AI 应用创新</span>
+                                <span class="text-slate-500 font-medium text-sm">校级一等奖</span>
                             </div>
                             <h3 class="font-display text-xl font-bold text-slate-800 mb-3">首届全国人工智能应用创新大赛</h3>
                             <p class="text-slate-500 leading-relaxed mb-4">
                                 使用百度 AppBuilder 构建 AI 应用，结合知识图谱实现个性化试卷生成系统，解决教育资源个性化适配难题。
                             </p>
                             <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="candy-tag bg-blue-100 text-blue-600">🐍 Python</span>
-                                <span class="candy-tag bg-purple-100 text-purple-600">🎨 Figma</span>
-                                <span class="candy-tag bg-pink-100 text-pink-600">🤖 Agent</span>
+                                <span class="candy-tag bg-slate-100 text-slate-600">Python</span>
+                                <span class="candy-tag bg-slate-100 text-slate-600">Figma</span>
+                                <span class="candy-tag bg-slate-100 text-slate-600">Agent</span>
                             </div>
                             <div class="flex gap-3">
                                 <a href="#" class="px-4 py-2 bg-slate-800 text-white rounded-xl text-sm hover:bg-slate-700 transition-colors">
@@ -588,9 +588,9 @@
         <div class="max-w-5xl mx-auto px-6 relative z-10">
             <!-- 标题 -->
             <div class="text-center mb-16 reveal-element">
-                <p class="text-candy-purple font-medium mb-2">💪 Core Skills</p>
+                <p class="text-slate-400 text-sm font-medium tracking-wider uppercase mb-2">Core Skills</p>
                 <h2 class="font-display text-4xl md:text-5xl font-bold text-slate-800 mb-4">核心技能</h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-candy-blue via-candy-purple to-candy-pink mx-auto rounded-full"></div>
+                <div class="w-16 h-0.5 bg-gradient-to-r from-candy-blue via-candy-purple to-candy-pink mx-auto rounded-full opacity-60"></div>
             </div>
 
             <div class="grid md:grid-cols-2 gap-12 items-center">
@@ -638,13 +638,11 @@
 
                 <!-- 右侧：进度条 -->
                 <div class="space-y-6 reveal-element">
-                    <h3 class="font-display text-xl font-bold text-slate-800">工具熟练度 🛠️</h3>
+                    <h3 class="font-display text-xl font-bold text-slate-800">工具熟练度</h3>
                     
                     <div class="skill-item">
                         <div class="flex justify-between mb-2">
-                            <span class="text-slate-600 font-medium flex items-center gap-2">
-                                <span class="text-xl">🐍</span> Python 数据分析
-                            </span>
+                            <span class="text-slate-600 font-medium">Python 数据分析</span>
                             <span class="text-candy-purple font-bold skill-percent" data-target="90">0%</span>
                         </div>
                         <div class="h-3 bg-slate-100 rounded-full overflow-hidden">
@@ -654,9 +652,7 @@
 
                     <div class="skill-item">
                         <div class="flex justify-between mb-2">
-                            <span class="text-slate-600 font-medium flex items-center gap-2">
-                                <span class="text-xl">🗄️</span> SQL / 数据治理
-                            </span>
+                            <span class="text-slate-600 font-medium">SQL / 数据治理</span>
                             <span class="text-candy-blue font-bold skill-percent" data-target="85">0%</span>
                         </div>
                         <div class="h-3 bg-slate-100 rounded-full overflow-hidden">
@@ -666,9 +662,7 @@
 
                     <div class="skill-item">
                         <div class="flex justify-between mb-2">
-                            <span class="text-slate-600 font-medium flex items-center gap-2">
-                                <span class="text-xl">🤖</span> AI Agent / Prompt
-                            </span>
+                            <span class="text-slate-600 font-medium">AI Agent / Prompt</span>
                             <span class="text-candy-pink font-bold skill-percent" data-target="88">0%</span>
                         </div>
                         <div class="h-3 bg-slate-100 rounded-full overflow-hidden">
@@ -678,9 +672,7 @@
 
                     <div class="skill-item">
                         <div class="flex justify-between mb-2">
-                            <span class="text-slate-600 font-medium flex items-center gap-2">
-                                <span class="text-xl">🎨</span> Figma / 原型设计
-                            </span>
+                            <span class="text-slate-600 font-medium">Figma / 原型设计</span>
                             <span class="text-candy-orange font-bold skill-percent" data-target="82">0%</span>
                         </div>
                         <div class="h-3 bg-slate-100 rounded-full overflow-hidden">
@@ -690,9 +682,7 @@
 
                     <div class="skill-item">
                         <div class="flex justify-between mb-2">
-                            <span class="text-slate-600 font-medium flex items-center gap-2">
-                                <span class="text-xl">📋</span> 产品分析 / PRD
-                            </span>
+                            <span class="text-slate-600 font-medium">产品分析 / PRD</span>
                             <span class="text-candy-purple font-bold skill-percent" data-target="87">0%</span>
                         </div>
                         <div class="h-3 bg-slate-100 rounded-full overflow-hidden">
@@ -702,14 +692,14 @@
 
                     <!-- 其他技能标签 -->
                     <div class="pt-6 border-t border-slate-100">
-                        <p class="text-slate-400 text-sm mb-3">其他技能 ✨</p>
+                        <p class="text-slate-400 text-sm mb-3">其他技能</p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="candy-tag bg-slate-100 text-slate-600">📊 DataEase</span>
-                            <span class="candy-tag bg-slate-100 text-slate-600">🌿 Git</span>
-                            <span class="candy-tag bg-slate-100 text-slate-600">📐 Axure</span>
-                            <span class="candy-tag bg-slate-100 text-slate-600">🧠 XMind</span>
-                            <span class="candy-tag bg-slate-100 text-slate-600">📈 Tableau</span>
-                            <span class="candy-tag bg-slate-100 text-slate-600">📝 Notion</span>
+                            <span class="candy-tag bg-slate-100 text-slate-600">DataEase</span>
+                            <span class="candy-tag bg-slate-100 text-slate-600">Git</span>
+                            <span class="candy-tag bg-slate-100 text-slate-600">Axure</span>
+                            <span class="candy-tag bg-slate-100 text-slate-600">XMind</span>
+                            <span class="candy-tag bg-slate-100 text-slate-600">Tableau</span>
+                            <span class="candy-tag bg-slate-100 text-slate-600">Notion</span>
                         </div>
                     </div>
                 </div>
@@ -722,35 +712,35 @@
         <div class="max-w-4xl mx-auto px-6">
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div class="reveal-element">
-                    <p class="text-candy-purple font-medium mb-2">🎓 Education</p>
+                    <p class="text-slate-400 text-sm font-medium tracking-wider uppercase mb-2">Education</p>
                     <h2 class="font-display text-4xl font-bold text-slate-800 mb-6">教育背景</h2>
                     
                     <div class="glass-card rounded-3xl p-8">
                         <div class="flex items-center gap-4 mb-6">
-                            <div class="w-16 h-16 rounded-2xl bg-gradient-to-r from-candy-blue to-candy-purple flex items-center justify-center text-white text-2xl">
-                                🏫
+                            <div class="w-16 h-16 rounded-2xl bg-gradient-to-r from-candy-blue to-candy-purple flex items-center justify-center text-white text-xl font-bold">
+                                T
                             </div>
                             <div>
                                 <h3 class="font-display text-2xl font-bold text-slate-800">天津师范大学</h3>
-                                <p class="text-slate-500">本科 · 经济学 📚</p>
+                                <p class="text-slate-500">本科 · 经济学</p>
                             </div>
                         </div>
                         
                         <div class="flex items-center gap-4 mb-6">
-                            <span class="px-4 py-2 bg-gradient-to-r from-candy-blue to-candy-purple text-white rounded-full text-sm font-medium">
+                            <span class="px-4 py-2 bg-slate-800 text-white rounded-full text-sm font-medium">
                                 2023.09 - 2027.06
                             </span>
-                            <span class="text-slate-400">预计毕业 2027.06 🎯</span>
+                            <span class="text-slate-400">预计毕业 2027.06</span>
                         </div>
 
                         <p class="text-slate-500 leading-relaxed mb-6">
-                            围绕产品思维、数据分析与 AI 应用持续学习，夯实统计分析与业务洞察能力。注重将理论与实践结合，形成从问题定义到方案落地的完整闭环。 🌟
+                            围绕产品思维、数据分析与 AI 应用持续学习，夯实统计分析与业务洞察能力。注重将理论与实践结合，形成从问题定义到方案落地的完整闭环。
                         </p>
 
                         <div class="flex items-center gap-4 p-4 bg-slate-50 rounded-2xl">
-                            <span class="text-2xl">📊</span>
+                            <div class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center text-slate-600 font-bold text-sm">GPA</div>
                             <div>
-                                <div class="font-bold text-slate-800">GPA: 3.6/4.0</div>
+                                <div class="font-bold text-slate-800">3.6/4.0</div>
                                 <div class="text-sm text-slate-500">专业排名前 15%</div>
                             </div>
                         </div>
@@ -764,13 +754,9 @@
                             <img src="images/education_scene.jpg" alt="教育场景" class="w-full h-full object-cover">
                         </div>
                         
-                        <!-- 装饰元素 -->
-                        <div class="absolute -top-4 -right-4 w-12 h-12 bg-candy-pink rounded-full flex items-center justify-center text-white text-xl animate-float">
-                            🎓
-                        </div>
-                        <div class="absolute -bottom-4 -left-4 w-12 h-12 bg-candy-blue rounded-full flex items-center justify-center text-white text-xl animate-float" style="animation-delay: -2s;">
-                            ⭐
-                        </div>
+                        <!-- 简洁装饰 -->
+                        <div class="absolute -top-2 -right-2 w-8 h-8 bg-candy-blue/20 rounded-full"></div>
+                        <div class="absolute -bottom-2 -left-2 w-6 h-6 bg-candy-purple/20 rounded-full"></div>
                     </div>
                 </div>
             </div>
@@ -828,7 +814,7 @@
 
             <div class="border-t border-white/10 pt-8 text-center">
                 <p class="text-slate-500 text-sm">
-                    &copy; 2025 Lin Chenglie. Made with 💜 & lots of ☕
+                    &copy; 2025 Lin Chenglie
                 </p>
             </div>
         </div>
