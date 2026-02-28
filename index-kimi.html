@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>林承列 | AI 产品经理 🚀</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        candy: {
+                            blue: '#6366F1',
+                            purple: '#8B5CF6',
+                            pink: '#EC4899',
+                            orange: '#F97316',
+                            cyan: '#06B6D4',
+                        }
+                    },
+                    animation: {
+                        'gradient-x': 'gradientX 8s ease infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'shimmer': 'shimmer 2s linear infinite',
+                    },
+                    keyframes: {
+                        gradientX: {
+                            '0%, 100%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        shimmer: {
+                            '0%': { backgroundPosition: '-200% 0' },
+                            '100%': { backgroundPosition: '200% 0' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        h1, h2, h3, h4, h5, h6, .font-display {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* 渐变文字 */
+        .text-gradient {
+            background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 25%, #EC4899 50%, #F97316 75%, #6366F1 100%);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientMove 6s ease infinite;
+        }
+
+        .text-gradient-blue {
+            background: linear-gradient(135deg, #3B82F6 0%, #6366F1 50%, #8B5CF6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .text-gradient-pink {
+            background: linear-gradient(135deg, #EC4899 0%, #F97316 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @keyframes gradientMove {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* 渐变按钮 */
+        .btn-gradient {
+            background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%);
+            background-size: 200% 200%;
+            animation: gradientMove 4s ease infinite;
+            transition: all 0.3s ease;
+        }
+
+        .btn-gradient:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-gradient-2 {
+            background: linear-gradient(135deg, #F97316 0%, #EC4899 50%, #8B5CF6 100%);
+            background-size: 200% 200%;
+            animation: gradientMove 4s ease infinite;
+        }
+
+        /* 彩虹光泽扫过效果 */
+        .shimmer-effect {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .shimmer-effect::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmerPass 3s infinite;
+        }
+
+        @keyframes shimmerPass {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        /* 玻璃态卡片 */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px rgba(99, 102, 241, 0.1);
+        }
+
+        .glass-card-dark {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        /* 悬浮球装饰 */
+        .floating-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.5;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        /* 波浪背景 */
+        .wave-bg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%236366F1' fill-opacity='0.1' d='M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom;
+            background-size: cover;
+        }
+
+        /* Tab 样式 */
+        .candy-tab {
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .candy-tab.active {
+            background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
+            color: white;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .candy-tab:not(.active):hover {
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        /* 进度条糖果色 */
+        .candy-progress {
+            background: linear-gradient(90deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%);
+            background-size: 200% 100%;
+            animation: gradientMove 3s ease infinite;
+        }
+
+        /* 标签样式 */
+        .candy-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.375rem 0.875rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .candy-tag:hover {
+            transform: translateY(-2px);
+        }
+
+        /* 项目卡片悬浮 */
+        .project-card-candy {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-card-candy:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.2);
+        }
+
+        /* 技能雷达图 */
+        .radar-candy {
+            filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.3));
+        }
+
+        /* 滚动条美化 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #F8FAFC;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #6366F1, #EC4899);
+            border-radius: 4px;
+        }
+
+        /* 动画初始状态 */
+        .reveal-element {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased overflow-x-hidden">
+
+    <!-- 浮动装饰球 -->
+    <div class="floating-orb w-96 h-96 bg-candy-blue top-0 left-0 -translate-x-1/2 -translate-y-1/2"></div>
+    <div class="floating-orb w-80 h-80 bg-candy-pink top-40 right-0 translate-x-1/2" style="animation-delay: -2s;"></div>
+    <div class="floating-orb w-64 h-64 bg-candy-purple bottom-40 left-20" style="animation-delay: -4s;"></div>
+
+    <!-- 导航栏 -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200/50">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="font-display text-2xl font-bold text-gradient">LC 🎯</a>
+            <div class="hidden md:flex items-center space-x-1">
+                <a href="#about" class="px-4 py-2 text-slate-600 hover:text-candy-blue transition-colors rounded-full hover:bg-slate-100">关于</a>
+                <a href="#experience" class="px-4 py-2 text-slate-600 hover:text-candy-blue transition-colors rounded-full hover:bg-slate-100">经历</a>
+                <a href="#projects" class="px-4 py-2 text-slate-600 hover:text-candy-blue transition-colors rounded-full hover:bg-slate-100">项目</a>
+                <a href="#skills" class="px-4 py-2 text-slate-600 hover:text-candy-blue transition-colors rounded-full hover:bg-slate-100">技能</a>
+                <a href="#education" class="px-4 py-2 text-slate-600 hover:text-candy-blue transition-colors rounded-full hover:bg-slate-100">教育</a>
+            </div>
+            <a href="mailto:15396631779@163.com" class="btn-gradient text-white px-5 py-2.5 rounded-full text-sm font-medium shadow-lg shadow-indigo-500/30">
+                联系我 💌
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="about" class="min-h-screen flex items-center pt-20 relative overflow-hidden">
+        <div class="wave-bg"></div>
+        
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
+            <!-- 左侧文字 -->
+            <div class="space-y-6">
+                <div class="hero-element inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-lg shadow-indigo-500/10 border border-slate-100">
+                    <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                    <span class="text-sm text-slate-600">🎓 2027届应届生 · 正在寻找AI产品机会</span>
+                </div>
+
+                <h1 class="hero-element font-display text-5xl md:text-7xl font-bold leading-tight">
+                    Hi, I'm <br>
+                    <span class="text-gradient">林承列</span> 
+                    <span class="text-4xl">👋</span>
+                </h1>
+
+                <p class="hero-element text-xl text-slate-600 font-light">
+                    AI 产品经理 <span class="text-candy-pink">✦</span> 数据驱动 <span class="text-candy-blue">✦</span> 创新实践者
+                </p>
+
+                <p class="hero-element text-slate-500 leading-relaxed max-w-lg">
+                    拥有句子互动 & 一起教育实习经验，专注大模型应用落地与数据驱动增长。
+                    擅长 Agent 构建、数据分析，具备 Python/Figma 快速原型能力。 🚀
+                </p>
+
+                <!-- CTA 按钮组 -->
+                <div class="hero-element flex flex-wrap gap-4 pt-4">
+                    <a href="#" class="shimmer-effect btn-gradient text-white px-8 py-4 rounded-2xl font-medium shadow-xl shadow-indigo-500/30 flex items-center gap-2">
+                        <i class="fas fa-file-pdf"></i>
+                        下载简历 PDF
+                    </a>
+                    <a href="#projects" class="btn-gradient-2 text-white px-8 py-4 rounded-2xl font-medium shadow-xl shadow-pink-500/30 flex items-center gap-2">
+                        <i class="fas fa-rocket"></i>
+                        查看项目 Demo
+                    </a>
+                </div>
+
+                <!-- 社交链接 -->
+                <div class="hero-element flex gap-4 pt-4">
+                    <a href="#" class="w-10 h-10 rounded-full bg-white shadow-lg shadow-slate-200 flex items-center justify-center text-slate-600 hover:text-candy-blue hover:scale-110 transition-all">
+                        <i class="fab fa-github text-lg"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-white shadow-lg shadow-slate-200 flex items-center justify-center text-slate-600 hover:text-green-500 hover:scale-110 transition-all">
+                        <i class="fab fa-weixin text-lg"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-white shadow-lg shadow-slate-200 flex items-center justify-center text-slate-600 hover:text-blue-500 hover:scale-110 transition-all">
+                        <i class="fab fa-linkedin text-lg"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 右侧图片 -->
+            <div class="hero-element flex justify-center relative">
+                <div class="relative">
+                    <!-- 装饰圆环 -->
+                    <div class="absolute -inset-4 bg-gradient-to-r from-candy-blue via-candy-purple to-candy-pink rounded-3xl opacity-20 blur-xl animate-pulse-slow"></div>
+                    
+                    <div class="relative w-72 h-96 md:w-80 md:h-[28rem] rounded-3xl overflow-hidden shadow-2xl shadow-indigo-500/20 border-4 border-white">
+                        <img src="images/hero_portrait.jpg" alt="林承列" class="w-full h-full object-cover">
+                    </div>
+
+                    <!-- 悬浮徽章 -->
+                    <div class="absolute -top-4 -right-4 bg-white rounded-2xl p-3 shadow-xl animate-float" style="animation-delay: 0s;">
+                        <div class="text-2xl">🤖</div>
+                    </div>
+                    <div class="absolute top-20 -left-8 bg-white rounded-2xl p-3 shadow-xl animate-float" style="animation-delay: -2s;">
+                        <div class="text-2xl">📊</div>
+                    </div>
+                    <div class="absolute -bottom-4 right-8 bg-white rounded-2xl p-3 shadow-xl animate-float" style="animation-delay: -4s;">
+                        <div class="text-2xl">✨</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 实习经历 -->
+    <section id="experience" class="py-24 relative">
+        <div class="max-w-5xl mx-auto px-6">
+            <!-- 标题 -->
+            <div class="text-center mb-16 reveal-element">
+                <p class="text-candy-purple font-medium mb-2">💼 Work Experience</p>
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-slate-800 mb-4">实习经历</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-candy-blue via-candy-purple to-candy-pink mx-auto rounded-full"></div>
+            </div>
+
+            <!-- Tab 选择器 -->
+            <div class="flex justify-center gap-4 mb-12 reveal-element">
+                <div class="candy-tab active flex items-center gap-3" data-company="juzi">
+                    <img src="images/juzi_ai.png" alt="句子互动" class="w-8 h-8 object-contain">
+                    <div class="text-left">
+                        <div class="font-medium">句子互动</div>
+                        <div class="text-xs opacity-80">AI PM 实习生</div>
+                    </div>
+                </div>
+                <div class="candy-tab flex items-center gap-3 bg-white shadow-lg" data-company="together">
+                    <img src="images/together_edu.png" alt="一起教育" class="w-8 h-8 object-contain">
+                    <div class="text-left">
+                        <div class="font-medium">一起教育</div>
+                        <div class="text-xs opacity-80">AI PM 实习生</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 时间轴 -->
+            <div class="flex justify-center items-center gap-4 mb-12 reveal-element text-sm">
+                <span class="text-slate-400">2024.12</span>
+                <div class="w-32 h-1 bg-gradient-to-r from-candy-blue to-candy-purple rounded-full"></div>
+                <span class="px-3 py-1 bg-gradient-to-r from-candy-blue to-candy-purple text-white rounded-full text-xs font-medium">2025.02</span>
+                <div class="w-8 h-1 bg-slate-200 rounded-full"></div>
+                <span class="px-3 py-1 bg-gradient-to-r from-candy-purple to-candy-pink text-white rounded-full text-xs font-medium">2025.07</span>
+                <div class="w-32 h-1 bg-gradient-to-r from-candy-pink to-candy-orange rounded-full"></div>
+                <span class="text-slate-400">2025.12</span>
+            </div>
+
+            <!-- 详情内容 -->
+            <div class="reveal-element">
+                <!-- 句子互动 -->
+                <div id="juzi-detail" class="exp-content">
+                    <div class="glass-card rounded-3xl p-8 md:p-12">
+                        <div class="grid md:grid-cols-2 gap-8 items-center">
+                            <div class="relative">
+                                <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
+                                    <img src="images/experience_workspace.jpg" alt="AI SDR产品" class="w-full h-full object-cover">
+                                </div>
+                                <div class="absolute -bottom-4 -right-4 bg-white rounded-2xl p-4 shadow-xl">
+                                    <div class="text-3xl font-bold text-gradient">30%</div>
+                                    <div class="text-xs text-slate-500">AI迭代周期↓ 🚀</div>
+                                </div>
+                            </div>
+                            <div class="space-y-6">
+                                <div>
+                                    <h3 class="font-display text-2xl font-bold text-slate-800 mb-2">AI SDR 产品迭代</h3>
+                                    <p class="text-slate-500 flex items-center gap-2">
+                                        <i class="fas fa-map-marker-alt text-candy-pink"></i> 北京 · 2024.12 - 2025.02
+                                    </p>
+                                </div>
+                                <ul class="space-y-4">
+                                    <li class="flex items-start gap-3">
+                                        <span class="w-6 h-6 rounded-full bg-gradient-to-r from-candy-blue to-candy-purple flex items-center justify-center text-white text-xs mt-0.5">✓</span>
+                                        <span class="text-slate-600">负责 AI SDR 产品迭代，优化 Prompt 提升对话转化率 <strong class="text-candy-purple">15%</strong></span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="w-6 h-6 rounded-full bg-gradient-to-r from-candy-purple to-candy-pink flex items-center justify-center text-white text-xs mt-0.5">✓</span>
+                                        <span class="text-slate-600">搭建舆情监控系统，实时追踪品牌口碑，覆盖 <strong class="text-candy-pink">10万+</strong> 数据源</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="w-6 h-6 rounded-full bg-gradient-to-r from-candy-pink to-candy-orange flex items-center justify-center text-white text-xs mt-0.5">✓</span>
+                                        <span class="text-slate-600">参与 Agent 工作流设计，提升自动化营销效率 <strong class="text-candy-orange">40%</strong></span>
+                                    </li>
+                                </ul>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="candy-tag bg-indigo-100 text-indigo-600">🤖 Prompt Engineering</span>
+                                    <span class="candy-tag bg-purple-100 text-purple-600">⚡ Agent 工作流</span>
+                                    <span class="candy-tag bg-pink-100 text-pink-600">📈 舆情监控</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 一起教育 -->
+                <div id="together-detail" class="exp-content hidden">
+                    <div class="glass-card rounded-3xl p-8 md:p-12">
+                        <div class="grid md:grid-cols-2 gap-8 items-center">
+                            <div class="space-y-6 order-2 md:order-1">
+                                <div>
+                                    <h3 class="font-display text-2xl font-bold text-slate-800 mb-2">视频 AI 语音克隆产品</h3>
+                                    <p class="text-slate-500 flex items-center gap-2">
+                                        <i class="fas fa-map-marker-alt text-candy-pink"></i> 北京 · 2025.07 - 2025.12
+                                    </p>
+                                </div>
+                                <ul class="space-y-4">
+                                    <li class="flex items-start gap-3">
+                                        <span class="w-6 h-6 rounded-full bg-gradient-to-r from-candy-blue to-candy-purple flex items-center justify-center text-white text-xs mt-0.5">✓</span>
+                                        <span class="text-slate-600">负责视频 AI 语音克隆产品，用户满意度 <strong class="text-candy-purple">92%</strong> ⭐</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="w-6 h-6 rounded-full bg-gradient-to-r from-candy-purple to-candy-pink flex items-center justify-center text-white text-xs mt-0.5">✓</span>
+                                        <span class="text-slate-600">设计学情报告 Agent，覆盖 <strong class="text-candy-pink">50万+</strong> 学生 👨‍🎓</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="w-6 h-6 rounded-full bg-gradient-to-r from-candy-pink to-candy-orange flex items-center justify-center text-white text-xs mt-0.5">✓</span>
+                                        <span class="text-slate-600">视觉批改产品迭代，AI 识别准确率 <strong class="text-candy-orange">96%</strong> 🎯</span>
+                                    </li>
+                                </ul>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="candy-tag bg-blue-100 text-blue-600">🎙️ 语音克隆</span>
+                                    <span class="candy-tag bg-purple-100 text-purple-600">🤖 Agent 设计</span>
+                                    <span class="candy-tag bg-orange-100 text-orange-600">👁️ 视觉批改</span>
+                                </div>
+                            </div>
+                            <div class="relative order-1 md:order-2">
+                                <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
+                                    <img src="images/education_scene.jpg" alt="教育AI产品" class="w-full h-full object-cover">
+                                </div>
+                                <div class="absolute -bottom-4 -left-4 bg-white rounded-2xl p-4 shadow-xl">
+                                    <div class="text-3xl font-bold text-gradient">96%</div>
+                                    <div class="text-xs text-slate-500">AI识别准确率 🎯</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 重点项目 -->
+    <section id="projects" class="py-24 bg-white relative">
+        <div class="max-w-6xl mx-auto px-6">
+            <!-- 标题 -->
+            <div class="text-center mb-16 reveal-element">
+                <p class="text-candy-purple font-medium mb-2">🚀 Featured Projects</p>
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-slate-800 mb-4">重点项目</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-candy-blue via-candy-purple to-candy-pink mx-auto rounded-full"></div>
+            </div>
+
+            <!-- 瀑布流布局 -->
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- 项目1 - 大图 -->
+                <div class="project-card-candy glass-card rounded-3xl overflow-hidden group md:row-span-2 reveal-element">
+                    <div class="relative h-64 md:h-80 overflow-hidden">
+                        <img src="images/project_stats.png" alt="统计建模大赛" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
+                        <div class="absolute top-4 left-4">
+                            <span class="candy-tag bg-white/90 text-slate-800 backdrop-blur">🏆 数据分析竞赛</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display text-xl font-bold text-slate-800 mb-2">第十一届全国大学生统计建模大赛</h3>
+                        <p class="text-candy-purple font-medium mb-3">天津赛区二等奖 🥈</p>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-4">
+                            基于真实业务数据进行增长洞察分析，使用 LSTM 时间序列模型预测用户行为，结合高德 API 进行选址优化。
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="candy-tag bg-blue-100 text-blue-600">🐍 Python</span>
+                            <span class="candy-tag bg-purple-100 text-purple-600">🧠 LSTM</span>
+                            <span class="candy-tag bg-cyan-100 text-cyan-600">📍 高德API</span>
+                        </div>
+                        <div class="flex gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <a href="#" class="flex-1 bg-slate-800 text-white py-2 rounded-xl text-center text-sm hover:bg-slate-700 transition-colors">
+                                <i class="fab fa-github mr-1"></i> GitHub
+                            </a>
+                            <a href="#" class="flex-1 btn-gradient text-white py-2 rounded-xl text-center text-sm">
+                                <i class="fas fa-external-link-alt mr-1"></i> Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 项目2 - 中图 -->
+                <div class="project-card-candy glass-card rounded-3xl overflow-hidden group reveal-element">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="images/project_dashboard.jpg" alt="数据看板" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                        <div class="absolute top-4 left-4">
+                            <span class="candy-tag bg-white/90 text-slate-800 backdrop-blur">📊 数据实践</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-lg font-bold text-slate-800 mb-2">数据看板建设实践</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-3">
+                            协同业务与数据团队统一指标口径，构建实时数据可视化看板。
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="candy-tag bg-indigo-100 text-indigo-600">📈 DataEase</span>
+                            <span class="candy-tag bg-slate-100 text-slate-600">🗄️ SQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 项目3 - 横向卡片 -->
+                <div class="project-card-candy glass-card rounded-3xl overflow-hidden group md:col-span-2 reveal-element">
+                    <div class="grid md:grid-cols-3">
+                        <div class="relative h-48 md:h-auto overflow-hidden">
+                            <img src="images/project_ai_edu.png" alt="AI教育项目" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-r from-transparent to-white/20 md:block hidden"></div>
+                        </div>
+                        <div class="md:col-span-2 p-6 flex flex-col justify-center">
+                            <div class="flex items-center gap-3 mb-3">
+                                <span class="candy-tag bg-gradient-to-r from-candy-pink to-candy-orange text-white">🤖 AI 应用创新</span>
+                                <span class="text-candy-purple font-medium text-sm">校级一等奖 🥇</span>
+                            </div>
+                            <h3 class="font-display text-xl font-bold text-slate-800 mb-3">首届全国人工智能应用创新大赛</h3>
+                            <p class="text-slate-500 leading-relaxed mb-4">
+                                使用百度 AppBuilder 构建 AI 应用，结合知识图谱实现个性化试卷生成系统，解决教育资源个性化适配难题。
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="candy-tag bg-blue-100 text-blue-600">🐍 Python</span>
+                                <span class="candy-tag bg-purple-100 text-purple-600">🎨 Figma</span>
+                                <span class="candy-tag bg-pink-100 text-pink-600">🤖 Agent</span>
+                            </div>
+                            <div class="flex gap-3">
+                                <a href="#" class="px-4 py-2 bg-slate-800 text-white rounded-xl text-sm hover:bg-slate-700 transition-colors">
+                                    <i class="fab fa-github mr-1"></i> GitHub
+                                </a>
+                                <a href="#" class="px-4 py-2 btn-gradient text-white rounded-xl text-sm">
+                                    <i class="fas fa-external-link-alt mr-1"></i> 在线Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心技能 -->
+    <section id="skills" class="py-24 relative overflow-hidden">
+        <!-- 背景装饰 -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-candy-purple/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-candy-blue/10 rounded-full blur-3xl"></div>
+
+        <div class="max-w-5xl mx-auto px-6 relative z-10">
+            <!-- 标题 -->
+            <div class="text-center mb-16 reveal-element">
+                <p class="text-candy-purple font-medium mb-2">💪 Core Skills</p>
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-slate-800 mb-4">核心技能</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-candy-blue via-candy-purple to-candy-pink mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- 左侧：雷达图 -->
+                <div class="flex justify-center reveal-element">
+                    <div class="relative w-80 h-80">
+                        <!-- 背景圆环 -->
+                        <div class="absolute inset-0 bg-gradient-to-r from-candy-blue/20 to-candy-pink/20 rounded-full blur-xl"></div>
+                        
+                        <svg viewBox="0 0 300 300" class="w-full h-full radar-candy">
+                            <!-- 网格 -->
+                            <g opacity="0.2">
+                                <polygon points="150,30 240,90 240,180 150,240 60,180 60,90" fill="none" stroke="#6366F1" stroke-width="1"/>
+                                <polygon points="150,60 210,105 210,165 150,210 90,165 90,105" fill="none" stroke="#8B5CF6" stroke-width="1"/>
+                                <polygon points="150,90 180,112.5 180,150 150,172.5 120,150 120,112.5" fill="none" stroke="#EC4899" stroke-width="1"/>
+                            </g>
+                            <!-- 数据 -->
+                            <polygon id="radar-data" points="150,45 225,97.5 225,172.5 150,210 75,165 75,97.5" 
+                                     fill="url(#radarGradient)" stroke="#6366F1" stroke-width="2" opacity="0"/>
+                            <defs>
+                                <linearGradient id="radarGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#6366F1;stop-opacity:0.3" />
+                                    <stop offset="100%" style="stop-color:#EC4899;stop-opacity:0.3" />
+                                </linearGradient>
+                            </defs>
+                            <!-- 点 -->
+                            <g id="radar-points" opacity="0">
+                                <circle cx="150" cy="45" r="5" fill="#6366F1"/>
+                                <circle cx="225" cy="97.5" r="5" fill="#8B5CF6"/>
+                                <circle cx="225" cy="172.5" r="5" fill="#EC4899"/>
+                                <circle cx="150" cy="210" r="5" fill="#F97316"/>
+                                <circle cx="75" cy="165" r="5" fill="#06B6D4"/>
+                                <circle cx="75" cy="97.5" r="5" fill="#6366F1"/>
+                            </g>
+                            <!-- 标签 -->
+                            <text x="150" y="15" text-anchor="middle" fill="#6366F1" font-size="12" font-weight="600">产品思维</text>
+                            <text x="260" y="85" text-anchor="start" fill="#8B5CF6" font-size="12" font-weight="600">数据分析</text>
+                            <text x="260" y="195" text-anchor="start" fill="#EC4899" font-size="12" font-weight="600">AI能力</text>
+                            <text x="150" y="280" text-anchor="middle" fill="#F97316" font-size="12" font-weight="600">设计能力</text>
+                            <text x="40" y="195" text-anchor="end" fill="#06B6D4" font-size="12" font-weight="600">工程实现</text>
+                            <text x="40" y="85" text-anchor="end" fill="#6366F1" font-size="12" font-weight="600">沟通协调</text>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- 右侧：进度条 -->
+                <div class="space-y-6 reveal-element">
+                    <h3 class="font-display text-xl font-bold text-slate-800">工具熟练度 🛠️</h3>
+                    
+                    <div class="skill-item">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-slate-600 font-medium flex items-center gap-2">
+                                <span class="text-xl">🐍</span> Python 数据分析
+                            </span>
+                            <span class="text-candy-purple font-bold skill-percent" data-target="90">0%</span>
+                        </div>
+                        <div class="h-3 bg-slate-100 rounded-full overflow-hidden">
+                            <div class="skill-progress candy-progress h-full rounded-full" style="width: 0%" data-width="90"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-slate-600 font-medium flex items-center gap-2">
+                                <span class="text-xl">🗄️</span> SQL / 数据治理
+                            </span>
+                            <span class="text-candy-blue font-bold skill-percent" data-target="85">0%</span>
+                        </div>
+                        <div class="h-3 bg-slate-100 rounded-full overflow-hidden">
+                            <div class="skill-progress candy-progress h-full rounded-full" style="width: 0%" data-width="85"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-slate-600 font-medium flex items-center gap-2">
+                                <span class="text-xl">🤖</span> AI Agent / Prompt
+                            </span>
+                            <span class="text-candy-pink font-bold skill-percent" data-target="88">0%</span>
+                        </div>
+                        <div class="h-3 bg-slate-100 rounded-full overflow-hidden">
+                            <div class="skill-progress candy-progress h-full rounded-full" style="width: 0%" data-width="88"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-slate-600 font-medium flex items-center gap-2">
+                                <span class="text-xl">🎨</span> Figma / 原型设计
+                            </span>
+                            <span class="text-candy-orange font-bold skill-percent" data-target="82">0%</span>
+                        </div>
+                        <div class="h-3 bg-slate-100 rounded-full overflow-hidden">
+                            <div class="skill-progress candy-progress h-full rounded-full" style="width: 0%" data-width="82"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-slate-600 font-medium flex items-center gap-2">
+                                <span class="text-xl">📋</span> 产品分析 / PRD
+                            </span>
+                            <span class="text-candy-purple font-bold skill-percent" data-target="87">0%</span>
+                        </div>
+                        <div class="h-3 bg-slate-100 rounded-full overflow-hidden">
+                            <div class="skill-progress candy-progress h-full rounded-full" style="width: 0%" data-width="87"></div>
+                        </div>
+                    </div>
+
+                    <!-- 其他技能标签 -->
+                    <div class="pt-6 border-t border-slate-100">
+                        <p class="text-slate-400 text-sm mb-3">其他技能 ✨</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="candy-tag bg-slate-100 text-slate-600">📊 DataEase</span>
+                            <span class="candy-tag bg-slate-100 text-slate-600">🌿 Git</span>
+                            <span class="candy-tag bg-slate-100 text-slate-600">📐 Axure</span>
+                            <span class="candy-tag bg-slate-100 text-slate-600">🧠 XMind</span>
+                            <span class="candy-tag bg-slate-100 text-slate-600">📈 Tableau</span>
+                            <span class="candy-tag bg-slate-100 text-slate-600">📝 Notion</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 教育背景 -->
+    <section id="education" class="py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="reveal-element">
+                    <p class="text-candy-purple font-medium mb-2">🎓 Education</p>
+                    <h2 class="font-display text-4xl font-bold text-slate-800 mb-6">教育背景</h2>
+                    
+                    <div class="glass-card rounded-3xl p-8">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-16 h-16 rounded-2xl bg-gradient-to-r from-candy-blue to-candy-purple flex items-center justify-center text-white text-2xl">
+                                🏫
+                            </div>
+                            <div>
+                                <h3 class="font-display text-2xl font-bold text-slate-800">天津师范大学</h3>
+                                <p class="text-slate-500">本科 · 经济学 📚</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center gap-4 mb-6">
+                            <span class="px-4 py-2 bg-gradient-to-r from-candy-blue to-candy-purple text-white rounded-full text-sm font-medium">
+                                2023.09 - 2027.06
+                            </span>
+                            <span class="text-slate-400">预计毕业 2027.06 🎯</span>
+                        </div>
+
+                        <p class="text-slate-500 leading-relaxed mb-6">
+                            围绕产品思维、数据分析与 AI 应用持续学习，夯实统计分析与业务洞察能力。注重将理论与实践结合，形成从问题定义到方案落地的完整闭环。 🌟
+                        </p>
+
+                        <div class="flex items-center gap-4 p-4 bg-slate-50 rounded-2xl">
+                            <span class="text-2xl">📊</span>
+                            <div>
+                                <div class="font-bold text-slate-800">GPA: 3.6/4.0</div>
+                                <div class="text-sm text-slate-500">专业排名前 15%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal-element">
+                    <div class="relative">
+                        <div class="absolute -inset-4 bg-gradient-to-r from-candy-blue via-candy-purple to-candy-pink rounded-3xl opacity-20 blur-xl"></div>
+                        <div class="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
+                            <img src="images/education_scene.jpg" alt="教育场景" class="w-full h-full object-cover">
+                        </div>
+                        
+                        <!-- 装饰元素 -->
+                        <div class="absolute -top-4 -right-4 w-12 h-12 bg-candy-pink rounded-full flex items-center justify-center text-white text-xl animate-float">
+                            🎓
+                        </div>
+                        <div class="absolute -bottom-4 -left-4 w-12 h-12 bg-candy-blue rounded-full flex items-center justify-center text-white text-xl animate-float" style="animation-delay: -2s;">
+                            ⭐
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 bg-slate-900 text-white relative overflow-hidden">
+        <!-- 背景装饰 -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden opacity-20">
+            <div class="absolute top-10 left-10 w-32 h-32 bg-candy-blue rounded-full blur-3xl"></div>
+            <div class="absolute bottom-10 right-10 w-40 h-40 bg-candy-pink rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="max-w-4xl mx-auto px-6 relative z-10">
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div>
+                    <h3 class="font-display text-2xl font-bold text-gradient mb-4">LC 🚀</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        AI 产品经理<br>
+                        专注于大模型应用落地
+                    </p>
+                    <div class="flex gap-3">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-candy-blue transition-colors">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-green-500 transition-colors">
+                            <i class="fab fa-weixin"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-blue-500 transition-colors">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-medium mb-4 text-slate-300">快速导航</h4>
+                    <div class="space-y-2">
+                        <a href="#about" class="block text-slate-400 hover:text-white transition-colors text-sm">关于</a>
+                        <a href="#experience" class="block text-slate-400 hover:text-white transition-colors text-sm">工作经历</a>
+                        <a href="#projects" class="block text-slate-400 hover:text-white transition-colors text-sm">项目经历</a>
+                        <a href="#skills" class="block text-slate-400 hover:text-white transition-colors text-sm">能力分布</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-medium mb-4 text-slate-300">联系方式</h4>
+                    <div class="space-y-2 text-sm">
+                        <p class="text-slate-400">📧 15396631779@163.com</p>
+                        <p class="text-slate-400">🏫 天津师范大学</p>
+                        <p class="text-slate-400">🎓 2027届 · 经济学</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 text-center">
+                <p class="text-slate-500 text-sm">
+                    &copy; 2025 Lin Chenglie. Made with 💜 & lots of ☕
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- GSAP 动画脚本 -->
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero 动画
+        window.addEventListener('load', () => {
+            gsap.to('.hero-element', {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                stagger: 0.15,
+                ease: 'power2.out'
+            });
+        });
+
+        // 通用滚动显现
+        gsap.utils.toArray('.reveal-element').forEach(element => {
+            gsap.to(element, {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: element,
+                    start: 'top 85%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+        });
+
+        // Tab 切换
+        const expTabs = document.querySelectorAll('.candy-tab');
+        const expContents = {
+            'juzi': document.getElementById('juzi-detail'),
+            'together': document.getElementById('together-detail')
+        };
+
+        expTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const company = tab.dataset.company;
+                
+                expTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                Object.values(expContents).forEach(content => {
+                    content.classList.add('hidden');
+                });
+                expContents[company].classList.remove('hidden');
+                
+                gsap.fromTo(expContents[company], 
+                    { opacity: 0, y: 20 },
+                    { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }
+                );
+            });
+        });
+
+        // 技能进度条动画
+        let skillAnimated = false;
+        ScrollTrigger.create({
+            trigger: '#skills',
+            start: 'top 60%',
+            onEnter: () => {
+                if (!skillAnimated) {
+                    skillAnimated = true;
+                    
+                    document.querySelectorAll('.skill-progress').forEach(bar => {
+                        const width = bar.dataset.width;
+                        gsap.to(bar, {
+                            width: width + '%',
+                            duration: 1.2,
+                            ease: 'power2.out'
+                        });
+                    });
+                    
+                    document.querySelectorAll('.skill-percent').forEach(percent => {
+                        const target = parseInt(percent.dataset.target);
+                        gsap.to({ val: 0 }, {
+                            val: target,
+                            duration: 1.2,
+                            ease: 'power2.out',
+                            onUpdate: function() {
+                                percent.textContent = Math.round(this.targets()[0].val) + '%';
+                            }
+                        });
+                    });
+                    
+                    // 雷达图动画
+                    gsap.to('#radar-data', { opacity: 1, duration: 1, delay: 0.3 });
+                    gsap.to('#radar-points', { opacity: 1, duration: 0.5, delay: 0.8 });
+                }
+            }
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
