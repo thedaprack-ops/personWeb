@@ -293,7 +293,7 @@
 
     <!-- 项目经历 -->
     <section id="projects" class="py-24 md:py-32 px-6">
-        <div class="max-w-4xl mx-auto">
+        <div class="max-w-7xl mx-auto">
             <!-- 版块标题 -->
             <div class="text-center mb-20">
                 <p class="text-gold text-xs tracking-[0.5em] mb-5 uppercase font-light">项目经历</p>
@@ -304,83 +304,101 @@
                 </p>
             </div>
 
-            <!-- 项目1 - 无边框设计 -->
-            <div class="mb-32 fade-in">
-                <div class="mb-8">
-                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-6">
-                        <div>
-                            <span class="inline-block bg-gold/5 text-gold/60 border border-gold/10 px-4 py-1.5 rounded-full text-xs mb-4 tracking-wider font-light">数据分析竞赛</span>
-                            <h3 class="text-3xl font-light text-ivory mb-2 tracking-wide">第十一届全国大学生统计建模大赛</h3>
-                            <p class="text-gold/60 text-sm">天津赛区二等奖</p>
-                        </div>
-                        <p class="text-gold/40 text-xs mt-4 md:mt-0 tracking-wider">2025.03 - 2025.05</p>
+            <!-- 三列网格布局 -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+                <!-- 项目1 卡片 -->
+                <div class="bg-[#0A1610] border border-gold/30 p-8 flex flex-col h-full fade-in">
+                    <!-- 顶部：图标 -->
+                    <div class="mb-4">
+                        <i class="fas fa-chart-line text-gold/60 text-2xl"></i>
                     </div>
-                    <p class="text-ivory/50 leading-relaxed mb-8 font-light max-w-3xl">
+
+                    <!-- 标题 -->
+                    <span class="inline-block bg-gold/5 text-gold/60 border border-gold/10 px-4 py-1.5 rounded-full text-xs mb-4 tracking-wider font-light">数据分析竞赛</span>
+                    <h3 class="text-2xl font-light text-ivory mb-2 tracking-wide leading-tight">第十一届全国大学生统计建模大赛</h3>
+                    <p class="text-gold/60 text-sm mb-1">天津赛区二等奖</p>
+                    <p class="text-gold/40 text-xs mb-6 tracking-wider">2025.03 - 2025.05</p>
+
+                    <!-- 描述 -->
+                    <p class="text-ivory/50 leading-relaxed mb-4 font-light text-sm flex-grow">
                         为提升共享充电宝使用频次与留存，基于真实业务数据进行增长洞察分析，使用 LSTM 时间序列模型预测用户行为，结合高德 API 进行选址优化，为产品优化提供数据支持与决策依据。
                     </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-gold/5 text-gold/60 border border-gold/10 px-4 py-1.5 rounded-full text-xs">增长洞察</span>
-                        <span class="bg-gold/5 text-gold/60 border border-gold/10 px-4 py-1.5 rounded-full text-xs">选址优化</span>
-                        <span class="bg-gold/5 text-gold/60 border border-gold/10 px-4 py-1.5 rounded-full text-xs">高德API</span>
-                        <span class="bg-gold/5 text-gold/60 border border-gold/10 px-4 py-1.5 rounded-full text-xs">LSTM/随机森林/CNN</span>
-                    </div>
-                </div>
-                <!-- 项目图片 - 电影级释放 -->
-                <div class="my-24">
-                    <img src="images/project_stats.png" alt="项目统计" class="image-cinematic w-full h-auto">
-                </div>
-            </div>
 
-            <!-- 项目2 - 无边框设计 -->
-            <div class="mb-32 fade-in">
-                <div class="mb-8">
-                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-6">
-                        <div>
-                            <span class="inline-block bg-gold/5 text-gold/60 border border-gold/10 px-4 py-1.5 rounded-full text-xs mb-4 tracking-wider font-light">AI 应用创新</span>
-                            <h3 class="text-3xl font-light text-ivory mb-2 tracking-wide">首届全国人工智能应用创新大赛</h3>
-                            <p class="text-gold/60 text-sm">校级一等奖</p>
-                        </div>
-                        <p class="text-gold/40 text-xs mt-4 md:mt-0 tracking-wider">2025.02 - 2025.05</p>
+                    <!-- 标签 -->
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-gold/5 text-gold/60 border border-gold/10 px-3 py-1 rounded-full text-xs">增长洞察</span>
+                        <span class="bg-gold/5 text-gold/60 border border-gold/10 px-3 py-1 rounded-full text-xs">选址优化</span>
+                        <span class="bg-gold/5 text-gold/60 border border-gold/10 px-3 py-1 rounded-full text-xs">高德API</span>
                     </div>
-                    <p class="text-ivory/50 leading-relaxed mb-8 font-light max-w-3xl">
+
+                    <!-- 底部图片 -->
+                    <div class="mt-auto pt-6">
+                        <img src="images/project_stats.png" alt="项目统计" class="w-full h-auto object-cover border border-gold/20 rounded-sm opacity-90 hover:opacity-100 transition-opacity">
+                    </div>
+                </div>
+
+                <!-- 项目2 卡片 -->
+                <div class="bg-[#0A1610] border border-gold/30 p-8 flex flex-col h-full fade-in">
+                    <!-- 顶部：图标 -->
+                    <div class="mb-4">
+                        <i class="fas fa-brain text-gold/60 text-2xl"></i>
+                    </div>
+
+                    <!-- 标题 -->
+                    <span class="inline-block bg-gold/5 text-gold/60 border border-gold/10 px-4 py-1.5 rounded-full text-xs mb-4 tracking-wider font-light">AI 应用创新</span>
+                    <h3 class="text-2xl font-light text-ivory mb-2 tracking-wide leading-tight">首届全国人工智能应用创新大赛</h3>
+                    <p class="text-gold/60 text-sm mb-1">校级一等奖</p>
+                    <p class="text-gold/40 text-xs mb-6 tracking-wider">2025.02 - 2025.05</p>
+
+                    <!-- 描述 -->
+                    <p class="text-ivory/50 leading-relaxed mb-4 font-light text-sm flex-grow">
                         针对教育场景"千人一卷"效率瓶颈，使用百度 AppBuilder 快速构建 AI 应用，结合知识图谱技术实现个性化试卷生成系统，解决教育资源个性化适配难题，获得评委高度认可。
                     </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-gold/5 text-gold/60 border border-gold/10 px-4 py-1.5 rounded-full text-xs">机会挖掘</span>
-                        <span class="bg-gold/5 text-gold/60 border border-gold/10 px-4 py-1.5 rounded-full text-xs">知识图谱</span>
-                        <span class="bg-gold/5 text-gold/60 border border-gold/10 px-4 py-1.5 rounded-full text-xs">个性化试卷</span>
-                        <span class="bg-gold/5 text-gold/60 border border-gold/10 px-4 py-1.5 rounded-full text-xs">教育AI</span>
-                    </div>
-                </div>
-                <!-- 项目图片 - 电影级释放 -->
-                <div class="my-24">
-                    <img src="images/project_ai_edu.png" alt="AI教育项目" class="image-cinematic w-full h-auto">
-                </div>
-            </div>
 
-            <!-- 项目3 - 无边框设计 -->
-            <div class="fade-in">
-                <div class="mb-8">
-                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-6">
-                        <div>
-                            <span class="inline-block bg-gold/5 text-gold/60 border border-gold/10 px-4 py-1.5 rounded-full text-xs mb-4 tracking-wider font-light">数据实践</span>
-                            <h3 class="text-3xl font-light text-ivory mb-2 tracking-wide">数据看板建设实践</h3>
-                        </div>
+                    <!-- 标签 -->
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-gold/5 text-gold/60 border border-gold/10 px-3 py-1 rounded-full text-xs">机会挖掘</span>
+                        <span class="bg-gold/5 text-gold/60 border border-gold/10 px-3 py-1 rounded-full text-xs">知识图谱</span>
+                        <span class="bg-gold/5 text-gold/60 border border-gold/10 px-3 py-1 rounded-full text-xs">个性化试卷</span>
                     </div>
-                    <p class="text-ivory/50 leading-relaxed mb-8 font-light max-w-3xl">
+
+                    <!-- 底部图片 -->
+                    <div class="mt-auto pt-6">
+                        <img src="images/project_ai_edu.png" alt="AI教育项目" class="w-full h-auto object-cover border border-gold/20 rounded-sm opacity-90 hover:opacity-100 transition-opacity">
+                    </div>
+                </div>
+
+                <!-- 项目3 卡片 -->
+                <div class="bg-[#0A1610] border border-gold/30 p-8 flex flex-col h-full fade-in">
+                    <!-- 顶部：图标 -->
+                    <div class="mb-4">
+                        <i class="fas fa-chart-bar text-gold/60 text-2xl"></i>
+                    </div>
+
+                    <!-- 标题 -->
+                    <span class="inline-block bg-gold/5 text-gold/60 border border-gold/10 px-4 py-1.5 rounded-full text-xs mb-4 tracking-wider font-light">数据实践</span>
+                    <h3 class="text-2xl font-light text-ivory mb-2 tracking-wide leading-tight">数据看板建设实践</h3>
+                    <p class="text-gold/40 text-xs mb-6 tracking-wider">2025.01 - 2025.03</p>
+
+                    <!-- 描述 -->
+                    <p class="text-ivory/50 leading-relaxed mb-4 font-light text-sm flex-grow">
                         协同业务与数据团队统一指标口径，使用 DataEase 构建实时数据看板，将分散的数据源整合为可视化决策工具，提升业务分析效率与决策响应速度。
                     </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-gold/5 text-gold/60 border border-gold/10 px-4 py-1.5 rounded-full text-xs">DataEase</span>
-                        <span class="bg-gold/5 text-gold/60 border border-gold/10 px-4 py-1.5 rounded-full text-xs">指标治理</span>
-                        <span class="bg-gold/5 text-gold/60 border border-gold/10 px-4 py-1.5 rounded-full text-xs">业务分析</span>
-                        <span class="bg-gold/5 text-gold/60 border border-gold/10 px-4 py-1.5 rounded-full text-xs">实时决策</span>
+
+                    <!-- 标签 -->
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-gold/5 text-gold/60 border border-gold/10 px-3 py-1 rounded-full text-xs">DataEase</span>
+                        <span class="bg-gold/5 text-gold/60 border border-gold/10 px-3 py-1 rounded-full text-xs">指标治理</span>
+                        <span class="bg-gold/5 text-gold/60 border border-gold/10 px-3 py-1 rounded-full text-xs">业务分析</span>
+                    </div>
+
+                    <!-- 底部图片 -->
+                    <div class="mt-auto pt-6">
+                        <img src="images/project_dashboard.jpg" alt="数据看板" class="w-full h-auto object-cover border border-gold/20 rounded-sm opacity-90 hover:opacity-100 transition-opacity">
                     </div>
                 </div>
-                <!-- 项目图片 - 电影级释放 -->
-                <div class="my-24">
-                    <img src="images/project_dashboard.jpg" alt="数据看板" class="image-cinematic w-full h-auto">
-                </div>
+
             </div>
         </div>
     </section>
