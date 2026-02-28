@@ -168,18 +168,6 @@
             }
         }
 
-        /* 动画初始状态 */
-        .hero-element {
-            opacity: 0;
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        /* 激活状态 - 元素可见 */
-        .hero-element.is-visible {
-            opacity: 1;
-            transform: translate(0, 0);
-        }
-
         .reveal-element {
             opacity: 0;
             transform: translateY(60px);
@@ -665,23 +653,12 @@
         // 注册 ScrollTrigger 插件
         gsap.registerPlugin(ScrollTrigger);
 
-        // ===== Hero 元素激活动画（CSS Transition + Stagger） =====
-        document.addEventListener('DOMContentLoaded', function() {
-            const heroElements = document.querySelectorAll('.hero-element');
-
-            heroElements.forEach((element, index) => {
-                // 计算每个元素的延迟时间：第一个 100ms，第二个 200ms，以此类推
-                const delay = (index + 1) * 100;
-
-                setTimeout(() => {
-                    element.classList.add('is-visible');
-                }, delay);
-            });
-        });
-
         // 首屏加载动画
         window.addEventListener('load', () => {
             const heroTimeline = gsap.timeline();
+
+            // 获取所有 hero 元素（按 HTML 顺序）
+            const heroElements = gsap.utils.toArray('.hero-element');
 
             // 叶子装饰
             heroTimeline.to('.hero-leaf-1, .hero-leaf-2', {
@@ -691,53 +668,58 @@
                 ease: 'power2.out'
             });
 
-            // 职业标签
-            heroTimeline.from('.hero-element:nth-of-type(1)', {
-                opacity: 0,
-                y: -20,
-                duration: 0.8,
-                ease: 'power2.out'
-            });
+            // 职业标签 (index 0)
+            if (heroElements[0]) {
+                heroTimeline.fromTo(heroElements[0],
+                    {opacity: 0, y: -20},
+                    {opacity: 1, y: 0, duration: 0.8, ease: 'power2.out'}
+                );
+            }
 
-            // 主标题
-            heroTimeline.from('.hero-element:nth-of-type(2)', {
-                opacity: 0,
-                x: -40,
-                duration: 1.0,
-                ease: 'expo.out'
-            }, '-=0.6');
+            // 主标题 (index 1)
+            if (heroElements[1]) {
+                heroTimeline.fromTo(heroElements[1],
+                    {opacity: 0, x: -40},
+                    {opacity: 1, x: 0, duration: 1.0, ease: 'expo.out'},
+                    '-=0.6'
+                );
+            }
 
-            // 副标题
-            heroTimeline.from('.hero-element:nth-of-type(3)', {
-                opacity: 0,
-                x: -30,
-                duration: 0.8,
-                ease: 'power2.out'
-            }, '-=0.6');
+            // 副标题 (index 2)
+            if (heroElements[2]) {
+                heroTimeline.fromTo(heroElements[2],
+                    {opacity: 0, x: -30},
+                    {opacity: 1, x: 0, duration: 0.8, ease: 'power2.out'},
+                    '-=0.6'
+                );
+            }
 
-            // 简介段落
-            heroTimeline.from('.hero-element:nth-of-type(4)', {
-                opacity: 0,
-                y: 20,
-                duration: 0.8,
-                ease: 'power2.out'
-            }, '-=0.6');
+            // 简介段落 (index 3)
+            if (heroElements[3]) {
+                heroTimeline.fromTo(heroElements[3],
+                    {opacity: 0, y: 20},
+                    {opacity: 1, y: 0, duration: 0.8, ease: 'power2.out'},
+                    '-=0.6'
+                );
+            }
 
-            // 按钮组
-            heroTimeline.from('.hero-element:nth-of-type(5)', {
-                opacity: 0,
-                y: 20,
-                duration: 0.8,
-                ease: 'power2.out'
-            }, '-=0.6');
+            // 按钮组 (index 4)
+            if (heroElements[4]) {
+                heroTimeline.fromTo(heroElements[4],
+                    {opacity: 0, y: 20},
+                    {opacity: 1, y: 0, duration: 0.8, ease: 'power2.out'},
+                    '-=0.6'
+                );
+            }
 
-            // 照片（右侧）
-            heroTimeline.from('.hero-element:nth-of-type(6)', {
-                opacity: 0,
-                x: 60,
-                duration: 1.0,
-                ease: 'expo.out'
-            }, '-=0.8');
+            // 照片（右侧）(index 5)
+            if (heroElements[5]) {
+                heroTimeline.fromTo(heroElements[5],
+                    {opacity: 0, x: 60},
+                    {opacity: 1, x: 0, duration: 1.0, ease: 'expo.out'},
+                    '-=0.8'
+                );
+            }
 
             // 叶子持续浮动动画
             gsap.to('.hero-leaf-1, .hero-leaf-2', {
