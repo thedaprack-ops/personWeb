@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>林承列 | AI 产品经理</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700;900&family=Playfair+Display:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deep-forest': '#050B08',
+                        'gold': '#D4AF37',
+                        'gold-light': '#F4D58D',
+                        'ivory': '#F3F4F6',
+                    },
+                    fontFamily: {
+                        serif: ['"Noto Serif SC"', '"Playfair Display"', 'serif'],
+                    },
+                    lineHeight: {
+                        'relaxed-cn': '1.8',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            font-family: 'Noto Serif SC', 'Playfair Display', serif;
+        }
+
+        /* 金色渐变文字 */
+        .text-gradient-gold {
+            background: linear-gradient(135deg, #D4AF37 0%, #F4D58D 50%, #D4AF37 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientFlow 3s ease infinite;
+        }
+
+        @keyframes gradientFlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* 金色强调下划线 */
+        .gold-underline {
+            position: relative;
+            display: inline-block;
+        }
+        .gold-underline::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #D4AF37, transparent);
+        }
+
+        /* 背景氛围光晕 */
+        .bg-atmosphere {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-atmosphere::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            left: -200px;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+            filter: blur(80px);
+            animation: floatLight 8s ease-in-out infinite;
+        }
+
+        .bg-atmosphere::after {
+            content: '';
+            position: absolute;
+            bottom: -200px;
+            right: -200px;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.06) 0%, transparent 70%);
+            filter: blur(80px);
+            animation: floatLight 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes floatLight {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, -30px); }
+        }
+
+        /* 叶子装饰动画 */
+        .leaf-decoration {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 0;
+            transform: scale(0.8);
+        }
+
+        .leaf-decoration.animate-in {
+            animation: leafFloat 6s ease-in-out infinite;
+        }
+
+        @keyframes leafFloat {
+            0%, 100% {
+                transform: scale(1) translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: scale(1.05) translateY(-10px) rotate(2deg);
+            }
+        }
+
+        /* 滚动条 */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #050B08;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 3px;
+        }
+
+        /* Logo 样式 */
+        .company-logo {
+            max-height: 40px;
+            object-fit: contain;
+            filter: brightness(0.9);
+        }
+
+        /* 版块标题下方的金色分割线 */
+        .section-divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+            margin: 1.5rem auto 0;
+        }
+
+        .section-divider-left {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #D4AF37, transparent);
+            margin: 1.5rem 0 0;
+        }
+
+        /* 金色高亮块 */
+        .gold-highlight {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.05) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            display: inline-block;
+        }
+
+        .gold-highlight-number {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #D4AF37;
+        }
+
+        /* 经历 Tab 样式 */
+        .exp-tab {
+            position: relative;
+            padding: 1rem 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+            opacity: 0.5;
+        }
+
+        .exp-tab.active {
+            opacity: 1;
+            border-bottom-color: #D4AF37;
+        }
+
+        .exp-tab:hover {
+            opacity: 0.8;
+        }
+
+        .exp-tab.active .tab-indicator {
+            transform: scaleX(1);
+        }
+
+        /* 抽屉展开动画 */
+        .exp-drawer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .exp-drawer.open {
+            max-height: 800px;
+        }
+
+        /* 项目卡片悬浮效果 */
+        .project-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            transform: scale(1.05);
+            z-index: 10;
+        }
+
+        .project-card .card-overlay {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover .card-overlay {
+            opacity: 1;
+        }
+
+        /* 瀑布流布局 */
+        .masonry-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, minmax(200px, auto));
+            gap: 1.5rem;
+        }
+
+        .masonry-item-large {
+            grid-row: span 2;
+            min-height: 420px;
+        }
+
+        .masonry-item-medium {
+            grid-row: span 1;
+            min-height: 200px;
+        }
+
+        .masonry-item-wide {
+            grid-row: span 1;
+            grid-column: span 2;
+            min-height: 200px;
+        }
+
+        @media (max-width: 768px) {
+            .masonry-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+            }
+            .masonry-item-large,
+            .masonry-item-medium,
+            .masonry-item-wide {
+                grid-row: span 1;
+                grid-column: span 1;
+                min-height: 300px;
+            }
+        }
+
+        /* 技能进度条 */
+        .skill-progress-container {
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 100px;
+            height: 4px;
+            overflow: hidden;
+        }
+
+        .skill-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #D4AF37, #F4D58D);
+            border-radius: 100px;
+            width: 0%;
+            transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* 雷达图容器 */
+        .radar-container {
+            position: relative;
+            width: 100%;
+            max-width: 320px;
+            aspect-ratio: 1;
+        }
+
+        /* 动画类 - 项目卡片默认可见 */
+        .reveal-element {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        
+        .masonry-grid .project-card {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(30px);
+        }
+
+        /* 标签样式 */
+        .tech-tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.75rem;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 100px;
+            font-size: 0.75rem;
+            color: #D4AF37;
+            transition: all 0.3s ease;
+        }
+
+        .tech-tag:hover {
+            background: rgba(212, 175, 55, 0.2);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="bg-deep-forest text-ivory antialiased overflow-x-hidden">
+
+    <!-- 背景氛围光晕 -->
+    <div class="bg-atmosphere"></div>
+
+    <!-- 导航栏 -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-deep-forest/90 backdrop-blur-sm border-b border-gold/10">
+        <div class="max-w-4xl mx-auto px-6 py-4 flex justify-center items-center space-x-8 text-sm">
+            <a href="#about" class="text-ivory/60 hover:text-gold transition-colors">关于</a>
+            <a href="#experience" class="text-ivory/60 hover:text-gold transition-colors">经历</a>
+            <a href="#projects" class="text-ivory/60 hover:text-gold transition-colors">项目</a>
+            <a href="#skills" class="text-ivory/60 hover:text-gold transition-colors">能力</a>
+            <a href="#education" class="text-ivory/60 hover:text-gold transition-colors">教育</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section - 100vh -->
+    <section id="about" class="h-screen min-h-[700px] flex items-center px-[15%] relative">
+        <!-- 叶子装饰 -->
+        <img src="images/leaf_1.png" alt="" class="leaf-decoration hero-leaf-1 top-20 left-10 w-32 md:w-48">
+        <img src="images/leaf_2.png" alt="" class="leaf-decoration hero-leaf-2 bottom-20 right-10 w-32 md:w-48">
+
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center relative z-10 w-full">
+            <!-- 左侧：文字区域 -->
+            <div class="text-left space-y-8 order-2 md:order-1">
+                <!-- 顶端小字 -->
+                <p class="hero-element text-gold/80 text-xs tracking-[0.3em] uppercase font-light">AI 产品经理 · AI 产品运营</p>
+
+                <!-- 巨大名字 -->
+                <h1 class="hero-element font-serif text-6xl md:text-7xl font-light tracking-wider mb-4 leading-none">
+                    <span class="text-gradient-gold">林承列</span>
+                </h1>
+
+                <!-- 副标题 -->
+                <p class="hero-element text-ivory/70 text-xl md:text-2xl tracking-wide font-light mb-6">
+                    AI 产品 · 数据分析 · 创新驱动
+                </p>
+
+                <!-- 个人简介 -->
+                <p class="hero-element text-ivory/50 text-base leading-[1.8] max-w-lg font-light">
+                    2027届 | 句子互动 & 一起教育实习经验<br>
+                    专注于大模型应用落地与数据驱动增长，擅长 Agent 构建与数据分析，具备 Python/Figma 快速原型能力。
+                </p>
+
+                <!-- 双CTA按钮组 -->
+                <div class="hero-element flex flex-wrap gap-4 pt-4">
+                    <a href="#" class="group inline-flex items-center gap-2 bg-gradient-to-r from-gold to-gold-light text-deep-forest px-6 py-3 text-sm tracking-wider font-medium hover:shadow-lg hover:shadow-gold/30 transition-all duration-300">
+                        <i class="fas fa-file-pdf"></i>
+                        <span>下载简历 PDF</span>
+                    </a>
+                    <a href="#projects" class="group inline-flex items-center gap-2 border border-gold/50 text-gold px-6 py-3 text-sm tracking-wider font-light hover:bg-gold/10 hover:border-gold transition-all duration-300">
+                        <i class="fas fa-rocket"></i>
+                        <span>查看项目 Demo</span>
+                    </a>
+                    <a href="mailto:15396631779@163.com" class="inline-flex items-center gap-2 text-ivory/50 hover:text-gold px-4 py-3 text-sm tracking-wider font-light transition-all duration-300">
+                        <i class="fas fa-envelope"></i>
+                        <span>联系我</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 右侧：图片区域 -->
+            <div class="flex justify-center order-1 md:order-2">
+                <div class="hero-element relative">
+                    <div class="w-64 md:w-72 h-80 md:h-[24rem] rounded-2xl overflow-hidden border border-gold/30 shadow-2xl" style="box-shadow: 0 20px 60px rgba(212, 175, 55, 0.15);">
+                        <img src="images/hero_portrait.jpg" alt="林承列 - AI产品经理" class="w-full h-full object-cover">
+                    </div>
+                    <!-- 金色装饰角 -->
+                    <div class="absolute -top-3 -right-3 w-16 h-16 border-t-2 border-r-2 border-gold/40 rounded-tr-xl"></div>
+                    <div class="absolute -bottom-3 -left-3 w-16 h-16 border-b-2 border-l-2 border-gold/40 rounded-bl-xl"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 滚动提示 -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50">
+            <span class="text-xs tracking-widest text-gold/60">SCROLL</span>
+            <div class="w-px h-8 bg-gradient-to-b from-gold/60 to-transparent"></div>
+        </div>
+    </section>
+
+    <!-- 实习经历 - 横向Tab+详情抽屉 - 120vh -->
+    <section id="experience" class="min-h-[120vh] py-20 px-[15%] relative flex flex-col justify-center">
+        <div class="max-w-5xl mx-auto relative z-10 w-full">
+            <!-- 版块标题 -->
+            <div class="text-center mb-12 reveal-element">
+                <p class="text-gold text-xs tracking-[0.5em] mb-4 uppercase font-light">Work Experience</p>
+                <h2 class="text-4xl md:text-5xl font-light text-ivory tracking-wider gold-underline pb-4">实习经历</h2>
+                <p class="text-ivory/40 text-base max-w-2xl mx-auto leading-[1.8] mt-8 font-light">
+                    聚焦 AI 产品运营与 AI 产品经理方向，覆盖需求分析、方案迭代、模型评估、数据看板与工具落地。
+                </p>
+            </div>
+
+            <!-- 横向Tab选择器 -->
+            <div class="flex justify-center border-b border-gold/10 mb-8 reveal-element">
+                <div class="exp-tab active" data-company="juzi">
+                    <div class="flex items-center gap-3">
+                        <img src="images/juzi_ai.png" alt="句子互动" class="company-logo h-8">
+                        <div class="text-left">
+                            <h3 class="text-lg font-light text-ivory">句子互动</h3>
+                            <p class="text-gold/60 text-xs">AI 产品经理实习生</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="exp-tab" data-company="together">
+                    <div class="flex items-center gap-3">
+                        <img src="images/together_edu.png" alt="一起教育" class="company-logo h-8">
+                        <div class="text-left">
+                            <h3 class="text-lg font-light text-ivory">一起教育</h3>
+                            <p class="text-gold/60 text-xs">AI 产品经理实习生</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 时间轴连接线 -->
+            <div class="flex justify-center mb-8 reveal-element">
+                <div class="flex items-center gap-4 text-xs text-ivory/30">
+                    <span>2024.12</span>
+                    <div class="w-32 h-px bg-gradient-to-r from-gold/30 via-gold to-gold/30"></div>
+                    <span class="text-gold">2025.02</span>
+                    <div class="w-8 h-px bg-gold/20"></div>
+                    <span class="text-gold">2025.07</span>
+                    <div class="w-32 h-px bg-gradient-to-r from-gold/30 via-gold to-gold/30"></div>
+                    <span>2025.12</span>
+                </div>
+            </div>
+
+            <!-- 详情抽屉内容区 -->
+            <div class="reveal-element">
+                <!-- 句子互动详情 -->
+                <div id="juzi-detail" class="exp-content">
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <!-- 左侧图片 - 50%宽度 -->
+                        <div class="relative">
+                            <div class="aspect-[4/3] rounded-lg overflow-hidden border border-gold/20">
+                                <img src="images/experience_workspace.jpg" alt="AI SDR产品界面" class="w-full h-full object-cover">
+                            </div>
+                            <!-- 数据高亮块 -->
+                            <div class="absolute -bottom-4 -right-4 gold-highlight">
+                                <span class="gold-highlight-number">30%</span>
+                                <span class="text-ivory/60 text-sm ml-1">AI迭代周期↓</span>
+                            </div>
+                        </div>
+                        <!-- 右侧内容 -->
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="text-2xl font-light text-ivory mb-2">AI SDR 产品迭代</h4>
+                                <p class="text-gold/60 text-sm">2024.12 - 2025.02 | 北京</p>
+                            </div>
+                            <ul class="space-y-4 text-ivory/60 leading-[1.8] font-light">
+                                <li class="flex items-start">
+                                    <span class="text-gold mr-3 mt-1">▸</span>
+                                    <span>负责 AI SDR 产品迭代，优化 Prompt 提升对话转化率 15%</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-gold mr-3 mt-1">▸</span>
+                                    <span>搭建舆情监控系统，实时追踪品牌口碑与用户反馈，覆盖10万+数据源</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-gold mr-3 mt-1">▸</span>
+                                    <span>参与 Agent 工作流设计，提升自动化营销效率 40%</span>
+                                </li>
+                            </ul>
+                            <div class="flex flex-wrap gap-2 pt-4">
+                                <span class="tech-tag">Prompt Engineering</span>
+                                <span class="tech-tag">Agent 工作流</span>
+                                <span class="tech-tag">舆情监控</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 一起教育详情 -->
+                <div id="together-detail" class="exp-content hidden">
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <!-- 左侧内容 -->
+                        <div class="space-y-6 order-2 md:order-1">
+                            <div>
+                                <h4 class="text-2xl font-light text-ivory mb-2">视频 AI 语音克隆产品</h4>
+                                <p class="text-gold/60 text-sm">2025.07 - 2025.12 | 北京</p>
+                            </div>
+                            <ul class="space-y-4 text-ivory/60 leading-[1.8] font-light">
+                                <li class="flex items-start">
+                                    <span class="text-gold mr-3 mt-1">▸</span>
+                                    <span>负责视频 AI 语音克隆产品，实现个性化语音生成，用户满意度 92%</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-gold mr-3 mt-1">▸</span>
+                                    <span>设计学情报告 Agent，自动生成学生个性化学习报告，覆盖50万+学生</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-gold mr-3 mt-1">▸</span>
+                                    <span>参与视觉批改产品迭代，优化 AI 识别准确率至 96%</span>
+                                </li>
+                            </ul>
+                            <div class="flex flex-wrap gap-2 pt-4">
+                                <span class="tech-tag">语音克隆</span>
+                                <span class="tech-tag">Agent 设计</span>
+                                <span class="tech-tag">视觉批改</span>
+                            </div>
+                        </div>
+                        <!-- 右侧图片 - 50%宽度 -->
+                        <div class="relative order-1 md:order-2">
+                            <div class="aspect-[4/3] rounded-lg overflow-hidden border border-gold/20">
+                                <img src="images/education_scene.jpg" alt="教育AI产品界面" class="w-full h-full object-cover">
+                            </div>
+                            <!-- 数据高亮块 -->
+                            <div class="absolute -bottom-4 -left-4 gold-highlight">
+                                <span class="gold-highlight-number">96%</span>
+                                <span class="text-ivory/60 text-sm ml-1">AI识别准确率</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 重点项目 - 瀑布流+悬浮详情 - 120vh -->
+    <section id="projects" class="min-h-[120vh] py-20 px-[15%] relative flex flex-col justify-center">
+        <div class="max-w-6xl mx-auto w-full">
+            <!-- 版块标题 -->
+            <div class="text-center mb-12 reveal-element">
+                <p class="text-gold text-xs tracking-[0.5em] mb-4 uppercase font-light">Featured Projects</p>
+                <h2 class="text-4xl md:text-5xl font-light text-ivory tracking-wider gold-underline pb-4">重点项目</h2>
+                <p class="text-ivory/40 text-base max-w-2xl mx-auto leading-[1.8] mt-8 font-light">
+                    围绕数据建模、AI 教育应用与产品价值验证展开，强调从机会洞察到方案落地。
+                </p>
+            </div>
+
+            <!-- 瀑布流布局 -->
+            <div class="masonry-grid">
+                <!-- 项目1 - 大图 (统计建模大赛) -->
+                <div class="masonry-item-large project-card bg-[#1A1A1D] border border-gold/20 rounded-lg overflow-hidden relative group">
+                    <img src="images/project_stats.png" alt="统计建模大赛" class="w-full h-full object-cover opacity-80 group-hover:opacity-60 transition-opacity">
+                    <div class="absolute inset-0 bg-gradient-to-t from-deep-forest via-deep-forest/50 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6">
+                        <span class="inline-block bg-gold/10 text-gold border border-gold/20 px-3 py-1 rounded-full text-xs mb-3">数据分析竞赛</span>
+                        <h3 class="text-xl font-light text-ivory mb-2">第十一届全国大学生统计建模大赛</h3>
+                        <p class="text-gold/60 text-sm mb-3">天津赛区二等奖</p>
+                        <p class="text-ivory/50 text-sm leading-[1.8] mb-4 line-clamp-2">
+                            基于真实业务数据进行增长洞察分析，使用 LSTM 时间序列模型预测用户行为，结合高德 API 进行选址优化。
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">LSTM</span>
+                            <span class="tech-tag">高德API</span>
+                        </div>
+                    </div>
+                    <!-- 悬浮遮罩 -->
+                    <div class="card-overlay absolute inset-0 bg-deep-forest/90 flex flex-col items-center justify-center gap-4">
+                        <h4 class="text-xl text-ivory font-light">查看项目详情</h4>
+                        <div class="flex gap-3">
+                            <a href="#" class="inline-flex items-center gap-2 bg-gold text-deep-forest px-4 py-2 rounded-full text-sm font-medium hover:bg-gold-light transition-colors">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <a href="#" class="inline-flex items-center gap-2 border border-gold text-gold px-4 py-2 rounded-full text-sm hover:bg-gold/10 transition-colors">
+                                <i class="fas fa-external-link-alt"></i> 在线Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 项目2 - 中图 (数据看板) -->
+                <div class="masonry-item-medium project-card bg-[#1A1A1D] border border-gold/20 rounded-lg overflow-hidden relative group">
+                    <img src="images/project_dashboard.jpg" alt="数据看板" class="w-full h-full object-cover opacity-80 group-hover:opacity-60 transition-opacity">
+                    <div class="absolute inset-0 bg-gradient-to-t from-deep-forest via-deep-forest/50 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-5">
+                        <span class="inline-block bg-gold/10 text-gold border border-gold/20 px-3 py-1 rounded-full text-xs mb-2">数据实践</span>
+                        <h3 class="text-lg font-light text-ivory mb-1">数据看板建设实践</h3>
+                        <p class="text-ivory/50 text-sm leading-[1.8] mb-3 line-clamp-2">
+                            协同业务与数据团队统一指标口径，构建实时数据可视化看板。
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tech-tag">DataEase</span>
+                            <span class="tech-tag">SQL</span>
+                            <span class="tech-tag">指标治理</span>
+                        </div>
+                    </div>
+                    <!-- 悬浮遮罩 -->
+                    <div class="card-overlay absolute inset-0 bg-deep-forest/90 flex flex-col items-center justify-center gap-3">
+                        <div class="flex gap-3">
+                            <a href="#" class="inline-flex items-center gap-2 bg-gold text-deep-forest px-4 py-2 rounded-full text-sm font-medium hover:bg-gold-light transition-colors">
+                                <i class="fas fa-eye"></i> 查看Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 项目3 - 横向卡片 (AI创新大赛) -->
+                <div class="masonry-item-wide project-card bg-[#1A1A1D] border border-gold/20 rounded-lg overflow-hidden relative group">
+                    <div class="grid md:grid-cols-2 h-full">
+                        <div class="relative h-48 md:h-full">
+                            <img src="images/project_ai_edu.png" alt="AI教育项目" class="w-full h-full object-cover opacity-80 group-hover:opacity-60 transition-opacity">
+                            <div class="absolute inset-0 bg-gradient-to-r from-transparent to-deep-forest hidden md:block"></div>
+                        </div>
+                        <div class="p-6 flex flex-col justify-center">
+                            <span class="inline-block bg-gold/10 text-gold border border-gold/20 px-3 py-1 rounded-full text-xs mb-3 w-fit">AI 应用创新</span>
+                            <h3 class="text-xl font-light text-ivory mb-2">首届全国人工智能应用创新大赛</h3>
+                            <p class="text-gold/60 text-sm mb-3">校级一等奖</p>
+                            <p class="text-ivory/50 text-sm leading-[1.8] mb-4">
+                                使用百度 AppBuilder 构建 AI 应用，结合知识图谱实现个性化试卷生成系统。
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Figma</span>
+                                <span class="tech-tag">Agent</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 悬浮遮罩 -->
+                    <div class="card-overlay absolute inset-0 bg-deep-forest/90 flex items-center justify-end pr-12">
+                        <div class="flex gap-3">
+                            <a href="#" class="inline-flex items-center gap-2 bg-gold text-deep-forest px-4 py-2 rounded-full text-sm font-medium hover:bg-gold-light transition-colors">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <a href="#" class="inline-flex items-center gap-2 border border-gold text-gold px-4 py-2 rounded-full text-sm hover:bg-gold/10 transition-colors">
+                                <i class="fas fa-external-link-alt"></i> 在线Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心技能 - 能力矩阵+微动效 - 100vh -->
+    <section id="skills" class="min-h-screen py-20 px-[15%] relative flex flex-col justify-center">
+        <div class="max-w-5xl mx-auto w-full">
+            <!-- 版块标题 -->
+            <div class="text-center mb-12 reveal-element">
+                <p class="text-gold text-xs tracking-[0.5em] mb-4 uppercase font-light">Core Skills</p>
+                <h2 class="text-4xl md:text-5xl font-light text-ivory tracking-wider gold-underline pb-4">核心技能</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <!-- 左侧：雷达图 -->
+                <div class="flex justify-center reveal-element">
+                    <div class="radar-container">
+                        <svg viewBox="0 0 300 300" class="w-full h-full">
+                            <!-- 背景网格 -->
+                            <g opacity="0.2">
+                                <polygon points="150,30 240,90 240,180 150,240 60,180 60,90" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                                <polygon points="150,60 210,105 210,165 150,210 90,165 90,105" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                                <polygon points="150,90 180,112.5 180,150 150,172.5 120,150 120,112.5" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                                <line x1="150" y1="30" x2="150" y2="240" stroke="#D4AF37" stroke-width="0.5"/>
+                                <line x1="240" y1="90" x2="60" y2="180" stroke="#D4AF37" stroke-width="0.5"/>
+                                <line x1="240" y1="180" x2="60" y2="90" stroke="#D4AF37" stroke-width="0.5"/>
+                            </g>
+                            <!-- 数据区域 - 动画控制 -->
+                            <polygon id="radar-data" points="150,45 225,97.5 225,172.5 150,210 75,165 75,97.5" 
+                                     fill="rgba(212, 175, 55, 0.2)" stroke="#D4AF37" stroke-width="2"
+                                     style="opacity: 0; transform-origin: center;"/>
+                            <!-- 数据点 -->
+                            <g id="radar-points" style="opacity: 0;">
+                                <circle cx="150" cy="45" r="4" fill="#D4AF37"/>
+                                <circle cx="225" cy="97.5" r="4" fill="#D4AF37"/>
+                                <circle cx="225" cy="172.5" r="4" fill="#D4AF37"/>
+                                <circle cx="150" cy="210" r="4" fill="#D4AF37"/>
+                                <circle cx="75" cy="165" r="4" fill="#D4AF37"/>
+                                <circle cx="75" cy="97.5" r="4" fill="#D4AF37"/>
+                            </g>
+                            <!-- 维度标签 -->
+                            <text x="150" y="20" text-anchor="middle" fill="#D4AF37" font-size="12">产品思维</text>
+                            <text x="255" y="85" text-anchor="start" fill="#D4AF37" font-size="12">数据分析</text>
+                            <text x="255" y="195" text-anchor="start" fill="#D4AF37" font-size="12">AI能力</text>
+                            <text x="150" y="265" text-anchor="middle" fill="#D4AF37" font-size="12">设计能力</text>
+                            <text x="45" y="195" text-anchor="end" fill="#D4AF37" font-size="12">工程实现</text>
+                            <text x="45" y="85" text-anchor="end" fill="#D4AF37" font-size="12">沟通协调</text>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- 右侧：进度条 -->
+                <div class="space-y-8 reveal-element">
+                    <h3 class="text-xl font-light text-ivory mb-6">工具熟练度</h3>
+                    
+                    <div class="skill-item">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-ivory/70 font-light text-sm">Python 数据分析</span>
+                            <span class="text-gold font-light skill-percent" data-target="90">0%</span>
+                        </div>
+                        <div class="skill-progress-container">
+                            <div class="skill-progress-bar" data-width="90"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-ivory/70 font-light text-sm">SQL / 数据治理</span>
+                            <span class="text-gold font-light skill-percent" data-target="85">0%</span>
+                        </div>
+                        <div class="skill-progress-container">
+                            <div class="skill-progress-bar" data-width="85"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-ivory/70 font-light text-sm">AI Agent / Prompt Engineering</span>
+                            <span class="text-gold font-light skill-percent" data-target="88">0%</span>
+                        </div>
+                        <div class="skill-progress-container">
+                            <div class="skill-progress-bar" data-width="88"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-ivory/70 font-light text-sm">Figma / 原型设计</span>
+                            <span class="text-gold font-light skill-percent" data-target="82">0%</span>
+                        </div>
+                        <div class="skill-progress-container">
+                            <div class="skill-progress-bar" data-width="82"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-ivory/70 font-light text-sm">产品分析 / 需求文档</span>
+                            <span class="text-gold font-light skill-percent" data-target="87">0%</span>
+                        </div>
+                        <div class="skill-progress-container">
+                            <div class="skill-progress-bar" data-width="87"></div>
+                        </div>
+                    </div>
+
+                    <!-- 技能标签云 -->
+                    <div class="pt-6 border-t border-gold/10">
+                        <p class="text-ivory/40 text-xs mb-4 tracking-wider">其他技能</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tech-tag">DataEase</span>
+                            <span class="tech-tag">Git</span>
+                            <span class="tech-tag">Axure</span>
+                            <span class="tech-tag">XMind</span>
+                            <span class="tech-tag">Tableau</span>
+                            <span class="tech-tag">Notion</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 教育背景 - 100vh -->
+    <section id="education" class="min-h-screen py-20 px-[15%] relative flex flex-col justify-center">
+        <div class="max-w-4xl mx-auto w-full">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- 左侧内容 -->
+                <div class="reveal-element">
+                    <p class="text-gold text-xs tracking-[0.5em] mb-4 uppercase font-light">Education</p>
+                    <h2 class="text-4xl md:text-5xl font-light text-ivory tracking-wider gold-underline pb-4 mb-8">教育背景</h2>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4">
+                            <img src="images/leaf_1.png" alt="" class="w-12 h-12 opacity-30">
+                            <div>
+                                <h3 class="text-3xl font-light text-ivory mb-1">天津师范大学</h3>
+                                <p class="text-gold/60 text-base">本科 · 经济学</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center gap-6 text-sm text-ivory/40">
+                            <span class="gold-highlight !py-1 !px-3">
+                                <i class="fas fa-calendar-alt text-gold/60 mr-2"></i>
+                                2023.09 - 2027.06
+                            </span>
+                            <span>预计毕业：2027.06</span>
+                        </div>
+
+                        <p class="text-ivory/50 leading-[1.8] font-light">
+                            围绕产品思维、数据分析与 AI 应用持续学习，夯实统计分析与业务洞察能力。注重将理论与实践结合，形成从问题定义到方案落地的完整闭环。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 右侧图片 -->
+                <div class="reveal-element">
+                    <div class="relative">
+                        <div class="aspect-[4/3] rounded-lg overflow-hidden border border-gold/20">
+                            <img src="images/education_scene.jpg" alt="教育场景" class="w-full h-full object-cover opacity-80">
+                        </div>
+                        <div class="absolute -bottom-4 -right-4 gold-highlight">
+                            <span class="text-gold text-sm">GPA: 3.6/4.0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 px-[15%] border-t border-gold/10">
+        <div class="max-w-4xl mx-auto reveal-element">
+            <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
+                <div>
+                    <h3 class="text-xl font-light text-gradient-gold mb-4 tracking-wide">林承列</h3>
+                    <p class="text-ivory/30 text-sm mb-6 font-light leading-[1.8]">AI 产品经理<br>专注于大模型应用落地</p>
+                    <div class="flex justify-center md:justify-start space-x-4">
+                        <a href="mailto:15396631779@163.com" class="text-ivory/30 hover:text-gold transition-colors">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="#" class="text-ivory/30 hover:text-gold transition-colors">
+                            <i class="fab fa-weixin"></i>
+                        </a>
+                        <a href="#" class="text-ivory/30 hover:text-gold transition-colors">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-ivory/40 text-xs tracking-wider mb-4 font-light uppercase">快速导航</h4>
+                    <div class="space-y-2">
+                        <a href="#about" class="block text-ivory/30 hover:text-gold/50 transition-colors text-sm font-light">关于</a>
+                        <a href="#experience" class="block text-ivory/30 hover:text-gold/50 transition-colors text-sm font-light">工作经历</a>
+                        <a href="#projects" class="block text-ivory/30 hover:text-gold/50 transition-colors text-sm font-light">项目经历</a>
+                        <a href="#skills" class="block text-ivory/30 hover:text-gold/50 transition-colors text-sm font-light">能力分布</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-ivory/40 text-xs tracking-wider mb-4 font-light uppercase">联系方式</h4>
+                    <div class="space-y-2">
+                        <p class="text-ivory/30 text-sm font-light">15396631779@163.com</p>
+                        <p class="text-ivory/30 text-sm font-light">天津师范大学</p>
+                        <p class="text-ivory/30 text-sm font-light">2027届 · 经济学</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gold/5 mt-12 pt-8 text-center">
+                <p class="text-ivory/20 text-xs font-light tracking-wide">&copy; 2025 Lin Chenglie. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- GSAP 动画脚本 -->
+    <script>
+        // 注册 ScrollTrigger 插件
+        gsap.registerPlugin(ScrollTrigger);
+
+        // 首屏加载动画
+        window.addEventListener('load', () => {
+            const heroTimeline = gsap.timeline();
+
+            // 叶子装饰
+            heroTimeline.to('.hero-leaf-1, .hero-leaf-2', {
+                opacity: 0.15,
+                scale: 1,
+                duration: 1.2,
+                ease: 'power2.out'
+            });
+
+            // Hero元素依次入场
+            const heroElements = gsap.utils.toArray('.hero-element');
+            heroElements.forEach((el, i) => {
+                heroTimeline.fromTo(el,
+                    { opacity: 0, y: 30 },
+                    { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' },
+                    i === 0 ? undefined : '-=0.5'
+                );
+            });
+        });
+
+        // 通用元素显现动画
+        gsap.utils.toArray('.reveal-element').forEach(element => {
+            gsap.to(element, {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: element,
+                    start: 'top 85%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+        });
+
+        // 实习经历 Tab 切换
+        const expTabs = document.querySelectorAll('.exp-tab');
+        const expContents = {
+            'juzi': document.getElementById('juzi-detail'),
+            'together': document.getElementById('together-detail')
+        };
+
+        expTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const company = tab.dataset.company;
+                
+                // 切换Tab状态
+                expTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                // 切换内容
+                Object.values(expContents).forEach(content => {
+                    content.classList.add('hidden');
+                });
+                expContents[company].classList.remove('hidden');
+                
+                // 内容入场动画
+                gsap.fromTo(expContents[company], 
+                    { opacity: 0, y: 20 },
+                    { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }
+                );
+            });
+        });
+
+        // 项目卡片级联动画
+        gsap.from('.project-card', {
+            y: 60,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.15,
+            ease: 'power2.out',
+            scrollTrigger: {
+                trigger: '#projects',
+                start: 'top 70%',
+                toggleActions: 'play none none reverse'
+            }
+        });
+
+        // 技能进度条动画
+        const skillSection = document.getElementById('skills');
+        let skillAnimated = false;
+
+        ScrollTrigger.create({
+            trigger: skillSection,
+            start: 'top 60%',
+            onEnter: () => {
+                if (!skillAnimated) {
+                    skillAnimated = true;
+                    
+                    // 进度条动画
+                    document.querySelectorAll('.skill-progress-bar').forEach(bar => {
+                        const width = bar.dataset.width;
+                        bar.style.width = width + '%';
+                    });
+                    
+                    // 数字滚动动画
+                    document.querySelectorAll('.skill-percent').forEach(percent => {
+                        const target = parseInt(percent.dataset.target);
+                        gsap.to({ val: 0 }, {
+                            val: target,
+                            duration: 1.2,
+                            ease: 'power1.out',
+                            onUpdate: function() {
+                                percent.textContent = Math.round(this.targets()[0].val) + '%';
+                            }
+                        });
+                    });
+                    
+                    // 雷达图动画
+                    gsap.to('#radar-data', {
+                        opacity: 1,
+                        scale: 1,
+                        duration: 1,
+                        ease: 'power2.out',
+                        delay: 0.3
+                    });
+                    gsap.to('#radar-points', {
+                        opacity: 1,
+                        duration: 0.5,
+                        delay: 0.8
+                    });
+                }
+            }
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    gsap.to(window, {
+                        duration: 1,
+                        scrollTo: { y: target, offsetY: 50 },
+                        ease: 'power2.inOut'
+                    });
+                }
+            });
+        });
+
+        // 页面整体视差效果
+        const heroSection = document.getElementById('about');
+        if (heroSection) {
+            gsap.to(heroSection, {
+                opacity: 0.3,
+                y: -100,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: heroSection,
+                    start: 'top top',
+                    end: 'bottom top',
+                    scrub: true
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
