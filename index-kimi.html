@@ -24,11 +24,12 @@
                     },
                     colors: {
                         candy: {
-                            blue: '#6366F1',
-                            purple: '#8B5CF6',
-                            pink: '#EC4899',
-                            orange: '#F97316',
+                            blue: '#3B82F6',
                             cyan: '#06B6D4',
+                            teal: '#14B8A6',
+                            green: '#10B981',
+                            pink: '#F472B6',
+                            orange: '#FB923C',
                         }
                     },
                     animation: {
@@ -64,9 +65,9 @@
             font-family: 'Space Grotesk', sans-serif;
         }
 
-        /* 渐变文字 */
+        /* 渐变文字 - 减少紫色，增加青绿色 */
         .text-gradient {
-            background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 25%, #EC4899 50%, #F97316 75%, #6366F1 100%);
+            background: linear-gradient(135deg, #3B82F6 0%, #06B6D4 25%, #14B8A6 50%, #10B981 75%, #3B82F6 100%);
             background-size: 300% 300%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -75,14 +76,14 @@
         }
 
         .text-gradient-blue {
-            background: linear-gradient(135deg, #3B82F6 0%, #6366F1 50%, #8B5CF6 100%);
+            background: linear-gradient(135deg, #2563EB 0%, #3B82F6 50%, #06B6D4 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .text-gradient-pink {
-            background: linear-gradient(135deg, #EC4899 0%, #F97316 100%);
+        .text-gradient-warm {
+            background: linear-gradient(135deg, #F472B6 0%, #FB923C 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -93,9 +94,9 @@
             50% { background-position: 100% 50%; }
         }
 
-        /* 渐变按钮 */
+        /* 渐变按钮 - 蓝青绿主题 */
         .btn-gradient {
-            background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%);
+            background: linear-gradient(135deg, #3B82F6 0%, #06B6D4 50%, #14B8A6 100%);
             background-size: 200% 200%;
             animation: gradientMove 4s ease infinite;
             transition: all 0.3s ease;
@@ -103,11 +104,11 @@
 
         .btn-gradient:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.4);
+            box-shadow: 0 10px 40px rgba(6, 182, 212, 0.4);
         }
 
         .btn-gradient-2 {
-            background: linear-gradient(135deg, #F97316 0%, #EC4899 50%, #8B5CF6 100%);
+            background: linear-gradient(135deg, #14B8A6 0%, #10B981 50%, #34D399 100%);
             background-size: 200% 200%;
             animation: gradientMove 4s ease infinite;
         }
@@ -134,18 +135,18 @@
             100% { left: 100%; }
         }
 
-        /* 玻璃态卡片 */
+        /* 玻璃态卡片 - 青色调 */
         .glass-card {
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 8px 32px rgba(99, 102, 241, 0.1);
+            box-shadow: 0 8px 32px rgba(6, 182, 212, 0.1);
         }
 
         .glass-card-dark {
             background: rgba(15, 23, 42, 0.8);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(99, 102, 241, 0.2);
+            border: 1px solid rgba(6, 182, 212, 0.2);
         }
 
         /* 悬浮球装饰 */
@@ -168,7 +169,7 @@
             background-size: cover;
         }
 
-        /* Tab 样式 */
+        /* Tab 样式 - 青绿色 */
         .candy-tab {
             padding: 0.75rem 1.5rem;
             border-radius: 9999px;
@@ -177,18 +178,18 @@
         }
 
         .candy-tab.active {
-            background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
+            background: linear-gradient(135deg, #3B82F6 0%, #06B6D4 100%);
             color: white;
-            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+            box-shadow: 0 4px 20px rgba(6, 182, 212, 0.3);
         }
 
         .candy-tab:not(.active):hover {
-            background: rgba(99, 102, 241, 0.1);
+            background: rgba(6, 182, 212, 0.1);
         }
 
-        /* 进度条糖果色 */
+        /* 进度条 - 蓝青绿 */
         .candy-progress {
-            background: linear-gradient(90deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%);
+            background: linear-gradient(90deg, #3B82F6 0%, #06B6D4 50%, #14B8A6 100%);
             background-size: 200% 100%;
             animation: gradientMove 3s ease infinite;
         }
@@ -216,12 +217,12 @@
 
         .project-card-candy:hover {
             transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.2);
+            box-shadow: 0 20px 60px rgba(6, 182, 212, 0.2);
         }
 
         /* 技能雷达图 */
         .radar-candy {
-            filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.3));
+            filter: drop-shadow(0 0 20px rgba(6, 182, 212, 0.3));
         }
 
         /* 滚动条美化 */
@@ -234,7 +235,7 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, #6366F1, #EC4899);
+            background: linear-gradient(180deg, #3B82F6, #06B6D4, #14B8A6);
             border-radius: 4px;
         }
 
@@ -249,8 +250,8 @@
 
     <!-- 浮动装饰球 -->
     <div class="floating-orb w-96 h-96 bg-candy-blue top-0 left-0 -translate-x-1/2 -translate-y-1/2"></div>
-    <div class="floating-orb w-80 h-80 bg-candy-pink top-40 right-0 translate-x-1/2" style="animation-delay: -2s;"></div>
-    <div class="floating-orb w-64 h-64 bg-candy-purple bottom-40 left-20" style="animation-delay: -4s;"></div>
+    <div class="floating-orb w-80 h-80 bg-candy-teal top-40 right-0 translate-x-1/2" style="animation-delay: -2s;"></div>
+    <div class="floating-orb w-64 h-64 bg-candy-cyan bottom-40 left-20" style="animation-delay: -4s;"></div>
 
     <!-- 导航栏 -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200/50">
@@ -263,7 +264,7 @@
                 <a href="#skills" class="px-4 py-2 text-slate-600 hover:text-candy-blue transition-colors rounded-full hover:bg-slate-100">技能</a>
                 <a href="#education" class="px-4 py-2 text-slate-600 hover:text-candy-blue transition-colors rounded-full hover:bg-slate-100">教育</a>
             </div>
-            <a href="mailto:15396631779@163.com" class="btn-gradient text-white px-5 py-2.5 rounded-full text-sm font-medium shadow-lg shadow-indigo-500/30">
+            <a href="mailto:15396631779@163.com" class="btn-gradient text-white px-5 py-2.5 rounded-full text-sm font-medium shadow-lg shadow-cyan-500/30">
                 联系我 💌
             </a>
         </div>
@@ -276,7 +277,7 @@
         <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
             <!-- 左侧文字 -->
             <div class="space-y-6">
-                <div class="hero-element inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-lg shadow-indigo-500/10 border border-slate-100">
+                <div class="hero-element inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-lg shadow-cyan-500/10 border border-slate-100">
                     <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
                     <span class="text-sm text-slate-600">🎓 2027届应届生 · 正在寻找AI产品机会</span>
                 </div>
@@ -288,7 +289,7 @@
                 </h1>
 
                 <p class="hero-element text-xl text-slate-600 font-light">
-                    AI 产品经理 <span class="text-candy-pink">✦</span> 数据驱动 <span class="text-candy-blue">✦</span> 创新实践者
+                    AI 产品经理 <span class="text-candy-blue">✦</span> 数据驱动 <span class="text-candy-blue">✦</span> 创新实践者
                 </p>
 
                 <p class="hero-element text-slate-500 leading-relaxed max-w-lg">
@@ -298,7 +299,7 @@
 
                 <!-- CTA 按钮组 -->
                 <div class="hero-element flex flex-wrap gap-4 pt-4">
-                    <a href="#" class="shimmer-effect btn-gradient text-white px-8 py-4 rounded-2xl font-medium shadow-xl shadow-indigo-500/30 flex items-center gap-2">
+                    <a href="#" class="shimmer-effect btn-gradient text-white px-8 py-4 rounded-2xl font-medium shadow-xl shadow-cyan-500/30 flex items-center gap-2">
                         <i class="fas fa-file-pdf"></i>
                         下载简历 PDF
                     </a>
@@ -326,9 +327,9 @@
             <div class="hero-element flex justify-center relative">
                 <div class="relative">
                     <!-- 装饰圆环 -->
-                    <div class="absolute -inset-4 bg-gradient-to-r from-candy-blue via-candy-purple to-candy-pink rounded-3xl opacity-20 blur-xl animate-pulse-slow"></div>
+                    <div class="absolute -inset-4 bg-gradient-to-r from-candy-blue via-candy-cyan to-candy-green rounded-3xl opacity-20 blur-xl animate-pulse-slow"></div>
                     
-                    <div class="relative w-72 h-96 md:w-80 md:h-[28rem] rounded-3xl overflow-hidden shadow-2xl shadow-indigo-500/20 border-4 border-white">
+                    <div class="relative w-72 h-96 md:w-80 md:h-[28rem] rounded-3xl overflow-hidden shadow-2xl shadow-cyan-500/20 border-4 border-white">
                         <img src="images/hero_portrait.jpg" alt="林承列" class="w-full h-full object-cover">
                     </div>
 
@@ -352,9 +353,9 @@
         <div class="max-w-5xl mx-auto px-6">
             <!-- 标题 -->
             <div class="text-center mb-16 reveal-element">
-                <p class="text-candy-purple font-medium mb-2">💼 Work Experience</p>
+                <p class="text-candy-cyan font-medium mb-2">💼 Work Experience</p>
                 <h2 class="font-display text-4xl md:text-5xl font-bold text-slate-800 mb-4">实习经历</h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-candy-blue via-candy-purple to-candy-pink mx-auto rounded-full"></div>
+                <div class="w-24 h-1 bg-gradient-to-r from-candy-blue via-candy-cyan to-candy-green mx-auto rounded-full"></div>
             </div>
 
             <!-- Tab 选择器 -->
@@ -378,11 +379,11 @@
             <!-- 时间轴 -->
             <div class="flex justify-center items-center gap-4 mb-12 reveal-element text-sm">
                 <span class="text-slate-400">2024.12</span>
-                <div class="w-32 h-1 bg-gradient-to-r from-candy-blue to-candy-purple rounded-full"></div>
-                <span class="px-3 py-1 bg-gradient-to-r from-candy-blue to-candy-purple text-white rounded-full text-xs font-medium">2025.02</span>
+                <div class="w-32 h-1 bg-gradient-to-r from-candy-blue to-candy-teal rounded-full"></div>
+                <span class="px-3 py-1 bg-gradient-to-r from-candy-blue to-candy-teal text-white rounded-full text-xs font-medium">2025.02</span>
                 <div class="w-8 h-1 bg-slate-200 rounded-full"></div>
-                <span class="px-3 py-1 bg-gradient-to-r from-candy-purple to-candy-pink text-white rounded-full text-xs font-medium">2025.07</span>
-                <div class="w-32 h-1 bg-gradient-to-r from-candy-pink to-candy-orange rounded-full"></div>
+                <span class="px-3 py-1 bg-gradient-to-r from-candy-cyan to-candy-green text-white rounded-full text-xs font-medium">2025.07</span>
+                <div class="w-32 h-1 bg-gradient-to-r from-candy-teal to-candy-orange rounded-full"></div>
                 <span class="text-slate-400">2025.12</span>
             </div>
 
@@ -405,20 +406,20 @@
                                 <div>
                                     <h3 class="font-display text-2xl font-bold text-slate-800 mb-2">AI SDR 产品迭代</h3>
                                     <p class="text-slate-500 flex items-center gap-2">
-                                        <i class="fas fa-map-marker-alt text-candy-pink"></i> 北京 · 2024.12 - 2025.02
+                                        <i class="fas fa-map-marker-alt text-candy-blue"></i> 北京 · 2024.12 - 2025.02
                                     </p>
                                 </div>
                                 <ul class="space-y-4">
                                     <li class="flex items-start gap-3">
-                                        <span class="w-6 h-6 rounded-full bg-gradient-to-r from-candy-blue to-candy-purple flex items-center justify-center text-white text-xs mt-0.5">✓</span>
-                                        <span class="text-slate-600">负责 AI SDR 产品迭代，优化 Prompt 提升对话转化率 <strong class="text-candy-purple">15%</strong></span>
+                                        <span class="w-6 h-6 rounded-full bg-gradient-to-r from-candy-blue to-candy-teal flex items-center justify-center text-white text-xs mt-0.5">✓</span>
+                                        <span class="text-slate-600">负责 AI SDR 产品迭代，优化 Prompt 提升对话转化率 <strong class="text-candy-cyan">15%</strong></span>
                                     </li>
                                     <li class="flex items-start gap-3">
-                                        <span class="w-6 h-6 rounded-full bg-gradient-to-r from-candy-purple to-candy-pink flex items-center justify-center text-white text-xs mt-0.5">✓</span>
-                                        <span class="text-slate-600">搭建舆情监控系统，实时追踪品牌口碑，覆盖 <strong class="text-candy-pink">10万+</strong> 数据源</span>
+                                        <span class="w-6 h-6 rounded-full bg-gradient-to-r from-candy-cyan to-candy-green flex items-center justify-center text-white text-xs mt-0.5">✓</span>
+                                        <span class="text-slate-600">搭建舆情监控系统，实时追踪品牌口碑，覆盖 <strong class="text-candy-blue">10万+</strong> 数据源</span>
                                     </li>
                                     <li class="flex items-start gap-3">
-                                        <span class="w-6 h-6 rounded-full bg-gradient-to-r from-candy-pink to-candy-orange flex items-center justify-center text-white text-xs mt-0.5">✓</span>
+                                        <span class="w-6 h-6 rounded-full bg-gradient-to-r from-candy-teal to-candy-orange flex items-center justify-center text-white text-xs mt-0.5">✓</span>
                                         <span class="text-slate-600">参与 Agent 工作流设计，提升自动化营销效率 <strong class="text-candy-orange">40%</strong></span>
                                     </li>
                                 </ul>
@@ -440,20 +441,20 @@
                                 <div>
                                     <h3 class="font-display text-2xl font-bold text-slate-800 mb-2">视频 AI 语音克隆产品</h3>
                                     <p class="text-slate-500 flex items-center gap-2">
-                                        <i class="fas fa-map-marker-alt text-candy-pink"></i> 北京 · 2025.07 - 2025.12
+                                        <i class="fas fa-map-marker-alt text-candy-blue"></i> 北京 · 2025.07 - 2025.12
                                     </p>
                                 </div>
                                 <ul class="space-y-4">
                                     <li class="flex items-start gap-3">
-                                        <span class="w-6 h-6 rounded-full bg-gradient-to-r from-candy-blue to-candy-purple flex items-center justify-center text-white text-xs mt-0.5">✓</span>
-                                        <span class="text-slate-600">负责视频 AI 语音克隆产品，用户满意度 <strong class="text-candy-purple">92%</strong> ⭐</span>
+                                        <span class="w-6 h-6 rounded-full bg-gradient-to-r from-candy-blue to-candy-teal flex items-center justify-center text-white text-xs mt-0.5">✓</span>
+                                        <span class="text-slate-600">负责视频 AI 语音克隆产品，用户满意度 <strong class="text-candy-cyan">92%</strong> ⭐</span>
                                     </li>
                                     <li class="flex items-start gap-3">
-                                        <span class="w-6 h-6 rounded-full bg-gradient-to-r from-candy-purple to-candy-pink flex items-center justify-center text-white text-xs mt-0.5">✓</span>
-                                        <span class="text-slate-600">设计学情报告 Agent，覆盖 <strong class="text-candy-pink">50万+</strong> 学生 👨‍🎓</span>
+                                        <span class="w-6 h-6 rounded-full bg-gradient-to-r from-candy-cyan to-candy-green flex items-center justify-center text-white text-xs mt-0.5">✓</span>
+                                        <span class="text-slate-600">设计学情报告 Agent，覆盖 <strong class="text-candy-blue">50万+</strong> 学生 👨‍🎓</span>
                                     </li>
                                     <li class="flex items-start gap-3">
-                                        <span class="w-6 h-6 rounded-full bg-gradient-to-r from-candy-pink to-candy-orange flex items-center justify-center text-white text-xs mt-0.5">✓</span>
+                                        <span class="w-6 h-6 rounded-full bg-gradient-to-r from-candy-teal to-candy-orange flex items-center justify-center text-white text-xs mt-0.5">✓</span>
                                         <span class="text-slate-600">视觉批改产品迭代，AI 识别准确率 <strong class="text-candy-orange">96%</strong> 🎯</span>
                                     </li>
                                 </ul>
@@ -484,9 +485,9 @@
         <div class="max-w-6xl mx-auto px-6">
             <!-- 标题 -->
             <div class="text-center mb-16 reveal-element">
-                <p class="text-candy-purple font-medium mb-2">🚀 Featured Projects</p>
+                <p class="text-candy-cyan font-medium mb-2">🚀 Featured Projects</p>
                 <h2 class="font-display text-4xl md:text-5xl font-bold text-slate-800 mb-4">重点项目</h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-candy-blue via-candy-purple to-candy-pink mx-auto rounded-full"></div>
+                <div class="w-24 h-1 bg-gradient-to-r from-candy-blue via-candy-cyan to-candy-green mx-auto rounded-full"></div>
             </div>
 
             <!-- 瀑布流布局 -->
@@ -502,7 +503,7 @@
                     </div>
                     <div class="p-6">
                         <h3 class="font-display text-xl font-bold text-slate-800 mb-2">第十一届全国大学生统计建模大赛</h3>
-                        <p class="text-candy-purple font-medium mb-3">天津赛区二等奖 🥈</p>
+                        <p class="text-candy-cyan font-medium mb-3">天津赛区二等奖 🥈</p>
                         <p class="text-slate-500 text-sm leading-relaxed mb-4">
                             基于真实业务数据进行增长洞察分析，使用 LSTM 时间序列模型预测用户行为，结合高德 API 进行选址优化。
                         </p>
@@ -552,8 +553,8 @@
                         </div>
                         <div class="md:col-span-2 p-6 flex flex-col justify-center">
                             <div class="flex items-center gap-3 mb-3">
-                                <span class="candy-tag bg-gradient-to-r from-candy-pink to-candy-orange text-white">🤖 AI 应用创新</span>
-                                <span class="text-candy-purple font-medium text-sm">校级一等奖 🥇</span>
+                                <span class="candy-tag bg-gradient-to-r from-candy-teal to-candy-orange text-white">🤖 AI 应用创新</span>
+                                <span class="text-candy-cyan font-medium text-sm">校级一等奖 🥇</span>
                             </div>
                             <h3 class="font-display text-xl font-bold text-slate-800 mb-3">首届全国人工智能应用创新大赛</h3>
                             <p class="text-slate-500 leading-relaxed mb-4">
@@ -582,15 +583,15 @@
     <!-- 核心技能 -->
     <section id="skills" class="py-24 relative overflow-hidden">
         <!-- 背景装饰 -->
-        <div class="absolute top-0 right-0 w-96 h-96 bg-candy-purple/10 rounded-full blur-3xl"></div>
+        <div class="absolute top-0 right-0 w-96 h-96 bg-candy-cyan/10 rounded-full blur-3xl"></div>
         <div class="absolute bottom-0 left-0 w-96 h-96 bg-candy-blue/10 rounded-full blur-3xl"></div>
 
         <div class="max-w-5xl mx-auto px-6 relative z-10">
             <!-- 标题 -->
             <div class="text-center mb-16 reveal-element">
-                <p class="text-candy-purple font-medium mb-2">💪 Core Skills</p>
+                <p class="text-candy-cyan font-medium mb-2">💪 Core Skills</p>
                 <h2 class="font-display text-4xl md:text-5xl font-bold text-slate-800 mb-4">核心技能</h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-candy-blue via-candy-purple to-candy-pink mx-auto rounded-full"></div>
+                <div class="w-24 h-1 bg-gradient-to-r from-candy-blue via-candy-cyan to-candy-green mx-auto rounded-full"></div>
             </div>
 
             <div class="grid md:grid-cols-2 gap-12 items-center">
@@ -598,40 +599,40 @@
                 <div class="flex justify-center reveal-element">
                     <div class="relative w-80 h-80">
                         <!-- 背景圆环 -->
-                        <div class="absolute inset-0 bg-gradient-to-r from-candy-blue/20 to-candy-pink/20 rounded-full blur-xl"></div>
+                        <div class="absolute inset-0 bg-gradient-to-r from-candy-blue/20 to-candy-green/20 rounded-full blur-xl"></div>
                         
                         <svg viewBox="0 0 300 300" class="w-full h-full radar-candy">
                             <!-- 网格 -->
                             <g opacity="0.2">
-                                <polygon points="150,30 240,90 240,180 150,240 60,180 60,90" fill="none" stroke="#6366F1" stroke-width="1"/>
-                                <polygon points="150,60 210,105 210,165 150,210 90,165 90,105" fill="none" stroke="#8B5CF6" stroke-width="1"/>
+                                <polygon points="150,30 240,90 240,180 150,240 60,180 60,90" fill="none" stroke="#3B82F6" stroke-width="1"/>
+                                <polygon points="150,60 210,105 210,165 150,210 90,165 90,105" fill="none" stroke="#06B6D4" stroke-width="1"/>
                                 <polygon points="150,90 180,112.5 180,150 150,172.5 120,150 120,112.5" fill="none" stroke="#EC4899" stroke-width="1"/>
                             </g>
                             <!-- 数据 -->
                             <polygon id="radar-data" points="150,45 225,97.5 225,172.5 150,210 75,165 75,97.5" 
-                                     fill="url(#radarGradient)" stroke="#6366F1" stroke-width="2" opacity="0"/>
+                                     fill="url(#radarGradient)" stroke="#3B82F6" stroke-width="2" opacity="0"/>
                             <defs>
                                 <linearGradient id="radarGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#6366F1;stop-opacity:0.3" />
-                                    <stop offset="100%" style="stop-color:#EC4899;stop-opacity:0.3" />
+                                    <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:0.3" />
+                                    <stop offset="100%" style="stop-color:#14B8A6;stop-opacity:0.3" />
                                 </linearGradient>
                             </defs>
                             <!-- 点 -->
                             <g id="radar-points" opacity="0">
-                                <circle cx="150" cy="45" r="5" fill="#6366F1"/>
-                                <circle cx="225" cy="97.5" r="5" fill="#8B5CF6"/>
-                                <circle cx="225" cy="172.5" r="5" fill="#EC4899"/>
-                                <circle cx="150" cy="210" r="5" fill="#F97316"/>
+                                <circle cx="150" cy="45" r="5" fill="#3B82F6"/>
+                                <circle cx="225" cy="97.5" r="5" fill="#06B6D4"/>
+                                <circle cx="225" cy="172.5" r="5" fill="#14B8A6"/>
+                                <circle cx="150" cy="210" r="5" fill="#10B981"/>
                                 <circle cx="75" cy="165" r="5" fill="#06B6D4"/>
-                                <circle cx="75" cy="97.5" r="5" fill="#6366F1"/>
+                                <circle cx="75" cy="97.5" r="5" fill="#3B82F6"/>
                             </g>
                             <!-- 标签 -->
-                            <text x="150" y="15" text-anchor="middle" fill="#6366F1" font-size="12" font-weight="600">产品思维</text>
-                            <text x="260" y="85" text-anchor="start" fill="#8B5CF6" font-size="12" font-weight="600">数据分析</text>
-                            <text x="260" y="195" text-anchor="start" fill="#EC4899" font-size="12" font-weight="600">AI能力</text>
-                            <text x="150" y="280" text-anchor="middle" fill="#F97316" font-size="12" font-weight="600">设计能力</text>
+                            <text x="150" y="15" text-anchor="middle" fill="#3B82F6" font-size="12" font-weight="600">产品思维</text>
+                            <text x="260" y="85" text-anchor="start" fill="#06B6D4" font-size="12" font-weight="600">数据分析</text>
+                            <text x="260" y="195" text-anchor="start" fill="#14B8A6" font-size="12" font-weight="600">AI能力</text>
+                            <text x="150" y="280" text-anchor="middle" fill="#10B981" font-size="12" font-weight="600">设计能力</text>
                             <text x="40" y="195" text-anchor="end" fill="#06B6D4" font-size="12" font-weight="600">工程实现</text>
-                            <text x="40" y="85" text-anchor="end" fill="#6366F1" font-size="12" font-weight="600">沟通协调</text>
+                            <text x="40" y="85" text-anchor="end" fill="#3B82F6" font-size="12" font-weight="600">沟通协调</text>
                         </svg>
                     </div>
                 </div>
@@ -645,7 +646,7 @@
                             <span class="text-slate-600 font-medium flex items-center gap-2">
                                 <span class="text-xl">🐍</span> Python 数据分析
                             </span>
-                            <span class="text-candy-purple font-bold skill-percent" data-target="90">0%</span>
+                            <span class="text-candy-cyan font-bold skill-percent" data-target="90">0%</span>
                         </div>
                         <div class="h-3 bg-slate-100 rounded-full overflow-hidden">
                             <div class="skill-progress candy-progress h-full rounded-full" style="width: 0%" data-width="90"></div>
@@ -669,7 +670,7 @@
                             <span class="text-slate-600 font-medium flex items-center gap-2">
                                 <span class="text-xl">🤖</span> AI Agent / Prompt
                             </span>
-                            <span class="text-candy-pink font-bold skill-percent" data-target="88">0%</span>
+                            <span class="text-candy-blue font-bold skill-percent" data-target="88">0%</span>
                         </div>
                         <div class="h-3 bg-slate-100 rounded-full overflow-hidden">
                             <div class="skill-progress candy-progress h-full rounded-full" style="width: 0%" data-width="88"></div>
@@ -693,7 +694,7 @@
                             <span class="text-slate-600 font-medium flex items-center gap-2">
                                 <span class="text-xl">📋</span> 产品分析 / PRD
                             </span>
-                            <span class="text-candy-purple font-bold skill-percent" data-target="87">0%</span>
+                            <span class="text-candy-cyan font-bold skill-percent" data-target="87">0%</span>
                         </div>
                         <div class="h-3 bg-slate-100 rounded-full overflow-hidden">
                             <div class="skill-progress candy-progress h-full rounded-full" style="width: 0%" data-width="87"></div>
@@ -722,12 +723,12 @@
         <div class="max-w-4xl mx-auto px-6">
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div class="reveal-element">
-                    <p class="text-candy-purple font-medium mb-2">🎓 Education</p>
+                    <p class="text-candy-cyan font-medium mb-2">🎓 Education</p>
                     <h2 class="font-display text-4xl font-bold text-slate-800 mb-6">教育背景</h2>
                     
                     <div class="glass-card rounded-3xl p-8">
                         <div class="flex items-center gap-4 mb-6">
-                            <div class="w-16 h-16 rounded-2xl bg-gradient-to-r from-candy-blue to-candy-purple flex items-center justify-center text-white text-2xl">
+                            <div class="w-16 h-16 rounded-2xl bg-gradient-to-r from-candy-blue to-candy-teal flex items-center justify-center text-white text-2xl">
                                 🏫
                             </div>
                             <div>
@@ -737,7 +738,7 @@
                         </div>
                         
                         <div class="flex items-center gap-4 mb-6">
-                            <span class="px-4 py-2 bg-gradient-to-r from-candy-blue to-candy-purple text-white rounded-full text-sm font-medium">
+                            <span class="px-4 py-2 bg-gradient-to-r from-candy-blue to-candy-teal text-white rounded-full text-sm font-medium">
                                 2023.09 - 2027.06
                             </span>
                             <span class="text-slate-400">预计毕业 2027.06 🎯</span>
@@ -759,13 +760,13 @@
 
                 <div class="reveal-element">
                     <div class="relative">
-                        <div class="absolute -inset-4 bg-gradient-to-r from-candy-blue via-candy-purple to-candy-pink rounded-3xl opacity-20 blur-xl"></div>
+                        <div class="absolute -inset-4 bg-gradient-to-r from-candy-blue via-candy-cyan to-candy-green rounded-3xl opacity-20 blur-xl"></div>
                         <div class="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
                             <img src="images/education_scene.jpg" alt="教育场景" class="w-full h-full object-cover">
                         </div>
                         
                         <!-- 装饰元素 -->
-                        <div class="absolute -top-4 -right-4 w-12 h-12 bg-candy-pink rounded-full flex items-center justify-center text-white text-xl animate-float">
+                        <div class="absolute -top-4 -right-4 w-12 h-12 bg-candy-teal rounded-full flex items-center justify-center text-white text-xl animate-float">
                             🎓
                         </div>
                         <div class="absolute -bottom-4 -left-4 w-12 h-12 bg-candy-blue rounded-full flex items-center justify-center text-white text-xl animate-float" style="animation-delay: -2s;">
@@ -782,7 +783,7 @@
         <!-- 背景装饰 -->
         <div class="absolute top-0 left-0 w-full h-full overflow-hidden opacity-20">
             <div class="absolute top-10 left-10 w-32 h-32 bg-candy-blue rounded-full blur-3xl"></div>
-            <div class="absolute bottom-10 right-10 w-40 h-40 bg-candy-pink rounded-full blur-3xl"></div>
+            <div class="absolute bottom-10 right-10 w-40 h-40 bg-candy-teal rounded-full blur-3xl"></div>
         </div>
 
         <div class="max-w-4xl mx-auto px-6 relative z-10">
