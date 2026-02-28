@@ -15,7 +15,6 @@
                 extend: {
                     colors: {
                         'deep-forest': '#050B08',
-                        'dark-card': '#08120c',
                         'gold': '#D4AF37',
                         'ivory': '#F3F4F6',
                     },
@@ -78,21 +77,11 @@
             z-index: 0;
         }
 
-        /* 图片容器 - 克制感设计 */
-        .image-container {
-            position: relative;
-            overflow: hidden;
-            border-radius: 1rem;
-            border: 1px solid rgba(212, 175, 55, 0.4);
-            opacity: 0.9;
-        }
-
-        .image-container::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, transparent 100%);
-            pointer-events: none;
+        /* 图片容器 - 无边框设计 */
+        .image-cinematic {
+            width: 100%;
+            opacity: 0.95;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.1);
         }
 
         /* 滚动条 */
@@ -143,6 +132,14 @@
             margin: 1.5rem auto 0;
         }
 
+        /* 左对齐的分割线 */
+        .section-divider-left {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, #D4AF37, transparent);
+            margin: 1.5rem 0 0;
+        }
+
         /* 三列布局 Footer */
         .footer-grid {
             display: grid;
@@ -184,7 +181,7 @@
             <!-- 顶端小字 -->
             <p class="text-gold/80 text-xs tracking-[0.5em] mb-10 uppercase font-light">AI 产品经理 · AI 产品运营</p>
 
-            <!-- 巨大名字（分两行） - 字体升华 -->
+            <!-- 巨大名字（分两行） -->
             <h1 class="font-serif text-7xl md:text-8xl lg:text-9xl font-light tracking-widest mb-10 leading-none">
                 <div class="text-gradient-gold">林</div>
                 <div class="text-gradient-gold">承列</div>
@@ -195,13 +192,13 @@
 
             <!-- 个人照片 -->
             <div class="relative mb-14 inline-block">
-                <div class="w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden border border-gold/40 shadow-2xl">
+                <div class="w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden border border-gold/30 shadow-2xl">
                     <img src="images/hero_portrait.jpg" alt="林承列" class="w-full h-full object-cover">
                 </div>
             </div>
 
             <!-- 幽灵按钮 -->
-            <a href="#experience" class="inline-block border border-gold/40 text-gold/90 px-12 py-4 text-sm tracking-[0.3em] hover:bg-gold/5 transition-all duration-500 font-light">
+            <a href="#experience" class="inline-block border border-gold/30 text-gold/80 px-12 py-4 text-sm tracking-[0.3em] hover:bg-gold/5 transition-all duration-500 font-light">
                 [ 查看我的简历 ]
             </a>
         </div>
@@ -210,7 +207,7 @@
     <!-- 工作经历 -->
     <section id="experience" class="py-24 md:py-32 px-6 relative">
         <div class="max-w-4xl mx-auto relative z-10">
-            <!-- 版块标题 - 排版升华 -->
+            <!-- 版块标题 -->
             <div class="text-center mb-20">
                 <p class="text-gold text-xs tracking-[0.5em] mb-5 uppercase font-light">工作经历</p>
                 <h2 class="text-5xl md:text-6xl font-light text-ivory tracking-wider">实习经历</h2>
@@ -220,75 +217,75 @@
                 </p>
             </div>
 
-            <!-- 句子互动 - 卡片克制感 -->
-            <div class="mb-16 bg-dark-card border border-gold/30 rounded-2xl overflow-hidden fade-in">
-                <div class="p-10 md:p-12 pb-8">
+            <!-- 句子互动 - 无边框设计 -->
+            <div class="mb-24 fade-in">
+                <div class="mb-10">
                     <div class="flex justify-between items-start mb-8">
                         <div class="flex items-center gap-4">
                             <img src="images/juzi_ai.png" alt="句子互动" class="company-logo h-10">
                             <div>
-                                <h3 class="text-2xl font-light text-ivory mb-1 tracking-wide">句子互动</h3>
-                                <p class="text-gold/70 text-sm">AI 产品经理实习生</p>
+                                <h3 class="text-3xl font-light text-ivory mb-2 tracking-wide">句子互动</h3>
+                                <p class="text-gold/60 text-sm">AI 产品经理实习生</p>
                             </div>
                         </div>
                         <div class="text-right">
-                            <p class="text-gold/50 text-xs tracking-wider">2024.12 - 2025.02</p>
+                            <p class="text-gold/40 text-xs tracking-wider">2024.12 - 2025.02</p>
                         </div>
                     </div>
-                    <ul class="space-y-4 text-ivory/60 leading-relaxed font-light">
+                    <ul class="space-y-4 text-ivory/50 leading-relaxed font-light max-w-3xl">
                         <li class="flex items-start">
-                            <span class="text-gold/60 mr-4 text-lg">▸</span>
+                            <span class="text-gold/50 mr-4 text-lg">▸</span>
                             <span>负责 AI SDR 产品迭代，优化 Prompt 提升对话转化率</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-gold/60 mr-4 text-lg">▸</span>
+                            <span class="text-gold/50 mr-4 text-lg">▸</span>
                             <span>搭建舆情监控系统，实时追踪品牌口碑与用户反馈</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-gold/60 mr-4 text-lg">▸</span>
+                            <span class="text-gold/50 mr-4 text-lg">▸</span>
                             <span>参与 Agent 工作流设计，提升自动化营销效率</span>
                         </li>
                     </ul>
                 </div>
-                <!-- 工作场景图 - 加金边和透明度 -->
-                <div class="image-container m-4 mb-0">
-                    <img src="images/experience_workspace.jpg" alt="工作场景" class="w-full h-72 object-cover">
+                <!-- 工作场景图 - 电影级释放 -->
+                <div class="my-24">
+                    <img src="images/experience_workspace.jpg" alt="工作场景" class="image-cinematic w-full h-auto">
                 </div>
             </div>
 
-            <!-- 一起教育 -->
-            <div class="bg-dark-card border border-gold/30 rounded-2xl overflow-hidden fade-in">
-                <div class="p-10 md:p-12 pb-8">
+            <!-- 一起教育 - 无边框设计 -->
+            <div class="fade-in">
+                <div class="mb-10">
                     <div class="flex justify-between items-start mb-8">
                         <div class="flex items-center gap-4">
                             <img src="images/together_edu.png" alt="一起教育" class="company-logo h-10">
                             <div>
-                                <h3 class="text-2xl font-light text-ivory mb-1 tracking-wide">一起教育</h3>
-                                <p class="text-gold/70 text-sm">AI 产品经理实习生</p>
+                                <h3 class="text-3xl font-light text-ivory mb-2 tracking-wide">一起教育</h3>
+                                <p class="text-gold/60 text-sm">AI 产品经理实习生</p>
                             </div>
                         </div>
                         <div class="text-right">
-                            <p class="text-gold/50 text-xs tracking-wider">2025.07 - 2025.12</p>
+                            <p class="text-gold/40 text-xs tracking-wider">2025.07 - 2025.12</p>
                         </div>
                     </div>
-                    <ul class="space-y-4 text-ivory/60 leading-relaxed font-light">
+                    <ul class="space-y-4 text-ivory/50 leading-relaxed font-light max-w-3xl">
                         <li class="flex items-start">
-                            <span class="text-gold/60 mr-4 text-lg">▸</span>
+                            <span class="text-gold/50 mr-4 text-lg">▸</span>
                             <span>负责视频 AI 语音克隆产品，实现个性化语音生成</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-gold/60 mr-4 text-lg">▸</span>
+                            <span class="text-gold/50 mr-4 text-lg">▸</span>
                             <span>设计学情报告 Agent，自动生成学生个性化学习报告</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-gold/60 mr-4 text-lg">▸</span>
+                            <span class="text-gold/50 mr-4 text-lg">▸</span>
                             <span>参与视觉批改产品迭代，优化 AI 识别准确率</span>
                         </li>
                     </ul>
                 </div>
-                <!-- 工作场景图 -->
-                <div class="image-container m-4 mb-0">
-                    <img src="images/education_scene.jpg" alt="教育场景" class="w-full h-72 object-cover">
+                <!-- 工作场景图 - 电影级释放 -->
+                <div class="my-24">
+                    <img src="images/education_scene.jpg" alt="教育场景" class="image-cinematic w-full h-auto">
                 </div>
             </div>
         </div>
@@ -307,82 +304,82 @@
                 </p>
             </div>
 
-            <!-- 项目1 -->
-            <div class="mb-16 bg-dark-card border border-gold/30 rounded-2xl overflow-hidden fade-in">
-                <div class="p-10 md:p-12 pb-8">
-                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-8">
+            <!-- 项目1 - 无边框设计 -->
+            <div class="mb-32 fade-in">
+                <div class="mb-8">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-6">
                         <div>
-                            <span class="inline-block bg-gold/5 text-gold/70 border border-gold/20 px-4 py-1.5 rounded-full text-xs mb-4 tracking-wider font-light">数据分析竞赛</span>
-                            <h3 class="text-2xl font-light text-ivory mb-2 tracking-wide">第十一届全国大学生统计建模大赛</h3>
-                            <p class="text-gold/70 text-sm">天津赛区二等奖</p>
+                            <span class="inline-block bg-gold/5 text-gold/60 border border-gold/10 px-4 py-1.5 rounded-full text-xs mb-4 tracking-wider font-light">数据分析竞赛</span>
+                            <h3 class="text-3xl font-light text-ivory mb-2 tracking-wide">第十一届全国大学生统计建模大赛</h3>
+                            <p class="text-gold/60 text-sm">天津赛区二等奖</p>
                         </div>
-                        <p class="text-gold/50 text-xs mt-4 md:mt-0 tracking-wider">2025.03 - 2025.05</p>
+                        <p class="text-gold/40 text-xs mt-4 md:mt-0 tracking-wider">2025.03 - 2025.05</p>
                     </div>
-                    <p class="text-ivory/60 leading-relaxed mb-8 font-light">
+                    <p class="text-ivory/50 leading-relaxed mb-8 font-light max-w-3xl">
                         为提升共享充电宝使用频次与留存，基于真实业务数据进行增长洞察分析，使用 LSTM 时间序列模型预测用户行为，结合高德 API 进行选址优化，为产品优化提供数据支持与决策依据。
                     </p>
-                    <div class="flex flex-wrap gap-2 mb-8">
-                        <span class="bg-gold/5 text-gold/70 border border-gold/15 px-4 py-1.5 rounded-full text-xs">增长洞察</span>
-                        <span class="bg-gold/5 text-gold/70 border border-gold/15 px-4 py-1.5 rounded-full text-xs">选址优化</span>
-                        <span class="bg-gold/5 text-gold/70 border border-gold/15 px-4 py-1.5 rounded-full text-xs">高德API</span>
-                        <span class="bg-gold/5 text-gold/70 border border-gold/15 px-4 py-1.5 rounded-full text-xs">LSTM/随机森林/CNN</span>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gold/5 text-gold/60 border border-gold/10 px-4 py-1.5 rounded-full text-xs">增长洞察</span>
+                        <span class="bg-gold/5 text-gold/60 border border-gold/10 px-4 py-1.5 rounded-full text-xs">选址优化</span>
+                        <span class="bg-gold/5 text-gold/60 border border-gold/10 px-4 py-1.5 rounded-full text-xs">高德API</span>
+                        <span class="bg-gold/5 text-gold/60 border border-gold/10 px-4 py-1.5 rounded-full text-xs">LSTM/随机森林/CNN</span>
                     </div>
                 </div>
-                <!-- 项目图片 -->
-                <div class="image-container m-4 mb-0">
-                    <img src="images/project_stats.png" alt="项目统计" class="w-full h-80 object-cover">
+                <!-- 项目图片 - 电影级释放 -->
+                <div class="my-24">
+                    <img src="images/project_stats.png" alt="项目统计" class="image-cinematic w-full h-auto">
                 </div>
             </div>
 
-            <!-- 项目2 -->
-            <div class="mb-16 bg-dark-card border border-gold/30 rounded-2xl overflow-hidden fade-in">
-                <div class="p-10 md:p-12 pb-8">
-                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-8">
+            <!-- 项目2 - 无边框设计 -->
+            <div class="mb-32 fade-in">
+                <div class="mb-8">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-6">
                         <div>
-                            <span class="inline-block bg-gold/5 text-gold/70 border border-gold/20 px-4 py-1.5 rounded-full text-xs mb-4 tracking-wider font-light">AI 应用创新</span>
-                            <h3 class="text-2xl font-light text-ivory mb-2 tracking-wide">首届全国人工智能应用创新大赛</h3>
-                            <p class="text-gold/70 text-sm">校级一等奖</p>
+                            <span class="inline-block bg-gold/5 text-gold/60 border border-gold/10 px-4 py-1.5 rounded-full text-xs mb-4 tracking-wider font-light">AI 应用创新</span>
+                            <h3 class="text-3xl font-light text-ivory mb-2 tracking-wide">首届全国人工智能应用创新大赛</h3>
+                            <p class="text-gold/60 text-sm">校级一等奖</p>
                         </div>
-                        <p class="text-gold/50 text-xs mt-4 md:mt-0 tracking-wider">2025.02 - 2025.05</p>
+                        <p class="text-gold/40 text-xs mt-4 md:mt-0 tracking-wider">2025.02 - 2025.05</p>
                     </div>
-                    <p class="text-ivory/60 leading-relaxed mb-8 font-light">
+                    <p class="text-ivory/50 leading-relaxed mb-8 font-light max-w-3xl">
                         针对教育场景"千人一卷"效率瓶颈，使用百度 AppBuilder 快速构建 AI 应用，结合知识图谱技术实现个性化试卷生成系统，解决教育资源个性化适配难题，获得评委高度认可。
                     </p>
-                    <div class="flex flex-wrap gap-2 mb-8">
-                        <span class="bg-gold/5 text-gold/70 border border-gold/15 px-4 py-1.5 rounded-full text-xs">机会挖掘</span>
-                        <span class="bg-gold/5 text-gold/70 border border-gold/15 px-4 py-1.5 rounded-full text-xs">知识图谱</span>
-                        <span class="bg-gold/5 text-gold/70 border border-gold/15 px-4 py-1.5 rounded-full text-xs">个性化试卷</span>
-                        <span class="bg-gold/5 text-gold/70 border border-gold/15 px-4 py-1.5 rounded-full text-xs">教育AI</span>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gold/5 text-gold/60 border border-gold/10 px-4 py-1.5 rounded-full text-xs">机会挖掘</span>
+                        <span class="bg-gold/5 text-gold/60 border border-gold/10 px-4 py-1.5 rounded-full text-xs">知识图谱</span>
+                        <span class="bg-gold/5 text-gold/60 border border-gold/10 px-4 py-1.5 rounded-full text-xs">个性化试卷</span>
+                        <span class="bg-gold/5 text-gold/60 border border-gold/10 px-4 py-1.5 rounded-full text-xs">教育AI</span>
                     </div>
                 </div>
-                <!-- 项目图片 -->
-                <div class="image-container m-4 mb-0">
-                    <img src="images/project_ai_edu.png" alt="AI教育项目" class="w-full h-80 object-cover">
+                <!-- 项目图片 - 电影级释放 -->
+                <div class="my-24">
+                    <img src="images/project_ai_edu.png" alt="AI教育项目" class="image-cinematic w-full h-auto">
                 </div>
             </div>
 
-            <!-- 项目3 -->
-            <div class="bg-dark-card border border-gold/30 rounded-2xl overflow-hidden fade-in">
-                <div class="p-10 md:p-12 pb-8">
-                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-8">
+            <!-- 项目3 - 无边框设计 -->
+            <div class="fade-in">
+                <div class="mb-8">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-6">
                         <div>
-                            <span class="inline-block bg-gold/5 text-gold/70 border border-gold/20 px-4 py-1.5 rounded-full text-xs mb-4 tracking-wider font-light">数据实践</span>
-                            <h3 class="text-2xl font-light text-ivory mb-2 tracking-wide">数据看板建设实践</h3>
+                            <span class="inline-block bg-gold/5 text-gold/60 border border-gold/10 px-4 py-1.5 rounded-full text-xs mb-4 tracking-wider font-light">数据实践</span>
+                            <h3 class="text-3xl font-light text-ivory mb-2 tracking-wide">数据看板建设实践</h3>
                         </div>
                     </div>
-                    <p class="text-ivory/60 leading-relaxed mb-8 font-light">
+                    <p class="text-ivory/50 leading-relaxed mb-8 font-light max-w-3xl">
                         协同业务与数据团队统一指标口径，使用 DataEase 构建实时数据看板，将分散的数据源整合为可视化决策工具，提升业务分析效率与决策响应速度。
                     </p>
-                    <div class="flex flex-wrap gap-2 mb-8">
-                        <span class="bg-gold/5 text-gold/70 border border-gold/15 px-4 py-1.5 rounded-full text-xs">DataEase</span>
-                        <span class="bg-gold/5 text-gold/70 border border-gold/15 px-4 py-1.5 rounded-full text-xs">指标治理</span>
-                        <span class="bg-gold/5 text-gold/70 border border-gold/15 px-4 py-1.5 rounded-full text-xs">业务分析</span>
-                        <span class="bg-gold/5 text-gold/70 border border-gold/15 px-4 py-1.5 rounded-full text-xs">实时决策</span>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gold/5 text-gold/60 border border-gold/10 px-4 py-1.5 rounded-full text-xs">DataEase</span>
+                        <span class="bg-gold/5 text-gold/60 border border-gold/10 px-4 py-1.5 rounded-full text-xs">指标治理</span>
+                        <span class="bg-gold/5 text-gold/60 border border-gold/10 px-4 py-1.5 rounded-full text-xs">业务分析</span>
+                        <span class="bg-gold/5 text-gold/60 border border-gold/10 px-4 py-1.5 rounded-full text-xs">实时决策</span>
                     </div>
                 </div>
-                <!-- 项目图片 -->
-                <div class="image-container m-4 mb-0">
-                    <img src="images/project_dashboard.jpg" alt="数据看板" class="w-full h-80 object-cover">
+                <!-- 项目图片 - 电影级释放 -->
+                <div class="my-24">
+                    <img src="images/project_dashboard.jpg" alt="数据看板" class="image-cinematic w-full h-auto">
                 </div>
             </div>
         </div>
@@ -401,62 +398,62 @@
                 <div class="section-divider"></div>
             </div>
 
-            <!-- 技能场景图 -->
-            <div class="mb-16 image-container">
-                <img src="images/skills_workspace.jpg" alt="技能工作空间" class="w-full h-96 object-cover rounded-2xl">
+            <!-- 技能场景图 - 电影级释放 -->
+            <div class="mb-24">
+                <img src="images/skills_workspace.jpg" alt="技能工作空间" class="image-cinematic w-full h-auto h-96 object-cover">
             </div>
 
             <!-- 左右两列网格布局 -->
-            <div class="grid md:grid-cols-2 gap-12">
+            <div class="grid md:grid-cols-2 gap-16">
                 <!-- 左侧：标签云 -->
                 <div class="flex flex-wrap justify-center gap-3 content-start">
-                    <span class="bg-dark-card border border-gold/25 text-gold/80 px-6 py-2.5 rounded-lg text-sm font-light">Python</span>
-                    <span class="bg-dark-card border border-gold/25 text-gold/80 px-6 py-2.5 rounded-lg text-sm font-light">SQL</span>
-                    <span class="bg-dark-card border border-gold/25 text-gold/80 px-6 py-2.5 rounded-lg text-sm font-light">Prompt Engineering</span>
-                    <span class="bg-dark-card border border-gold/25 text-gold/80 px-6 py-2.5 rounded-lg text-sm font-light">AI Agent</span>
-                    <span class="bg-dark-card border border-gold/25 text-gold/80 px-6 py-2.5 rounded-lg text-sm font-light">产品分析</span>
-                    <span class="bg-dark-card border border-gold/25 text-gold/80 px-6 py-2.5 rounded-lg text-sm font-light">原型设计</span>
+                    <span class="border border-gold/15 text-gold/70 px-6 py-2.5 rounded-lg text-sm font-light">Python</span>
+                    <span class="border border-gold/15 text-gold/70 px-6 py-2.5 rounded-lg text-sm font-light">SQL</span>
+                    <span class="border border-gold/15 text-gold/70 px-6 py-2.5 rounded-lg text-sm font-light">Prompt Engineering</span>
+                    <span class="border border-gold/15 text-gold/70 px-6 py-2.5 rounded-lg text-sm font-light">AI Agent</span>
+                    <span class="border border-gold/15 text-gold/70 px-6 py-2.5 rounded-lg text-sm font-light">产品分析</span>
+                    <span class="border border-gold/15 text-gold/70 px-6 py-2.5 rounded-lg text-sm font-light">原型设计</span>
                 </div>
 
                 <!-- 右侧：进度条 -->
                 <div class="space-y-6">
                     <div>
                         <div class="flex justify-between mb-2">
-                            <span class="text-ivory/80 font-light tracking-wide text-sm">数据分析与建模</span>
-                            <span class="text-gold/70 font-light">90%</span>
+                            <span class="text-ivory/70 font-light tracking-wide text-sm">数据分析与建模</span>
+                            <span class="text-gold/60 font-light">90%</span>
                         </div>
                         <div class="h-1.5 bg-deep-forest rounded-full overflow-hidden">
-                            <div class="h-full bg-gradient-to-r from-gold/70 to-gold progress-fill" style="width: 90%"></div>
+                            <div class="h-full bg-gradient-to-r from-gold/60 to-gold progress-fill" style="width: 90%"></div>
                         </div>
                     </div>
 
                     <div>
                         <div class="flex justify-between mb-2">
-                            <span class="text-ivory/80 font-light tracking-wide text-sm">AI 产品实践</span>
-                            <span class="text-gold/70 font-light">88%</span>
+                            <span class="text-ivory/70 font-light tracking-wide text-sm">AI 产品实践</span>
+                            <span class="text-gold/60 font-light">88%</span>
                         </div>
                         <div class="h-1.5 bg-deep-forest rounded-full overflow-hidden">
-                            <div class="h-full bg-gradient-to-r from-gold/70 to-gold progress-fill" style="width: 88%"></div>
+                            <div class="h-full bg-gradient-to-r from-gold/60 to-gold progress-fill" style="width: 88%"></div>
                         </div>
                     </div>
 
                     <div>
                         <div class="flex justify-between mb-2">
-                            <span class="text-ivory/80 font-light tracking-wide text-sm">SQL 与指标治理</span>
-                            <span class="text-gold/70 font-light">85%</span>
+                            <span class="text-ivory/70 font-light tracking-wide text-sm">SQL 与指标治理</span>
+                            <span class="text-gold/60 font-light">85%</span>
                         </div>
                         <div class="h-1.5 bg-deep-forest rounded-full overflow-hidden">
-                            <div class="h-full bg-gradient-to-r from-gold/70 to-gold progress-fill" style="width: 85%"></div>
+                            <div class="h-full bg-gradient-to-r from-gold/60 to-gold progress-fill" style="width: 85%"></div>
                         </div>
                     </div>
 
                     <div>
                         <div class="flex justify-between mb-2">
-                            <span class="text-ivory/80 font-light tracking-wide text-sm">原型与落地</span>
-                            <span class="text-gold/70 font-light">86%</span>
+                            <span class="text-ivory/70 font-light tracking-wide text-sm">原型与落地</span>
+                            <span class="text-gold/60 font-light">86%</span>
                         </div>
                         <div class="h-1.5 bg-deep-forest rounded-full overflow-hidden">
-                            <div class="h-full bg-gradient-to-r from-gold/70 to-gold progress-fill" style="width: 86%"></div>
+                            <div class="h-full bg-gradient-to-r from-gold/60 to-gold progress-fill" style="width: 86%"></div>
                         </div>
                     </div>
                 </div>
@@ -464,32 +461,44 @@
         </div>
     </section>
 
-    <!-- 教育背景 -->
+    <!-- 教育背景 - 左对齐重构 -->
     <section id="education" class="py-24 md:py-32 px-6">
-        <div class="max-w-4xl mx-auto text-center">
-            <!-- 版块标题 -->
-            <div class="mb-20">
+        <div class="max-w-4xl mx-auto">
+            <!-- 版块标题 - 左对齐 -->
+            <div class="mb-16">
                 <p class="text-gold text-xs tracking-[0.5em] mb-5 uppercase font-light">教育背景</p>
                 <h2 class="text-5xl md:text-6xl font-light text-ivory tracking-wider">学历信息</h2>
-                <div class="section-divider"></div>
+                <div class="section-divider-left"></div>
             </div>
 
-            <div class="bg-dark-card border border-gold/30 rounded-2xl p-10 md:p-14">
-                <h3 class="text-3xl font-light text-ivory mb-4 tracking-wide">天津师范大学</h3>
-                <p class="text-gold/70 text-lg mb-8 font-light">本科 · 经济学</p>
+            <!-- 内容 - 左对齐 -->
+            <div class="mb-16">
+                <div class="flex items-center gap-6 mb-8">
+                    <img src="images/leaf_1.png" alt="" class="w-16 h-16 opacity-30">
+                    <div>
+                        <h3 class="text-4xl md:text-5xl font-light text-ivory mb-3 tracking-wide">天津师范大学</h3>
+                        <p class="text-gold/60 text-xl font-light">本科 · 经济学</p>
+                    </div>
+                </div>
 
-                <!-- 横向排开的数据 -->
-                <div class="border-t border-gold/20 pt-8 mt-8 flex justify-center md:justify-around items-center flex-wrap gap-6">
-                    <div class="text-center">
+                <!-- 描述文字 - 左对齐 -->
+                <div class="text-ivory/40 space-y-4 font-light max-w-2xl mb-12">
+                    <p class="leading-relaxed">2027届本科毕业生，主修经济学专业，具备扎实的经济学理论基础和数据分析能力。</p>
+                    <p class="leading-relaxed">在校期间积极参与各类 AI 产品实践和数据分析竞赛，致力于将理论知识与实际业务场景相结合，探索 AI 在教育、企业服务等领域的应用落地。</p>
+                </div>
+
+                <!-- 横向数据 - 左对齐 -->
+                <div class="border-t border-gold/15 pt-8 flex flex-wrap gap-8 md:gap-16">
+                    <div>
                         <p class="text-ivory/50 text-sm font-light">2023.09 - 2027.06</p>
                     </div>
-                    <div class="text-center">
+                    <div>
                         <p class="text-ivory/50 text-sm font-light">2027.06 预计毕业</p>
                     </div>
-                    <div class="text-center">
+                    <div>
                         <p class="text-ivory/50 text-sm font-light">本科学历</p>
                     </div>
-                    <div class="text-center">
+                    <div>
                         <p class="text-ivory/50 text-sm font-light">经济学专业</p>
                     </div>
                 </div>
@@ -497,51 +506,65 @@
         </div>
     </section>
 
-    <!-- 核心能力 -->
+    <!-- 核心能力 - 左右分栏重构 -->
     <section class="py-24 md:py-32 px-6">
-        <div class="max-w-4xl mx-auto">
+        <div class="max-w-6xl mx-auto">
             <!-- 版块标题 -->
-            <div class="text-center mb-20">
+            <div class="mb-16">
                 <p class="text-gold text-xs tracking-[0.5em] mb-5 uppercase font-light">其他技能</p>
                 <h2 class="text-5xl md:text-6xl font-light text-ivory tracking-wider">核心能力</h2>
-                <div class="section-divider"></div>
+                <div class="section-divider-left"></div>
             </div>
 
-            <div class="bg-dark-card border border-gold/30 rounded-2xl p-10 md:p-12">
-                <ul class="grid md:grid-cols-2 gap-5">
-                    <li class="flex items-center text-ivory/60 font-light">
-                        <i class="fas fa-check text-gold/60 mr-4 text-sm"></i>
-                        <span>Python 数据分析与建模</span>
-                    </li>
-                    <li class="flex items-center text-ivory/60 font-light">
-                        <i class="fas fa-check text-gold/60 mr-4 text-sm"></i>
-                        <span>SQL 数据查询与指标治理</span>
-                    </li>
-                    <li class="flex items-center text-ivory/60 font-light">
-                        <i class="fas fa-check text-gold/60 mr-4 text-sm"></i>
-                        <span>AI 产品架构设计</span>
-                    </li>
-                    <li class="flex items-center text-ivory/60 font-light">
-                        <i class="fas fa-check text-gold/60 mr-4 text-sm"></i>
-                        <span>Prompt Engineering 优化</span>
-                    </li>
-                    <li class="flex items-center text-ivory/60 font-light">
-                        <i class="fas fa-check text-gold/60 mr-4 text-sm"></i>
-                        <span>Figma 原型设计</span>
-                    </li>
-                    <li class="flex items-center text-ivory/60 font-light">
-                        <i class="fas fa-check text-gold/60 mr-4 text-sm"></i>
-                        <span>DataEase 数据可视化</span>
-                    </li>
-                    <li class="flex items-center text-ivory/60 font-light">
-                        <i class="fas fa-check text-gold/60 mr-4 text-sm"></i>
-                        <span>Agent 工作流设计</span>
-                    </li>
-                    <li class="flex items-center text-ivory/60 font-light">
-                        <i class="fas fa-check text-gold/60 mr-4 text-sm"></i>
-                        <span>产品需求分析与文档撰写</span>
-                    </li>
-                </ul>
+            <!-- 左右两列布局 -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+                <!-- 左列：大图 -->
+                <div class="relative">
+                    <img src="images/skills_workspace.jpg" alt="技能展示" class="w-full h-[600px] object-cover opacity-90" style="box-shadow: 0 0 40px rgba(212, 175, 55, 0.08);">
+                </div>
+
+                <!-- 右列：技能列表 -->
+                <div class="space-y-12">
+                    <div>
+                        <h3 class="text-2xl font-light text-ivory mb-8 tracking-wide">技能与自我评价</h3>
+                        <div class="section-divider-left"></div>
+                    </div>
+
+                    <ul class="grid grid-cols-2 gap-6">
+                        <li class="flex items-center text-ivory/50 font-light">
+                            <i class="fas fa-check text-gold/50 mr-4 text-sm"></i>
+                            <span>Python 数据分析与建模</span>
+                        </li>
+                        <li class="flex items-center text-ivory/50 font-light">
+                            <i class="fas fa-check text-gold/50 mr-4 text-sm"></i>
+                            <span>SQL 数据查询与指标治理</span>
+                        </li>
+                        <li class="flex items-center text-ivory/50 font-light">
+                            <i class="fas fa-check text-gold/50 mr-4 text-sm"></i>
+                            <span>AI 产品架构设计</span>
+                        </li>
+                        <li class="flex items-center text-ivory/50 font-light">
+                            <i class="fas fa-check text-gold/50 mr-4 text-sm"></i>
+                            <span>Prompt Engineering 优化</span>
+                        </li>
+                        <li class="flex items-center text-ivory/50 font-light">
+                            <i class="fas fa-check text-gold/50 mr-4 text-sm"></i>
+                            <span>Figma 原型设计</span>
+                        </li>
+                        <li class="flex items-center text-ivory/50 font-light">
+                            <i class="fas fa-check text-gold/50 mr-4 text-sm"></i>
+                            <span>DataEase 数据可视化</span>
+                        </li>
+                        <li class="flex items-center text-ivory/50 font-light">
+                            <i class="fas fa-check text-gold/50 mr-4 text-sm"></i>
+                            <span>Agent 工作流设计</span>
+                        </li>
+                        <li class="flex items-center text-ivory/50 font-light">
+                            <i class="fas fa-check text-gold/50 mr-4 text-sm"></i>
+                            <span>产品需求分析与文档撰写</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
