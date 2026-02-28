@@ -171,6 +171,13 @@
         /* 动画初始状态 */
         .hero-element {
             opacity: 0;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        /* 激活状态 - 元素可见 */
+        .hero-element.is-visible {
+            opacity: 1;
+            transform: translate(0, 0);
         }
 
         .reveal-element {
@@ -657,6 +664,20 @@
     <script>
         // 注册 ScrollTrigger 插件
         gsap.registerPlugin(ScrollTrigger);
+
+        // ===== Hero 元素激活动画（CSS Transition + Stagger） =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const heroElements = document.querySelectorAll('.hero-element');
+
+            heroElements.forEach((element, index) => {
+                // 计算每个元素的延迟时间：第一个 100ms，第二个 200ms，以此类推
+                const delay = (index + 1) * 100;
+
+                setTimeout(() => {
+                    element.classList.add('is-visible');
+                }, delay);
+            });
+        });
 
         // 首屏加载动画
         window.addEventListener('load', () => {
