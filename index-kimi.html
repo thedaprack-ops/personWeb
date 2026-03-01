@@ -315,6 +315,89 @@
             opacity: 0;
             transform: translateY(30px);
         }
+
+        /* 项目卡片 Tab 样式 - 一起教育 */
+        .project-tab-1 {
+            position: relative;
+            color: #64748b;
+            border-bottom: 3px solid transparent;
+        }
+
+        .project-tab-1:hover {
+            color: #6366F1;
+            background: rgba(99, 102, 241, 0.05);
+        }
+
+        .project-tab-1.active {
+            color: #6366F1;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+            border-bottom-color: #6366F1;
+        }
+
+        .dark .project-tab-1 {
+            color: #94a3b8;
+        }
+
+        .dark .project-tab-1:hover {
+            color: #818cf8;
+        }
+
+        .dark .project-tab-1.active {
+            color: #818cf8;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
+            border-bottom-color: #818cf8;
+        }
+
+        /* 项目内容切换 */
+        .project-content-1 {
+            display: none;
+        }
+
+        .project-content-1.active {
+            display: block;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Modal 样式 */
+        .modal-content {
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95) translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* Modal 滚动条美化 */
+        .modal-content .overflow-y-auto::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .modal-content .overflow-y-auto::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .modal-content .overflow-y-auto::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #6366F1, #EC4899);
+            border-radius: 3px;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 antialiased overflow-x-hidden transition-colors duration-300">
@@ -471,42 +554,330 @@
             <div class="reveal-element">
                 <!-- 一起教育 -->
                 <div id="together-detail" class="exp-content">
-                    <div class="glass-card rounded-3xl p-8 md:p-12">
-                        <div class="grid md:grid-cols-2 gap-8 items-center">
-                            <div class="relative">
-                                <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-                                    <img src="images/education_scene.jpg" alt="一起教育AI产品场景" class="w-full h-full object-cover" loading="lazy">
-                                </div>
-                                <div class="absolute -bottom-4 -right-4 bg-white rounded-2xl p-4 shadow-xl">
-                                    <div class="text-3xl font-bold text-gradient">96%</div>
-                                    <div class="text-xs text-slate-500">AI识别准确率 🎯</div>
+                    <div class="glass-card rounded-3xl overflow-hidden">
+                        <!-- 项目Tab切换栏 -->
+                        <div class="flex border-b border-slate-200/50 dark:border-slate-700/50">
+                            <button class="project-tab-1 flex-1 px-4 py-3 text-center font-medium transition-all duration-300 active" data-tab="together-project-1">
+                                <span class="text-sm">视频AI·语音克隆</span>
+                            </button>
+                            <button class="project-tab-1 flex-1 px-4 py-3 text-center font-medium transition-all duration-300 text-slate-400 hover:text-slate-600 dark:text-slate-500" data-tab="together-project-2">
+                                <span class="text-sm">项目2</span>
+                            </button>
+                            <button class="project-tab-1 flex-1 px-4 py-3 text-center font-medium transition-all duration-300 text-slate-400 hover:text-slate-600 dark:text-slate-500" data-tab="together-project-3">
+                                <span class="text-sm">项目3</span>
+                            </button>
+                            <button class="project-tab-1 flex-1 px-4 py-3 text-center font-medium transition-all duration-300 text-slate-400 hover:text-slate-600 dark:text-slate-500" data-tab="together-project-4">
+                                <span class="text-sm">项目4</span>
+                            </button>
+                        </div>
+
+                        <!-- 项目卡片内容 -->
+                        <div class="p-6 md:p-8">
+                            <!-- 项目1 -->
+                            <div class="project-content-1 active" data-content="together-project-1">
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <!-- 左侧图片 -->
+                                    <div class="relative">
+                                        <div class="aspect-[4/3] rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-800 overflow-hidden">
+                                            <div class="w-full h-full flex items-center justify-center">
+                                                <i class="fas fa-video text-6xl text-slate-300 dark:text-slate-600"></i>
+                                            </div>
+                                        </div>
+                                        <!-- 左下角数据角标 -->
+                                        <div class="absolute bottom-4 left-4 bg-gradient-to-r from-candy-blue to-candy-purple text-white rounded-xl px-4 py-3 shadow-lg">
+                                            <div class="text-2xl font-bold">60%+</div>
+                                            <div class="text-xs opacity-90">成本降低</div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 右侧项目信息 -->
+                                    <div class="flex flex-col">
+                                        <h3 class="font-display text-xl md:text-2xl font-bold text-slate-800 dark:text-white mb-2">
+                                            个性化习题讲解视频生成系统（AI语音克隆）
+                                        </h3>
+                                        <p class="text-slate-500 dark:text-slate-400 flex items-center gap-2 mb-6">
+                                            <i class="fas fa-map-marker-alt text-candy-purple"></i>
+                                            北京 · 2024
+                                        </p>
+
+                                        <!-- 三条核心亮点 -->
+                                        <div class="space-y-4 mb-6 flex-1">
+                                            <div class="flex items-start gap-3">
+                                                <div class="w-8 h-8 rounded-full bg-gradient-to-r from-candy-blue to-candy-purple flex items-center justify-center flex-shrink-0 mt-0.5">
+                                                    <span class="text-white text-sm font-bold">1</span>
+                                                </div>
+                                                <div class="flex-1">
+                                                    <p class="text-slate-700 dark:text-slate-300">
+                                                        负责<span class="font-semibold">AI视频讲解从0到1产品落地</span>，单条语音合成成本降低 <span class="font-bold text-candy-purple">60%+</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start gap-3">
+                                                <div class="w-8 h-8 rounded-full bg-gradient-to-r from-candy-purple to-candy-pink flex items-center justify-center flex-shrink-0 mt-0.5">
+                                                    <span class="text-white text-sm font-bold">2</span>
+                                                </div>
+                                                <div class="flex-1">
+                                                    <p class="text-slate-700 dark:text-slate-300">
+                                                        <span class="font-semibold">动态语速调节算法</span>将音画同步误差控制在 <span class="font-bold text-candy-pink">±50ms</span>，播放完成率提升 <span class="font-bold text-candy-pink">25个百分点</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start gap-3">
+                                                <div class="w-8 h-8 rounded-full bg-gradient-to-r from-candy-pink to-candy-orange flex items-center justify-center flex-shrink-0 mt-0.5">
+                                                    <span class="text-white text-sm font-bold">3</span>
+                                                </div>
+                                                <div class="flex-1">
+                                                    <p class="text-slate-700 dark:text-slate-300">
+                                                        产品已支撑日均 <span class="font-bold text-candy-orange">5000+</span> 习题讲解视频生成
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- 底部标签和按钮 -->
+                                        <div class="flex items-center justify-between">
+                                            <div class="flex flex-wrap gap-2">
+                                                <span class="candy-tag bg-blue-100 text-blue-600">语音克隆</span>
+                                                <span class="candy-tag bg-purple-100 text-purple-600">Pipeline设计</span>
+                                                <span class="candy-tag bg-orange-100 text-orange-600">效果优化</span>
+                                            </div>
+                                            <button class="modal-trigger-1 px-4 py-2.5 bg-gradient-to-r from-candy-blue to-candy-purple text-white rounded-xl font-medium hover:shadow-lg hover:shadow-indigo-500/30 transition-all flex items-center gap-2 text-sm" data-modal="together-modal-1">
+                                                <span>查看详情</span>
+                                                <i class="fas fa-arrow-right text-xs"></i>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="space-y-6">
-                                <div>
-                                    <h3 class="font-display text-2xl font-bold text-slate-800 dark:text-white mb-2">视频 AI 语音克隆产品</h3>
-                                    <p class="text-slate-500 dark:text-slate-400 flex items-center gap-2">
-                                        <i class="fas fa-map-marker-alt text-candy-pink"></i> 北京 · 2025.07 - 2025.12
-                                    </p>
+
+                            <!-- 项目2 -->
+                            <div class="project-content-1 hidden" data-content="together-project-2">
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <!-- 左侧图片 -->
+                                    <div class="relative">
+                                        <div class="aspect-[4/3] rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-800 overflow-hidden">
+                                            <div class="w-full h-full flex items-center justify-center">
+                                                <i class="fas fa-robot text-6xl text-slate-300 dark:text-slate-600"></i>
+                                            </div>
+                                        </div>
+                                        <!-- 左下角数据角标 -->
+                                        <div class="absolute bottom-4 left-4 bg-gradient-to-r from-candy-purple to-candy-pink text-white rounded-xl px-4 py-3 shadow-lg">
+                                            <div class="text-2xl font-bold">70%+</div>
+                                            <div class="text-xs opacity-90">成本降低</div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 右侧项目信息 -->
+                                    <div class="flex flex-col">
+                                        <h3 class="font-display text-xl md:text-2xl font-bold text-slate-800 dark:text-white mb-2">
+                                            AI个性化学情报告Agent（10万级规模交付）
+                                        </h3>
+                                        <p class="text-slate-500 dark:text-slate-400 flex items-center gap-2 mb-6">
+                                            <i class="fas fa-map-marker-alt text-candy-purple"></i>
+                                            北京 · 2024
+                                        </p>
+
+                                        <!-- 三条核心亮点 -->
+                                        <div class="space-y-4 mb-6 flex-1">
+                                            <div class="flex items-start gap-3">
+                                                <div class="w-8 h-8 rounded-full bg-gradient-to-r from-candy-blue to-candy-purple flex items-center justify-center flex-shrink-0 mt-0.5">
+                                                    <span class="text-white text-sm font-bold">1</span>
+                                                </div>
+                                                <div class="flex-1">
+                                                    <p class="text-slate-700 dark:text-slate-300">
+                                                        主导<span class="font-semibold">LLM迁移选型</span>，单次调用成本降低 <span class="font-bold text-candy-purple">70%</span>，支撑峰值 <span class="font-bold text-candy-purple">5000 QPS</span> 稳定输出
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start gap-3">
+                                                <div class="w-8 h-8 rounded-full bg-gradient-to-r from-candy-purple to-candy-pink flex items-center justify-center flex-shrink-0 mt-0.5">
+                                                    <span class="text-white text-sm font-bold">2</span>
+                                                </div>
+                                                <div class="flex-1">
+                                                    <p class="text-slate-700 dark:text-slate-300">
+                                                        设计<span class="font-semibold">多Agent协作工作流</span>（诊断→分析→建议），系统可用性达 <span class="font-bold text-candy-pink">99.5%</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start gap-3">
+                                                <div class="w-8 h-8 rounded-full bg-gradient-to-r from-candy-pink to-candy-orange flex items-center justify-center flex-shrink-0 mt-0.5">
+                                                    <span class="text-white text-sm font-bold">3</span>
+                                                </div>
+                                                <div class="flex-1">
+                                                    <p class="text-slate-700 dark:text-slate-300">
+                                                        报告生成从人工 <span class="font-bold text-candy-orange">3天</span> 缩短至实时，覆盖 <span class="font-bold text-candy-orange">10万+</span> 学生，家长满意度 <span class="font-bold text-candy-orange">4.6/5</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- 底部标签和按钮 -->
+                                        <div class="flex items-center justify-between">
+                                            <div class="flex flex-wrap gap-2">
+                                                <span class="candy-tag bg-purple-100 text-purple-600">Agent架构</span>
+                                                <span class="candy-tag bg-blue-100 text-blue-600">模型选型</span>
+                                                <span class="candy-tag bg-pink-100 text-pink-600">成本优化</span>
+                                            </div>
+                                            <button class="modal-trigger-1 px-4 py-2.5 bg-gradient-to-r from-candy-blue to-candy-purple text-white rounded-xl font-medium hover:shadow-lg hover:shadow-indigo-500/30 transition-all flex items-center gap-2 text-sm" data-modal="together-modal-2">
+                                                <span>查看详情</span>
+                                                <i class="fas fa-arrow-right text-xs"></i>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
-                                <ul class="space-y-4">
-                                    <li class="flex items-start gap-3">
-                                        <span class="w-6 h-6 rounded-full bg-gradient-to-r from-candy-blue to-candy-purple flex items-center justify-center text-white text-xs mt-0.5">✓</span>
-                                        <span class="text-slate-600 dark:text-slate-300">负责视频 AI 语音克隆产品，用户满意度 <strong class="text-candy-purple">92%</strong> ⭐</span>
-                                    </li>
-                                    <li class="flex items-start gap-3">
-                                        <span class="w-6 h-6 rounded-full bg-gradient-to-r from-candy-purple to-candy-pink flex items-center justify-center text-white text-xs mt-0.5">✓</span>
-                                        <span class="text-slate-600 dark:text-slate-300">设计学情报告 Agent，覆盖 <strong class="text-candy-pink">50万+</strong> 学生 👨‍🎓</span>
-                                    </li>
-                                    <li class="flex items-start gap-3">
-                                        <span class="w-6 h-6 rounded-full bg-gradient-to-r from-candy-pink to-candy-orange flex items-center justify-center text-white text-xs mt-0.5">✓</span>
-                                        <span class="text-slate-600 dark:text-slate-300">视觉批改产品迭代，AI 识别准确率 <strong class="text-candy-orange">96%</strong> 🎯</span>
-                                    </li>
-                                </ul>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="candy-tag bg-blue-100 text-blue-600">🎙️ 语音克隆</span>
-                                    <span class="candy-tag bg-purple-100 text-purple-600">🤖 Agent 设计</span>
-                                    <span class="candy-tag bg-orange-100 text-orange-600">👁️ 视觉批改</span>
+                            </div>
+
+                            <!-- 项目3 -->
+                            <div class="project-content-1 hidden" data-content="together-project-3">
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <!-- 左侧图片 -->
+                                    <div class="relative">
+                                        <div class="aspect-[4/3] rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-800 overflow-hidden">
+                                            <div class="w-full h-full flex items-center justify-center">
+                                                <i class="fas fa-eye text-6xl text-slate-300 dark:text-slate-600"></i>
+                                            </div>
+                                        </div>
+                                        <!-- 左下角数据角标 -->
+                                        <div class="absolute bottom-4 left-4 bg-gradient-to-r from-candy-pink to-candy-orange text-white rounded-xl px-4 py-3 shadow-lg">
+                                            <div class="text-2xl font-bold">91.2%</div>
+                                            <div class="text-xs opacity-90">批改准确率</div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 右侧项目信息 -->
+                                    <div class="flex flex-col">
+                                        <h3 class="font-display text-xl md:text-2xl font-bold text-slate-800 dark:text-white mb-2">
+                                            AI视觉批改产品迭代（效果优化专项）
+                                        </h3>
+                                        <p class="text-slate-500 dark:text-slate-400 flex items-center gap-2 mb-6">
+                                            <i class="fas fa-map-marker-alt text-candy-purple"></i>
+                                            北京 · 2024
+                                        </p>
+
+                                        <!-- 三条核心亮点 -->
+                                        <div class="space-y-4 mb-6 flex-1">
+                                            <div class="flex items-start gap-3">
+                                                <div class="w-8 h-8 rounded-full bg-gradient-to-r from-candy-blue to-candy-purple flex items-center justify-center flex-shrink-0 mt-0.5">
+                                                    <span class="text-white text-sm font-bold">1</span>
+                                                </div>
+                                                <div class="flex-1">
+                                                    <p class="text-slate-700 dark:text-slate-300">
+                                                        构建<span class="font-semibold">466例复杂样本测试集</span>，精准定位召回率瓶颈（<span class="font-bold text-candy-purple">74.8% → 85%</span>）
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start gap-3">
+                                                <div class="w-8 h-8 rounded-full bg-gradient-to-r from-candy-purple to-candy-pink flex items-center justify-center flex-shrink-0 mt-0.5">
+                                                    <span class="text-white text-sm font-bold">2</span>
+                                                </div>
+                                                <div class="flex-1">
+                                                    <p class="text-slate-700 dark:text-slate-300">
+                                                        设计<span class="font-semibold">Prompt工程+数据治理+混合模式</span>一揽子方案，整体准确率提升至 <span class="font-bold text-candy-pink">91.2%</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start gap-3">
+                                                <div class="w-8 h-8 rounded-full bg-gradient-to-r from-candy-pink to-candy-orange flex items-center justify-center flex-shrink-0 mt-0.5">
+                                                    <span class="text-white text-sm font-bold">3</span>
+                                                </div>
+                                                <div class="flex-1">
+                                                    <p class="text-slate-700 dark:text-slate-300">
+                                                        召回率提升至 <span class="font-bold text-candy-orange">88.5%</span>，用户投诉率下降 <span class="font-bold text-candy-orange">40%</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- 底部标签和按钮 -->
+                                        <div class="flex items-center justify-between">
+                                            <div class="flex flex-wrap gap-2">
+                                                <span class="candy-tag bg-indigo-100 text-indigo-600">Prompt工程</span>
+                                                <span class="candy-tag bg-purple-100 text-purple-600">数据飞轮</span>
+                                                <span class="candy-tag bg-orange-100 text-orange-600">效果评估</span>
+                                            </div>
+                                            <button class="modal-trigger-1 px-4 py-2.5 bg-gradient-to-r from-candy-blue to-candy-purple text-white rounded-xl font-medium hover:shadow-lg hover:shadow-indigo-500/30 transition-all flex items-center gap-2 text-sm" data-modal="together-modal-3">
+                                                <span>查看详情</span>
+                                                <i class="fas fa-arrow-right text-xs"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 项目4 -->
+                            <div class="project-content-1 hidden" data-content="together-project-4">
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <!-- 左侧图片 -->
+                                    <div class="relative">
+                                        <div class="aspect-[4/3] rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-800 overflow-hidden">
+                                            <div class="w-full h-full flex items-center justify-center">
+                                                <i class="fas fa-chart-bar text-6xl text-slate-300 dark:text-slate-600"></i>
+                                            </div>
+                                        </div>
+                                        <!-- 左下角数据角标 -->
+                                        <div class="absolute bottom-4 left-4 bg-gradient-to-r from-candy-orange to-candy-pink text-white rounded-xl px-4 py-3 shadow-lg">
+                                            <div class="text-2xl font-bold">200+</div>
+                                            <div class="text-xs opacity-90">日活用户</div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 右侧项目信息 -->
+                                    <div class="flex flex-col">
+                                        <h3 class="font-display text-xl md:text-2xl font-bold text-slate-800 dark:text-white mb-2">
+                                            DataEase数据看板体系（数据产品建设）
+                                        </h3>
+                                        <p class="text-slate-500 dark:text-slate-400 flex items-center gap-2 mb-6">
+                                            <i class="fas fa-map-marker-alt text-candy-purple"></i>
+                                            北京 · 2024
+                                        </p>
+
+                                        <!-- 三条核心亮点 -->
+                                        <div class="space-y-4 mb-6 flex-1">
+                                            <div class="flex items-start gap-3">
+                                                <div class="w-8 h-8 rounded-full bg-gradient-to-r from-candy-blue to-candy-purple flex items-center justify-center flex-shrink-0 mt-0.5">
+                                                    <span class="text-white text-sm font-bold">1</span>
+                                                </div>
+                                                <div class="flex-1">
+                                                    <p class="text-slate-700 dark:text-slate-300">
+                                                        主导<span class="font-semibold">5轮跨部门workshop</span>，统一 <span class="font-bold text-candy-purple">12个</span> 核心业务指标口径，消除数据歧义
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start gap-3">
+                                                <div class="w-8 h-8 rounded-full bg-gradient-to-r from-candy-purple to-candy-pink flex items-center justify-center flex-shrink-0 mt-0.5">
+                                                    <span class="text-white text-sm font-bold">2</span>
+                                                </div>
+                                                <div class="flex-1">
+                                                    <p class="text-slate-700 dark:text-slate-300">
+                                                        独立完成<span class="font-bold text-candy-pink">2个</span>核心看板上线，覆盖 <span class="font-bold text-candy-pink">200+</span> 业务人员日常使用
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start gap-3">
+                                                <div class="w-8 h-8 rounded-full bg-gradient-to-r from-candy-pink to-candy-orange flex items-center justify-center flex-shrink-0 mt-0.5">
+                                                    <span class="text-white text-sm font-bold">3</span>
+                                                </div>
+                                                <div class="flex-1">
+                                                    <p class="text-slate-700 dark:text-slate-300">
+                                                        核心看板周活跃率 <span class="font-bold text-candy-orange">&gt;80%</span>，管理层数据准备时间从 <span class="font-bold text-candy-orange">4小时</span> 缩短至实时
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- 底部标签和按钮 -->
+                                        <div class="flex items-center justify-between">
+                                            <div class="flex flex-wrap gap-2">
+                                                <span class="candy-tag bg-blue-100 text-blue-600">数据治理</span>
+                                                <span class="candy-tag bg-purple-100 text-purple-600">指标体系</span>
+                                                <span class="candy-tag bg-pink-100 text-pink-600">跨部门协同</span>
+                                            </div>
+                                            <button class="modal-trigger-1 px-4 py-2.5 bg-gradient-to-r from-candy-blue to-candy-purple text-white rounded-xl font-medium hover:shadow-lg hover:shadow-indigo-500/30 transition-all flex items-center gap-2 text-sm" data-modal="together-modal-4">
+                                                <span>查看详情</span>
+                                                <i class="fas fa-arrow-right text-xs"></i>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -559,6 +930,278 @@
             </div>
         </div>
     </section>
+
+    <!-- Modal 弹窗 - 一起教育项目1 -->
+    <div id="together-modal-1" class="fixed inset-0 z-50 hidden">
+        <!-- 半透明遮罩 -->
+        <div class="modal-overlay absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+        <!-- 弹窗内容 -->
+        <div class="modal-wrapper absolute inset-0 flex items-center justify-center p-4">
+            <div class="modal-content bg-white dark:bg-slate-800 rounded-3xl shadow-2xl w-full max-w-3xl max-h-[85vh] overflow-hidden relative">
+                <!-- 关闭按钮 -->
+                <button class="modal-close absolute top-4 right-4 w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors z-10">
+                    <i class="fas fa-times"></i>
+                </button>
+
+                <!-- 滚动内容区 -->
+                <div class="overflow-y-auto max-h-[85vh] p-8">
+                    <h3 class="font-display text-2xl md:text-3xl font-bold text-slate-800 dark:text-white mb-6">
+                        个性化习题讲解视频生成系统（AI语音克隆）
+                    </h3>
+
+                    <div class="space-y-6">
+                        <!-- 项目背景 -->
+                        <div>
+                            <h4 class="text-lg font-semibold text-candy-purple mb-3 flex items-center gap-2">
+                                <i class="fas fa-lightbulb"></i>
+                                项目背景
+                            </h4>
+                            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                                0-1建设，替代人工录课流程，将单题讲解视频制作成本从人均30分钟降低至实时生成
+                            </p>
+                        </div>
+
+                        <!-- 核心工作 -->
+                        <div>
+                            <h4 class="text-lg font-semibold text-candy-blue mb-3 flex items-center gap-2">
+                                <i class="fas fa-cogs"></i>
+                                核心工作
+                            </h4>
+                            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                                建立ASR→LLM→TTS三阶Pipeline架构，对Minimax、ElevenLabs等5+方案进行成本效益量化评估，确立Whisper+LLM+Minimax核心栈，MOS 4.2/5；设计动态语速调节算法将同步误差控制在±50ms
+                            </p>
+                        </div>
+
+                        <!-- 量化成果 -->
+                        <div>
+                            <h4 class="text-lg font-semibold text-candy-pink mb-3 flex items-center gap-2">
+                                <i class="fas fa-chart-line"></i>
+                                量化成果
+                            </h4>
+                            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                                支撑日均5000+视频生成，覆盖数学物理等4个学科，播放完成率提升25个百分点
+                            </p>
+                        </div>
+
+                        <!-- 方法论 -->
+                        <div>
+                            <h4 class="text-lg font-semibold text-candy-orange mb-3 flex items-center gap-2">
+                                <i class="fas fa-book"></i>
+                                方法论
+                            </h4>
+                            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                                沉淀《AI语音合成工程化SOP》，已向团队输出培训2场，成为公司AI视频生产标准流程
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 弹窗 - 一起教育项目2 -->
+    <div id="together-modal-2" class="fixed inset-0 z-50 hidden">
+        <!-- 半透明遮罩 -->
+        <div class="modal-overlay absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+        <!-- 弹窗内容 -->
+        <div class="modal-wrapper absolute inset-0 flex items-center justify-center p-4">
+            <div class="modal-content bg-white dark:bg-slate-800 rounded-3xl shadow-2xl w-full max-w-3xl max-h-[85vh] overflow-hidden relative">
+                <!-- 关闭按钮 -->
+                <button class="modal-close absolute top-4 right-4 w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors z-10">
+                    <i class="fas fa-times"></i>
+                </button>
+
+                <!-- 滚动内容区 -->
+                <div class="overflow-y-auto max-h-[85vh] p-8">
+                    <h3 class="font-display text-2xl md:text-3xl font-bold text-slate-800 dark:text-white mb-6">
+                        AI个性化学情报告Agent（10万级规模交付）
+                    </h3>
+
+                    <div class="space-y-6">
+                        <!-- 项目背景 -->
+                        <div>
+                            <h4 class="text-lg font-semibold text-candy-purple mb-3 flex items-center gap-2">
+                                <i class="fas fa-lightbulb"></i>
+                                项目背景
+                            </h4>
+                            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                                从0-1搭建学情诊断Agent系统，解决传统报告人工撰写周期长、无法覆盖全量用户的瓶颈，实现"千人千面报告自动生成"
+                            </p>
+                        </div>
+
+                        <!-- 核心工作 -->
+                        <div>
+                            <h4 class="text-lg font-semibold text-candy-blue mb-3 flex items-center gap-2">
+                                <i class="fas fa-cogs"></i>
+                                核心工作
+                            </h4>
+                            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                                识别三方模型TPM限流（1000次/分钟）为系统瓶颈，主导Claude 3.5到Doubao-pro的迁移选型；建立"效果-成本-稳定性"三维评估模型，Doubao方案ROUGE-L得分0.82 vs 0.85，成本降低70%；设计诊断Agent→分析Agent→建议Agent多Agent协作工作流，引入限流熔断、指数退避重试机制
+                            </p>
+                        </div>
+
+                        <!-- 量化成果 -->
+                        <div>
+                            <h4 class="text-lg font-semibold text-candy-pink mb-3 flex items-center gap-2">
+                                <i class="fas fa-chart-line"></i>
+                                量化成果
+                            </h4>
+                            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                                支撑峰值5000 QPS稳定输出，系统可用性99.5%，覆盖10万+学生，家长CSAT 4.6/5，关联续报率提升8%
+                            </p>
+                        </div>
+
+                        <!-- 方法论 -->
+                        <div>
+                            <h4 class="text-lg font-semibold text-candy-orange mb-3 flex items-center gap-2">
+                                <i class="fas fa-book"></i>
+                                方法论
+                            </h4>
+                            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                                形成《大模型选型决策框架》，沉淀Prompt版本管理规范（Git版本控制+A/B Test机制），已在AI中台团队推广为标准流程
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 弹窗 - 一起教育项目3 -->
+    <div id="together-modal-3" class="fixed inset-0 z-50 hidden">
+        <!-- 半透明遮罩 -->
+        <div class="modal-overlay absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+        <!-- 弹窗内容 -->
+        <div class="modal-wrapper absolute inset-0 flex items-center justify-center p-4">
+            <div class="modal-content bg-white dark:bg-slate-800 rounded-3xl shadow-2xl w-full max-w-3xl max-h-[85vh] overflow-hidden relative">
+                <!-- 关闭按钮 -->
+                <button class="modal-close absolute top-4 right-4 w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors z-10">
+                    <i class="fas fa-times"></i>
+                </button>
+
+                <!-- 滚动内容区 -->
+                <div class="overflow-y-auto max-h-[85vh] p-8">
+                    <h3 class="font-display text-2xl md:text-3xl font-bold text-slate-800 dark:text-white mb-6">
+                        AI视觉批改产品迭代（效果优化专项）
+                    </h3>
+
+                    <div class="space-y-6">
+                        <!-- 项目背景 -->
+                        <div>
+                            <h4 class="text-lg font-semibold text-candy-purple mb-3 flex items-center gap-2">
+                                <i class="fas fa-lightbulb"></i>
+                                项目背景
+                            </h4>
+                            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                                针对K12数学填空题批改场景，解决"人有但不好用"的行业通病，通过效果优化建立技术护城河，批改准确率直接影响用户信任度与使用粘性
+                            </p>
+                        </div>
+
+                        <!-- 核心工作 -->
+                        <div>
+                            <h4 class="text-lg font-semibold text-candy-blue mb-3 flex items-center gap-2">
+                                <i class="fas fa-cogs"></i>
+                                核心工作
+                            </h4>
+                            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                                主导构建466例复杂样本测试集（含手写体潦草、公式倾斜、拍照反光等边缘场景），建立精确率-召回率-误杀率三维评估体系；Prompt工程层设计Few-shot CoT提示词模板（先识别手写体→再理解数学语义→最后判断对错）；数据治理层推动建立"录题-标注-质检"标准化流程，统一LaTeX符号规范；产品策略层设计"机器批改+人工复核"混合模式，对置信度&lt;0.8样本自动流转教研审核，形成数据飞轮闭环
+                            </p>
+                        </div>
+
+                        <!-- 量化成果 -->
+                        <div>
+                            <h4 class="text-lg font-semibold text-candy-pink mb-3 flex items-center gap-2">
+                                <i class="fas fa-chart-line"></i>
+                                量化成果
+                            </h4>
+                            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                                整体准确率从79.4%提升至91.2%，召回率从74.8%提升至88.5%，用户投诉率下降40%
+                            </p>
+                        </div>
+
+                        <!-- 方法论 -->
+                        <div>
+                            <h4 class="text-lg font-semibold text-candy-orange mb-3 flex items-center gap-2">
+                                <i class="fas fa-book"></i>
+                                方法论
+                            </h4>
+                            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                                沉淀《AI视觉模型优化Playbook》，形成"badcase收集→根因归类→针对性优化→A/B验证"四步闭环，建立《AI批改badcase分类标签体系》（6大类23小类），成为视觉算法团队标注规范
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 弹窗 - 一起教育项目4 -->
+    <div id="together-modal-4" class="fixed inset-0 z-50 hidden">
+        <!-- 半透明遮罩 -->
+        <div class="modal-overlay absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+        <!-- 弹窗内容 -->
+        <div class="modal-wrapper absolute inset-0 flex items-center justify-center p-4">
+            <div class="modal-content bg-white dark:bg-slate-800 rounded-3xl shadow-2xl w-full max-w-3xl max-h-[85vh] overflow-hidden relative">
+                <!-- 关闭按钮 -->
+                <button class="modal-close absolute top-4 right-4 w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors z-10">
+                    <i class="fas fa-times"></i>
+                </button>
+
+                <!-- 滚动内容区 -->
+                <div class="overflow-y-auto max-h-[85vh] p-8">
+                    <h3 class="font-display text-2xl md:text-3xl font-bold text-slate-800 dark:text-white mb-6">
+                        DataEase数据看板体系（数据产品建设）
+                    </h3>
+
+                    <div class="space-y-6">
+                        <!-- 项目背景 -->
+                        <div>
+                            <h4 class="text-lg font-semibold text-candy-purple mb-3 flex items-center gap-2">
+                                <i class="fas fa-lightbulb"></i>
+                                项目背景
+                            </h4>
+                            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                                解决业务方"数据口径不一致、决策依据混乱"痛点，构建统一经营分析基础设施，作为数据中台与业务部门的桥梁产品，服务销售、教研、管理层等多角色
+                            </p>
+                        </div>
+
+                        <!-- 核心工作 -->
+                        <div>
+                            <h4 class="text-lg font-semibold text-candy-blue mb-3 flex items-center gap-2">
+                                <i class="fas fa-cogs"></i>
+                                核心工作
+                            </h4>
+                            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                                协同数据团队与业务方，通过5轮跨部门workshop澄清并统一续报率、续班率、退费率等12个核心指标的业务口径与计算逻辑；主导设计分层看板体系（高管驾驶舱→业务运营看板→一线执行看板）；独立完成销售转化漏斗、教学服务质量监控2个核心看板的配置与上线；建立看板使用数据监控
+                            </p>
+                        </div>
+
+                        <!-- 量化成果 -->
+                        <div>
+                            <h4 class="text-lg font-semibold text-candy-pink mb-3 flex items-center gap-2">
+                                <i class="fas fa-chart-line"></i>
+                                量化成果
+                            </h4>
+                            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                                覆盖200+业务人员日常使用，核心看板周活跃率&gt;80%，管理层周会数据准备时间从4小时缩短至实时，决策效率提升50%
+                            </p>
+                        </div>
+
+                        <!-- 方法论 -->
+                        <div>
+                            <h4 class="text-lg font-semibold text-candy-orange mb-3 flex items-center gap-2">
+                                <i class="fas fa-book"></i>
+                                方法论
+                            </h4>
+                            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                                沉淀《教育业务指标字典v2.0》，标准化50+核心指标定义，建立《BI看板建设SOP》（需求收集→原型设计→数据验证→上线培训→迭代优化），推动建立数据中台与业务方双周沟通机制
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- 重点项目 -->
     <section id="projects" class="py-24 bg-white dark:bg-slate-800/50 relative">
@@ -1107,6 +1750,70 @@
                         scrollTo: { y: target, offsetY: 50 },
                         ease: 'power3.inOut'
                     });
+                }
+            });
+        });
+
+        // ==================== 项目卡片 Tab 切换 - 一起教育 ====================
+        const projectTabs1 = document.querySelectorAll('.project-tab-1');
+        const projectContents1 = document.querySelectorAll('.project-content-1');
+
+        projectTabs1.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetTab = tab.dataset.tab;
+
+                // 移除所有active状态
+                projectTabs1.forEach(t => t.classList.remove('active'));
+                projectContents1.forEach(c => c.classList.remove('active'));
+
+                // 添加active状态
+                tab.classList.add('active');
+                document.querySelector(`[data-content="${targetTab}"]`).classList.add('active');
+            });
+        });
+
+        // ==================== Modal 弹窗 ====================
+        const modalTriggers1 = document.querySelectorAll('.modal-trigger-1');
+        const modals1 = document.querySelectorAll('[id^="together-modal-"]');
+
+        // 打开弹窗
+        modalTriggers1.forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const modalId = trigger.dataset.modal;
+                const modal = document.getElementById(modalId);
+                if (modal) {
+                    modal.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden'; // 禁止背景滚动
+                }
+            });
+        });
+
+        // 关闭弹窗
+        modals1.forEach(modal => {
+            const closeBtn = modal.querySelector('.modal-close');
+            const overlay = modal.querySelector('.modal-overlay');
+
+            // 点击关闭按钮
+            if (closeBtn) {
+                closeBtn.addEventListener('click', () => {
+                    modal.classList.add('hidden');
+                    document.body.style.overflow = ''; // 恢复背景滚动
+                });
+            }
+
+            // 点击遮罩关闭
+            if (overlay) {
+                overlay.addEventListener('click', () => {
+                    modal.classList.add('hidden');
+                    document.body.style.overflow = ''; // 恢复背景滚动
+                });
+            }
+
+            // ESC键关闭
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                    modal.classList.add('hidden');
+                    document.body.style.overflow = '';
                 }
             });
         });
