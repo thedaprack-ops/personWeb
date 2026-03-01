@@ -501,10 +501,10 @@
 
                 <!-- CTA 按钮组 -->
                 <div class="hero-element flex flex-wrap gap-4 pt-4">
-                    <a href="#" class="btn-gradient text-white px-8 py-4 rounded-2xl font-medium shadow-lg shadow-indigo-500/20 flex items-center gap-2 hover:shadow-xl hover:shadow-indigo-500/30 transition-all">
+                    <button onclick="downloadResume()" class="btn-gradient text-white px-8 py-4 rounded-2xl font-medium shadow-lg shadow-indigo-500/20 flex items-center gap-2 hover:shadow-xl hover:shadow-indigo-500/30 transition-all">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                         下载简历 PDF
-                    </a>
+                    </button>
                     <a href="#projects" class="bg-slate-800 dark:bg-slate-700 text-white px-8 py-4 rounded-2xl font-medium shadow-lg shadow-slate-500/20 flex items-center gap-2 hover:bg-slate-700 dark:hover:bg-slate-600 transition-all">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         查看项目 Demo
@@ -1996,6 +1996,35 @@
 
     <!-- GSAP 动画脚本 -->
     <script>
+        // ==================== 简历下载功能 ====================
+        function downloadResume() {
+            // 创建一个隐藏的a标签来触发下载
+            const link = document.createElement('a');
+            link.href = 'files/resume.pdf';
+            link.download = '林承列-AI产品经理简历-2025.pdf';
+
+            // 使用fetch获取文件，确保作为附件下载
+            fetch('files/resume.pdf')
+                .then(response => response.blob())
+                .then(blob => {
+                    const url = window.URL.createObjectURL(blob);
+                    link.href = url;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    window.URL.revokeObjectURL(url);
+                })
+                .catch(error => {
+                    console.error('下载失败:', error);
+                    // 如果fetch失败，直接使用原链接
+                    link.href = 'files/resume.pdf';
+                    link.target = '_blank';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                });
+        }
+
         // ==================== 暗色模式切换 ====================
         const themeToggle = document.getElementById('theme-toggle');
         const html = document.documentElement;
