@@ -239,6 +239,14 @@
             background: rgba(99, 102, 241, 0.1);
         }
 
+        /* Tab 角色文字颜色：根据状态自动切换 */
+        .candy-tab .role-text {
+            color: #8B5CF6; /* 非 active：紫色 */
+        }
+        .candy-tab.active .role-text {
+            color: rgba(255, 255, 255, 0.9); /* active：白色 */
+        }
+
         /* 公司Logo样式 */
         .company-logo {
             max-height: 36px;
@@ -430,21 +438,21 @@
 
             <!-- Tab 选择器 -->
             <div class="flex justify-center gap-4 mb-12 reveal-element">
-                <div class="candy-tab active flex items-center gap-3 rounded-2xl" data-company="juzi">
-                    <div class="flex items-center gap-3 px-4">
-                        <img src="images/juzi_ai.png" alt="句子互动" class="company-logo">
-                        <div class="text-left">
-                            <h3 class="text-lg font-semibold">句子互动</h3>
-                            <p class="text-xs text-candy-purple">AI 产品经理实习生</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="candy-tab flex items-center gap-3 bg-white dark:bg-slate-800 shadow-lg rounded-2xl" data-company="together">
+                <div class="candy-tab active flex items-center gap-3 rounded-2xl" data-company="together">
                     <div class="flex items-center gap-3 px-4">
                         <img src="images/together_edu.png" alt="一起教育" class="company-logo">
                         <div class="text-left">
                             <h3 class="text-lg font-semibold">一起教育</h3>
-                            <p class="text-xs text-candy-purple">AI 产品经理实习生</p>
+                            <p class="text-xs role-text">AI 产品经理实习生</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="candy-tab flex items-center gap-3 bg-white dark:bg-slate-800 shadow-lg rounded-2xl" data-company="juzi">
+                    <div class="flex items-center gap-3 px-4">
+                        <img src="images/juzi_ai.png" alt="句子互动" class="company-logo">
+                        <div class="text-left">
+                            <h3 class="text-lg font-semibold">句子互动</h3>
+                            <p class="text-xs role-text">AI 产品经理实习生</p>
                         </div>
                     </div>
                 </div>
@@ -452,66 +460,29 @@
 
             <!-- 时间轴 -->
             <div class="flex justify-center items-center gap-4 mb-12 reveal-element text-sm">
-                <span class="text-slate-400">2024.12</span>
-                <div class="w-32 h-1 bg-gradient-to-r from-candy-blue to-candy-purple rounded-full"></div>
-                <span class="px-3 py-1 bg-gradient-to-r from-candy-blue to-candy-purple text-white rounded-full text-xs font-medium">2025.02</span>
-                <div class="w-8 h-1 bg-slate-200 rounded-full"></div>
-                <span class="px-3 py-1 bg-gradient-to-r from-candy-purple to-candy-pink text-white rounded-full text-xs font-medium">2025.07</span>
-                <div class="w-32 h-1 bg-gradient-to-r from-candy-pink to-candy-orange rounded-full"></div>
-                <span class="text-slate-400">2025.12</span>
+                <span id="timeline-start" class="px-3 py-1 bg-gradient-to-r from-candy-blue to-candy-purple text-white rounded-full text-xs font-medium">2025.07</span>
+                <div id="timeline-line-1" class="w-32 h-1 bg-gradient-to-r from-candy-blue to-candy-purple rounded-full"></div>
+                <span id="timeline-middle" class="px-3 py-1 bg-gradient-to-r from-candy-purple to-candy-pink text-white rounded-full text-xs font-medium">2025.12</span>
+                <div id="timeline-line-2" class="w-32 h-1 bg-white dark:bg-slate-700 rounded-full"></div>
+                <span id="timeline-end" class="px-3 py-1 bg-white dark:bg-slate-700 text-slate-400 dark:text-slate-500 rounded-full text-xs font-medium">2026.02</span>
             </div>
 
             <!-- 详情内容 -->
             <div class="reveal-element">
-                <!-- 句子互动 -->
-                <div id="juzi-detail" class="exp-content">
+                <!-- 一起教育 -->
+                <div id="together-detail" class="exp-content">
                     <div class="glass-card rounded-3xl p-8 md:p-12">
                         <div class="grid md:grid-cols-2 gap-8 items-center">
                             <div class="relative">
                                 <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-                                    <img src="images/experience_workspace.jpg" alt="句子互动AI SDR产品工作场景" class="w-full h-full object-cover" loading="lazy">
+                                    <img src="images/education_scene.jpg" alt="一起教育AI产品场景" class="w-full h-full object-cover" loading="lazy">
                                 </div>
                                 <div class="absolute -bottom-4 -right-4 bg-white rounded-2xl p-4 shadow-xl">
-                                    <div class="text-3xl font-bold text-gradient">30%</div>
-                                    <div class="text-xs text-slate-500">AI迭代周期↓ 🚀</div>
+                                    <div class="text-3xl font-bold text-gradient">96%</div>
+                                    <div class="text-xs text-slate-500">AI识别准确率 🎯</div>
                                 </div>
                             </div>
                             <div class="space-y-6">
-                                <div>
-                                    <h3 class="font-display text-2xl font-bold text-slate-800 dark:text-white mb-2">AI SDR 产品迭代</h3>
-                                    <p class="text-slate-500 dark:text-slate-400 flex items-center gap-2">
-                                        <i class="fas fa-map-marker-alt text-candy-pink"></i> 北京 · 2024.12 - 2025.02
-                                    </p>
-                                </div>
-                                <ul class="space-y-4">
-                                    <li class="flex items-start gap-3">
-                                        <span class="w-6 h-6 rounded-full bg-gradient-to-r from-candy-blue to-candy-purple flex items-center justify-center text-white text-xs mt-0.5">✓</span>
-                                        <span class="text-slate-600 dark:text-slate-300">负责 AI SDR 产品迭代，优化 Prompt 提升对话转化率 <strong class="text-candy-purple">15%</strong></span>
-                                    </li>
-                                    <li class="flex items-start gap-3">
-                                        <span class="w-6 h-6 rounded-full bg-gradient-to-r from-candy-purple to-candy-pink flex items-center justify-center text-white text-xs mt-0.5">✓</span>
-                                        <span class="text-slate-600 dark:text-slate-300">搭建舆情监控系统，实时追踪品牌口碑，覆盖 <strong class="text-candy-pink">10万+</strong> 数据源</span>
-                                    </li>
-                                    <li class="flex items-start gap-3">
-                                        <span class="w-6 h-6 rounded-full bg-gradient-to-r from-candy-pink to-candy-orange flex items-center justify-center text-white text-xs mt-0.5">✓</span>
-                                        <span class="text-slate-600 dark:text-slate-300">参与 Agent 工作流设计，提升自动化营销效率 <strong class="text-candy-orange">40%</strong></span>
-                                    </li>
-                                </ul>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="candy-tag bg-indigo-100 text-indigo-600">🤖 Prompt Engineering</span>
-                                    <span class="candy-tag bg-purple-100 text-purple-600">⚡ Agent 工作流</span>
-                                    <span class="candy-tag bg-pink-100 text-pink-600">📈 舆情监控</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 一起教育 -->
-                <div id="together-detail" class="exp-content hidden">
-                    <div class="glass-card rounded-3xl p-8 md:p-12">
-                        <div class="grid md:grid-cols-2 gap-8 items-center">
-                            <div class="space-y-6 order-2 md:order-1">
                                 <div>
                                     <h3 class="font-display text-2xl font-bold text-slate-800 dark:text-white mb-2">视频 AI 语音克隆产品</h3>
                                     <p class="text-slate-500 dark:text-slate-400 flex items-center gap-2">
@@ -538,13 +509,48 @@
                                     <span class="candy-tag bg-orange-100 text-orange-600">👁️ 视觉批改</span>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 句子互动 -->
+                <div id="juzi-detail" class="exp-content hidden">
+                    <div class="glass-card rounded-3xl p-8 md:p-12">
+                        <div class="grid md:grid-cols-2 gap-8 items-center">
+                            <div class="space-y-6 order-2 md:order-1">
+                                <div>
+                                    <h3 class="font-display text-2xl font-bold text-slate-800 dark:text-white mb-2">AI SDR 产品迭代</h3>
+                                    <p class="text-slate-500 dark:text-slate-400 flex items-center gap-2">
+                                        <i class="fas fa-map-marker-alt text-candy-pink"></i> 北京 · 2025.12 - 2026.02
+                                    </p>
+                                </div>
+                                <ul class="space-y-4">
+                                    <li class="flex items-start gap-3">
+                                        <span class="w-6 h-6 rounded-full bg-gradient-to-r from-candy-blue to-candy-purple flex items-center justify-center text-white text-xs mt-0.5">✓</span>
+                                        <span class="text-slate-600 dark:text-slate-300">负责 AI SDR 产品迭代，优化 Prompt 提升对话转化率 <strong class="text-candy-purple">15%</strong></span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="w-6 h-6 rounded-full bg-gradient-to-r from-candy-purple to-candy-pink flex items-center justify-center text-white text-xs mt-0.5">✓</span>
+                                        <span class="text-slate-600 dark:text-slate-300">搭建舆情监控系统，实时追踪品牌口碑，覆盖 <strong class="text-candy-pink">10万+</strong> 数据源</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="w-6 h-6 rounded-full bg-gradient-to-r from-candy-pink to-candy-orange flex items-center justify-center text-white text-xs mt-0.5">✓</span>
+                                        <span class="text-slate-600 dark:text-slate-300">参与 Agent 工作流设计，提升自动化营销效率 <strong class="text-candy-orange">40%</strong></span>
+                                    </li>
+                                </ul>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="candy-tag bg-indigo-100 text-indigo-600">🤖 Prompt Engineering</span>
+                                    <span class="candy-tag bg-purple-100 text-purple-600">⚡ Agent 工作流</span>
+                                    <span class="candy-tag bg-pink-100 text-pink-600">📈 舆情监控</span>
+                                </div>
+                            </div>
                             <div class="relative order-1 md:order-2">
                                 <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-                                    <img src="images/education_scene.jpg" alt="一起教育AI产品场景" class="w-full h-full object-cover" loading="lazy">
+                                    <img src="images/experience_workspace.jpg" alt="句子互动AI SDR产品工作场景" class="w-full h-full object-cover" loading="lazy">
                                 </div>
                                 <div class="absolute -bottom-4 -left-4 bg-white rounded-2xl p-4 shadow-xl">
-                                    <div class="text-3xl font-bold text-gradient">96%</div>
-                                    <div class="text-xs text-slate-500">AI识别准确率 🎯</div>
+                                    <div class="text-3xl font-bold text-gradient">30%</div>
+                                    <div class="text-xs text-slate-500">AI迭代周期↓ 🚀</div>
                                 </div>
                             </div>
                         </div>
@@ -973,6 +979,47 @@
             'together': document.getElementById('together-detail')
         };
 
+        // 时间轴元素
+        const timelineElements = {
+            start: document.getElementById('timeline-start'),
+            line1: document.getElementById('timeline-line-1'),
+            middle: document.getElementById('timeline-middle'),
+            line2: document.getElementById('timeline-line-2'),
+            end: document.getElementById('timeline-end')
+        };
+
+        // 时间轴样式配置
+        const timelineStyles = {
+            together: {
+                // 一起教育：2025.07 - 2025.12 高亮
+                start: 'bg-gradient-to-r from-candy-blue to-candy-purple text-white',
+                line1: 'bg-gradient-to-r from-candy-blue to-candy-purple',
+                middle: 'bg-gradient-to-r from-candy-purple to-candy-pink text-white',
+                line2: 'bg-white dark:bg-slate-700',
+                end: 'bg-white dark:bg-slate-700 text-slate-400 dark:text-slate-500'
+            },
+            juzi: {
+                // 句子互动：2025.12 - 2026.02 高亮
+                start: 'bg-white dark:bg-slate-700 text-slate-400 dark:text-slate-500',
+                line1: 'bg-white dark:bg-slate-700',
+                middle: 'bg-gradient-to-r from-candy-purple to-candy-pink text-white',
+                line2: 'bg-gradient-to-r from-candy-pink to-candy-orange',
+                end: 'bg-gradient-to-r from-candy-orange to-candy-pink text-white'
+            }
+        };
+
+        // 更新时间轴样式
+        function updateTimeline(company) {
+            const styles = timelineStyles[company];
+
+            // 应用新样式（完全替换类名）
+            timelineElements.start.className = `px-3 py-1 rounded-full text-xs font-medium ${styles.start}`;
+            timelineElements.line1.className = `w-32 h-1 rounded-full ${styles.line1}`;
+            timelineElements.middle.className = `px-3 py-1 rounded-full text-xs font-medium ${styles.middle}`;
+            timelineElements.line2.className = `w-32 h-1 rounded-full ${styles.line2}`;
+            timelineElements.end.className = `px-3 py-1 rounded-full text-xs font-medium ${styles.end}`;
+        }
+
         expTabs.forEach(tab => {
             tab.addEventListener('click', () => {
                 const company = tab.dataset.company;
@@ -980,6 +1027,9 @@
                 // 切换Tab状态
                 expTabs.forEach(t => t.classList.remove('active'));
                 tab.classList.add('active');
+
+                // 切换时间轴样式
+                updateTimeline(company);
 
                 // 切换内容
                 Object.values(expContents).forEach(content => {
