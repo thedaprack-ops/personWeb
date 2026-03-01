@@ -348,12 +348,53 @@
             border-bottom-color: #818cf8;
         }
 
+        /* 项目卡片 Tab 样式 - 句子互动 */
+        .project-tab-2 {
+            position: relative;
+            color: #64748b;
+            border-bottom: 3px solid transparent;
+        }
+
+        .project-tab-2:hover {
+            color: #6366F1;
+            background: rgba(99, 102, 241, 0.05);
+        }
+
+        .project-tab-2.active {
+            color: #6366F1;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+            border-bottom-color: #6366F1;
+        }
+
+        .dark .project-tab-2 {
+            color: #94a3b8;
+        }
+
+        .dark .project-tab-2:hover {
+            color: #818cf8;
+        }
+
+        .dark .project-tab-2.active {
+            color: #818cf8;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
+            border-bottom-color: #818cf8;
+        }
+
         /* 项目内容切换 */
         .project-content-1 {
             display: none;
         }
 
         .project-content-1.active {
+            display: block;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        .project-content-2 {
+            display: none;
+        }
+
+        .project-content-2.active {
             display: block;
             animation: fadeInUp 0.5s ease;
         }
@@ -886,42 +927,253 @@
 
                 <!-- 句子互动 -->
                 <div id="juzi-detail" class="exp-content hidden">
-                    <div class="glass-card rounded-3xl p-8 md:p-12">
-                        <div class="grid md:grid-cols-2 gap-8 items-center">
-                            <div class="space-y-6 order-2 md:order-1">
-                                <div>
-                                    <h3 class="font-display text-2xl font-bold text-slate-800 dark:text-white mb-2">AI SDR 产品迭代</h3>
-                                    <p class="text-slate-500 dark:text-slate-400 flex items-center gap-2">
-                                        <i class="fas fa-map-marker-alt text-candy-pink"></i> 北京 · 2025.12 - 2026.02
-                                    </p>
-                                </div>
-                                <ul class="space-y-4">
-                                    <li class="flex items-start gap-3">
-                                        <span class="w-6 h-6 rounded-full bg-gradient-to-r from-candy-blue to-candy-purple flex items-center justify-center text-white text-xs mt-0.5">✓</span>
-                                        <span class="text-slate-600 dark:text-slate-300">负责 AI SDR 产品迭代，优化 Prompt 提升对话转化率 <strong class="text-candy-purple">15%</strong></span>
-                                    </li>
-                                    <li class="flex items-start gap-3">
-                                        <span class="w-6 h-6 rounded-full bg-gradient-to-r from-candy-purple to-candy-pink flex items-center justify-center text-white text-xs mt-0.5">✓</span>
-                                        <span class="text-slate-600 dark:text-slate-300">搭建舆情监控系统，实时追踪品牌口碑，覆盖 <strong class="text-candy-pink">10万+</strong> 数据源</span>
-                                    </li>
-                                    <li class="flex items-start gap-3">
-                                        <span class="w-6 h-6 rounded-full bg-gradient-to-r from-candy-pink to-candy-orange flex items-center justify-center text-white text-xs mt-0.5">✓</span>
-                                        <span class="text-slate-600 dark:text-slate-300">参与 Agent 工作流设计，提升自动化营销效率 <strong class="text-candy-orange">40%</strong></span>
-                                    </li>
-                                </ul>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="candy-tag bg-indigo-100 text-indigo-600">🤖 Prompt Engineering</span>
-                                    <span class="candy-tag bg-purple-100 text-purple-600">⚡ Agent 工作流</span>
-                                    <span class="candy-tag bg-pink-100 text-pink-600">📈 舆情监控</span>
+                    <div class="glass-card rounded-3xl overflow-hidden">
+                        <!-- 项目Tab切换栏 -->
+                        <div class="flex border-b border-slate-200/50 dark:border-slate-700/50">
+                            <button class="project-tab-2 flex-1 px-4 py-3 text-center font-medium transition-all duration-300 active" data-tab="juzi-project-1">
+                                <span class="text-sm">AI SDR 系统</span>
+                            </button>
+                            <button class="project-tab-2 flex-1 px-4 py-3 text-center font-medium transition-all duration-300 text-slate-400 hover:text-slate-600 dark:text-slate-500" data-tab="juzi-project-2">
+                                <span class="text-sm">AI CRM 系统</span>
+                            </button>
+                            <button class="project-tab-2 flex-1 px-4 py-3 text-center font-medium transition-all duration-300 text-slate-400 hover:text-slate-600 dark:text-slate-500" data-tab="juzi-project-3">
+                                <span class="text-sm">AI情报局</span>
+                            </button>
+                        </div>
+
+                        <!-- 项目卡片内容 -->
+                        <div class="p-6 md:p-8">
+                            <!-- 项目1 -->
+                            <div class="project-content-2 active" data-content="juzi-project-1">
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <!-- 左侧图片 -->
+                                    <div class="relative">
+                                        <div class="aspect-[4/3] rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-800 overflow-hidden">
+                                            <div class="w-full h-full flex items-center justify-center">
+                                                <i class="fas fa-phone-alt text-6xl text-slate-300 dark:text-slate-600"></i>
+                                            </div>
+                                        </div>
+                                        <!-- 左下角数据角标 -->
+                                        <div class="absolute bottom-4 left-4 bg-gradient-to-r from-candy-blue to-candy-purple text-white rounded-xl px-4 py-3 shadow-lg">
+                                            <div class="text-xl font-bold">V2.0</div>
+                                            <div class="text-xs opacity-90">产品迭代</div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 右侧项目信息 -->
+                                    <div class="flex flex-col">
+                                        <h3 class="font-display text-xl md:text-2xl font-bold text-slate-800 dark:text-white mb-2">
+                                            AI销售开发代表系统（电话外呼SDR）
+                                        </h3>
+                                        <p class="text-slate-500 dark:text-slate-400 flex items-center gap-2 mb-6">
+                                            <i class="fas fa-map-marker-alt text-candy-purple"></i>
+                                            北京 · 2026.01 - 2026.02
+                                        </p>
+
+                                        <!-- 三条核心亮点 -->
+                                        <div class="space-y-4 mb-6 flex-1">
+                                            <div class="flex items-start gap-3">
+                                                <div class="w-8 h-8 rounded-full bg-gradient-to-r from-candy-blue to-candy-purple flex items-center justify-center flex-shrink-0 mt-0.5">
+                                                    <span class="text-white text-sm font-bold">1</span>
+                                                </div>
+                                                <div class="flex-1">
+                                                    <p class="text-slate-700 dark:text-slate-300">
+                                                        设计<span class="font-semibold">AI外呼完整流程引擎</span>，覆盖客户筛选→信息收集→线索分发全链路，支撑销售团队高效跟进
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start gap-3">
+                                                <div class="w-8 h-8 rounded-full bg-gradient-to-r from-candy-purple to-candy-pink flex items-center justify-center flex-shrink-0 mt-0.5">
+                                                    <span class="text-white text-sm font-bold">2</span>
+                                                </div>
+                                                <div class="flex-1">
+                                                    <p class="text-slate-700 dark:text-slate-300">
+                                                        构建广告过滤、转人工、回流预警等<span class="font-bold text-candy-pink">4大核心场景机制</span>，线索质量显著提升
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start gap-3">
+                                                <div class="w-8 h-8 rounded-full bg-gradient-to-r from-candy-pink to-candy-orange flex items-center justify-center flex-shrink-0 mt-0.5">
+                                                    <span class="text-white text-sm font-bold">3</span>
+                                                </div>
+                                                <div class="flex-1">
+                                                    <p class="text-slate-700 dark:text-slate-300">
+                                                        主导AI人设优化，解决"语气不真实、答非所问"等体验卡点，推动产品从<span class="font-bold text-candy-orange">V1.0迭代至V2.0</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- 底部标签和按钮 -->
+                                        <div class="flex items-center justify-between">
+                                            <div class="flex flex-wrap gap-2">
+                                                <span class="candy-tag bg-indigo-100 text-indigo-600">Agent设计</span>
+                                                <span class="candy-tag bg-purple-100 text-purple-600">Prompt工程</span>
+                                                <span class="candy-tag bg-blue-100 text-blue-600">流程引擎</span>
+                                                <span class="candy-tag bg-pink-100 text-pink-600">RAG</span>
+                                            </div>
+                                            <button class="modal-trigger-2 px-4 py-2.5 bg-gradient-to-r from-candy-blue to-candy-purple text-white rounded-xl font-medium hover:shadow-lg hover:shadow-indigo-500/30 transition-all flex items-center gap-2 text-sm" data-modal="juzi-modal-1">
+                                                <span>查看详情</span>
+                                                <i class="fas fa-arrow-right text-xs"></i>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="relative order-1 md:order-2">
-                                <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-                                    <img src="images/experience_workspace.jpg" alt="句子互动AI SDR产品工作场景" class="w-full h-full object-cover" loading="lazy">
+
+                            <!-- 项目2 -->
+                            <div class="project-content-2 hidden" data-content="juzi-project-2">
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <!-- 左侧图片 -->
+                                    <div class="relative">
+                                        <div class="aspect-[4/3] rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-800 overflow-hidden">
+                                            <div class="w-full h-full flex items-center justify-center">
+                                                <i class="fas fa-database text-6xl text-slate-300 dark:text-slate-600"></i>
+                                            </div>
+                                        </div>
+                                        <!-- 左下角数据角标 -->
+                                        <div class="absolute bottom-4 left-4 bg-gradient-to-r from-candy-purple to-candy-pink text-white rounded-xl px-4 py-3 shadow-lg">
+                                            <div class="text-xl font-bold">≤3min</div>
+                                            <div class="text-xs opacity-90">端到端响应</div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 右侧项目信息 -->
+                                    <div class="flex flex-col">
+                                        <h3 class="font-display text-xl md:text-2xl font-bold text-slate-800 dark:text-white mb-2">
+                                            AI CRM会议数据自动化系统
+                                        </h3>
+                                        <p class="text-slate-500 dark:text-slate-400 flex items-center gap-2 mb-6">
+                                            <i class="fas fa-map-marker-alt text-candy-purple"></i>
+                                            北京 · 2026.01 - 2026.02
+                                        </p>
+
+                                        <!-- 三条核心亮点 -->
+                                        <div class="space-y-4 mb-6 flex-1">
+                                            <div class="flex items-start gap-3">
+                                                <div class="w-8 h-8 rounded-full bg-gradient-to-r from-candy-blue to-candy-purple flex items-center justify-center flex-shrink-0 mt-0.5">
+                                                    <span class="text-white text-sm font-bold">1</span>
+                                                </div>
+                                                <div class="flex-1">
+                                                    <p class="text-slate-700 dark:text-slate-300">
+                                                        设计<span class="font-semibold">录音采集→文本转写→结构化入库</span>完整数据流转链路，替代销售手动录入CRM
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start gap-3">
+                                                <div class="w-8 h-8 rounded-full bg-gradient-to-r from-candy-purple to-candy-pink flex items-center justify-center flex-shrink-0 mt-0.5">
+                                                    <span class="text-white text-sm font-bold">2</span>
+                                                </div>
+                                                <div class="flex-1">
+                                                    <p class="text-slate-700 dark:text-slate-300">
+                                                        独立完成<span class="font-bold text-candy-pink">飞书集成流×3条</span>、飞书卡片交互×<span class="font-bold text-candy-pink">6类</span>边界场景设计与测试，全部通过验收
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start gap-3">
+                                                <div class="w-8 h-8 rounded-full bg-gradient-to-r from-candy-pink to-candy-orange flex items-center justify-center flex-shrink-0 mt-0.5">
+                                                    <span class="text-white text-sm font-bold">3</span>
+                                                </div>
+                                                <div class="flex-1">
+                                                    <p class="text-slate-700 dark:text-slate-300">
+                                                        端到端响应时间<span class="font-bold text-candy-orange">≤3min</span>，卡片交互响应<span class="font-bold text-candy-orange">≤10s</span>，系统稳定性达生产可用标准
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- 底部标签和按钮 -->
+                                        <div class="flex items-center justify-between">
+                                            <div class="flex flex-wrap gap-2">
+                                                <span class="candy-tag bg-green-100 text-green-600">飞书集成</span>
+                                                <span class="candy-tag bg-blue-100 text-blue-600">自动化工作流</span>
+                                                <span class="candy-tag bg-purple-100 text-purple-600">CRM设计</span>
+                                                <span class="candy-tag bg-orange-100 text-orange-600">数据流转</span>
+                                            </div>
+                                            <button class="modal-trigger-2 px-4 py-2.5 bg-gradient-to-r from-candy-blue to-candy-purple text-white rounded-xl font-medium hover:shadow-lg hover:shadow-indigo-500/30 transition-all flex items-center gap-2 text-sm" data-modal="juzi-modal-2">
+                                                <span>查看详情</span>
+                                                <i class="fas fa-arrow-right text-xs"></i>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="absolute -bottom-4 -left-4 bg-white rounded-2xl p-4 shadow-xl">
-                                    <div class="text-3xl font-bold text-gradient">30%</div>
-                                    <div class="text-xs text-slate-500">AI迭代周期↓ 🚀</div>
+                            </div>
+
+                            <!-- 项目3 -->
+                            <div class="project-content-2 hidden" data-content="juzi-project-3">
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <!-- 左侧图片 -->
+                                    <div class="relative">
+                                        <div class="aspect-[4/3] rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-800 overflow-hidden">
+                                            <div class="w-full h-full flex items-center justify-center">
+                                                <i class="fas fa-globe text-6xl text-slate-300 dark:text-slate-600"></i>
+                                            </div>
+                                        </div>
+                                        <!-- 左下角数据角标 -->
+                                        <div class="absolute bottom-4 left-4 bg-gradient-to-r from-candy-pink to-candy-orange text-white rounded-xl px-4 py-3 shadow-lg">
+                                            <div class="text-xl font-bold">0→1</div>
+                                            <div class="text-xs opacity-90">完整链路搭建</div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 右侧项目信息 -->
+                                    <div class="flex flex-col">
+                                        <h3 class="font-display text-xl md:text-2xl font-bold text-slate-800 dark:text-white mb-2">
+                                            句子AI情报局（全网舆情监控工具）
+                                        </h3>
+                                        <p class="text-slate-500 dark:text-slate-400 flex items-center gap-2 mb-6">
+                                            <i class="fas fa-map-marker-alt text-candy-purple"></i>
+                                            北京 · 2026.01 - 2026.02
+                                        </p>
+
+                                        <!-- 三条核心亮点 -->
+                                        <div class="space-y-4 mb-6 flex-1">
+                                            <div class="flex items-start gap-3">
+                                                <div class="w-8 h-8 rounded-full bg-gradient-to-r from-candy-blue to-candy-purple flex items-center justify-center flex-shrink-0 mt-0.5">
+                                                    <span class="text-white text-sm font-bold">1</span>
+                                                </div>
+                                                <div class="flex-1">
+                                                    <p class="text-slate-700 dark:text-slate-300">
+                                                        从0搭建全网舆情监控系统，打通<span class="font-semibold">谷歌API抓取→飞书多维表格存储→自动推送</span>完整链路
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start gap-3">
+                                                <div class="w-8 h-8 rounded-full bg-gradient-to-r from-candy-purple to-candy-pink flex items-center justify-center flex-shrink-0 mt-0.5">
+                                                    <span class="text-white text-sm font-bold">2</span>
+                                                </div>
+                                                <div class="flex-1">
+                                                    <p class="text-slate-700 dark:text-slate-300">
+                                                        设计<span class="font-semibold">AI自动分类、情绪判断、关键词提取</span>处理流程，替代人工反复搜索的低效行为
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start gap-3">
+                                                <div class="w-8 h-8 rounded-full bg-gradient-to-r from-candy-pink to-candy-orange flex items-center justify-center flex-shrink-0 mt-0.5">
+                                                    <span class="text-white text-sm font-bold">3</span>
+                                                </div>
+                                                <div class="flex-1">
+                                                    <p class="text-slate-700 dark:text-slate-300">
+                                                        探索<span class="font-bold text-candy-orange">WEWERSS接入</span>微信公众号生态，本地验证可行，规划三阶段路线图推动产品持续演进
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- 底部标签和按钮 -->
+                                        <div class="flex items-center justify-between">
+                                            <div class="flex flex-wrap gap-2">
+                                                <span class="candy-tag bg-blue-100 text-blue-600">Python爬虫</span>
+                                                <span class="candy-tag bg-green-100 text-green-600">飞书API</span>
+                                                <span class="candy-tag bg-purple-100 text-purple-600">自动化</span>
+                                                <span class="candy-tag bg-orange-100 text-orange-600">舆情监控</span>
+                                            </div>
+                                            <button class="modal-trigger-2 px-4 py-2.5 bg-gradient-to-r from-candy-blue to-candy-purple text-white rounded-xl font-medium hover:shadow-lg hover:shadow-indigo-500/30 transition-all flex items-center gap-2 text-sm" data-modal="juzi-modal-3">
+                                                <span>查看详情</span>
+                                                <i class="fas fa-arrow-right text-xs"></i>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1195,6 +1447,204 @@
                             </h4>
                             <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
                                 沉淀《教育业务指标字典v2.0》，标准化50+核心指标定义，建立《BI看板建设SOP》（需求收集→原型设计→数据验证→上线培训→迭代优化），推动建立数据中台与业务方双周沟通机制
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 弹窗 - 句子互动项目1 -->
+    <div id="juzi-modal-1" class="fixed inset-0 z-50 hidden">
+        <!-- 半透明遮罩 -->
+        <div class="modal-overlay absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+        <!-- 弹窗内容 -->
+        <div class="modal-wrapper absolute inset-0 flex items-center justify-center p-4">
+            <div class="modal-content bg-white dark:bg-slate-800 rounded-3xl shadow-2xl w-full max-w-3xl max-h-[85vh] overflow-hidden relative">
+                <!-- 关闭按钮 -->
+                <button class="modal-close absolute top-4 right-4 w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors z-10">
+                    <i class="fas fa-times"></i>
+                </button>
+
+                <!-- 滚动内容区 -->
+                <div class="overflow-y-auto max-h-[85vh] p-8">
+                    <h3 class="font-display text-2xl md:text-3xl font-bold text-slate-800 dark:text-white mb-6">
+                        AI销售开发代表系统（电话外呼SDR）
+                    </h3>
+
+                    <div class="space-y-6">
+                        <!-- 核心工作 -->
+                        <div>
+                            <h4 class="text-lg font-semibold text-candy-blue mb-3 flex items-center gap-2">
+                                <i class="fas fa-cogs"></i>
+                                核心工作
+                            </h4>
+                            <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-3">
+                                主导AI SDR产品从0到1设计，建立"客户筛选→信息采集→线索分发"完整流程引擎，优先级聚焦获取手机号+公司名称，为销售团队输送高质量线索
+                            </p>
+                            <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-3">
+                                设计4大核心场景处理机制：正常SOP聊天（BANT模型追问）、RAG知识库问答、广告骚扰过滤（后台静默标记无效）、转人工触发（连续2次情绪不满自动推送飞书群）
+                            </p>
+                            <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-3">
+                                主导AI人设与回答质量优化专项，针对"啰嗦、答非所问、过于口语化"三大卡点逐一制定Prompt优化策略，提升B2B销售专业气场
+                            </p>
+                            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                                推动V2.0产品规划落地，在V1.0联系方式采集基础上，设计公司规模/使用部门/预算范围等客户画像深度采集模块
+                            </p>
+                        </div>
+
+                        <!-- 量化指标 -->
+                        <div>
+                            <h4 class="text-lg font-semibold text-candy-pink mb-3 flex items-center gap-2">
+                                <i class="fas fa-chart-line"></i>
+                                量化指标
+                            </h4>
+                            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                                4大核心场景覆盖、V2.0产品迭代版本、2步最少人工干预、100%边界场景测试通过
+                            </p>
+                        </div>
+
+                        <!-- 方法论 -->
+                        <div>
+                            <h4 class="text-lg font-semibold text-candy-orange mb-3 flex items-center gap-2">
+                                <i class="fas fa-book"></i>
+                                方法论
+                            </h4>
+                            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                                建立AI SDR核心原则体系——定位于高质量客户筛选而非直接解答，每次交互挖掘用户实际使用场景；沉淀资料发送策略（SDR不发资料，由销售作为建立联系的钩子）与回流预警机制（3个月内回流触发预警），形成可复用的AI销售助手设计规范
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 弹窗 - 句子互动项目2 -->
+    <div id="juzi-modal-2" class="fixed inset-0 z-50 hidden">
+        <!-- 半透明遮罩 -->
+        <div class="modal-overlay absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+        <!-- 弹窗内容 -->
+        <div class="modal-wrapper absolute inset-0 flex items-center justify-center p-4">
+            <div class="modal-content bg-white dark:bg-slate-800 rounded-3xl shadow-2xl w-full max-w-3xl max-h-[85vh] overflow-hidden relative">
+                <!-- 关闭按钮 -->
+                <button class="modal-close absolute top-4 right-4 w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors z-10">
+                    <i class="fas fa-times"></i>
+                </button>
+
+                <!-- 滚动内容区 -->
+                <div class="overflow-y-auto max-h-[85vh] p-8">
+                    <h3 class="font-display text-2xl md:text-3xl font-bold text-slate-800 dark:text-white mb-6">
+                        AI CRM会议数据自动化系统
+                    </h3>
+
+                    <div class="space-y-6">
+                        <!-- 核心工作 -->
+                        <div>
+                            <h4 class="text-lg font-semibold text-candy-blue mb-3 flex items-center gap-2">
+                                <i class="fas fa-cogs"></i>
+                                核心工作
+                            </h4>
+                            <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-3">
+                                设计CRM会议数据完整生命周期流转链路：Plaud录音采集→邮件触发→文本转写→飞书卡片推送→销售确认→沟通备忘录生成→多维表格入库，全程自动化无需手动录入
+                            </p>
+                            <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-3">
+                                独立完成3条飞书集成流开发：集成流1（接收邮件解析录入会议记录表）、集成流2（推送飞书卡片至指定销售）、集成流3（接收销售确认，生成沟通备忘录并CRM入库）
+                            </p>
+                            <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-3">
+                                设计并通过6类边界场景测试：新销售/老销售×新客户/老客户组合、空表单提交、双交互框同时填写、提交后录入有误等全场景覆盖，健壮性100%
+                            </p>
+                            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                                完成性能测试验收：录音结束到接收卡片≤3min，卡片提交到回传≤10s，富文本消息响应≤3s，所有指标达标
+                            </p>
+                        </div>
+
+                        <!-- 量化指标 -->
+                        <div>
+                            <h4 class="text-lg font-semibold text-candy-pink mb-3 flex items-center gap-2">
+                                <i class="fas fa-chart-line"></i>
+                                量化指标
+                            </h4>
+                            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                                3条飞书集成流、6类边界场景全覆盖、≤3min端到端响应、100%测试用例通过
+                            </p>
+                        </div>
+
+                        <!-- 方法论 -->
+                        <div>
+                            <h4 class="text-lg font-semibold text-candy-orange mb-3 flex items-center gap-2">
+                                <i class="fas fa-book"></i>
+                                方法论
+                            </h4>
+                            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                                基于实际场景否决Zapier方案（每个销售需单独绑定工作流，国内飞书不支持），选择邮箱自动转发+飞书集成平台的更灵活方案；沉淀《CRM系统边界场景测试用例库》，覆盖并发、空值、重复提交等异常场景，形成AI自动化产品的测试规范
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 弹窗 - 句子互动项目3 -->
+    <div id="juzi-modal-3" class="fixed inset-0 z-50 hidden">
+        <!-- 半透明遮罩 -->
+        <div class="modal-overlay absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+        <!-- 弹窗内容 -->
+        <div class="modal-wrapper absolute inset-0 flex items-center justify-center p-4">
+            <div class="modal-content bg-white dark:bg-slate-800 rounded-3xl shadow-2xl w-full max-w-3xl max-h-[85vh] overflow-hidden relative">
+                <!-- 关闭按钮 -->
+                <button class="modal-close absolute top-4 right-4 w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors z-10">
+                    <i class="fas fa-times"></i>
+                </button>
+
+                <!-- 滚动内容区 -->
+                <div class="overflow-y-auto max-h-[85vh] p-8">
+                    <h3 class="font-display text-2xl md:text-3xl font-bold text-slate-800 dark:text-white mb-6">
+                        句子AI情报局（全网舆情监控工具）
+                    </h3>
+
+                    <div class="space-y-6">
+                        <!-- 核心工作 -->
+                        <div>
+                            <h4 class="text-lg font-semibold text-candy-blue mb-3 flex items-center gap-2">
+                                <i class="fas fa-cogs"></i>
+                                核心工作
+                            </h4>
+                            <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-3">
+                                从0搭建全网舆情监控MVP，用AI辅助编写Python爬虫，通过谷歌API定时抓取包含"句子互动/AI社工/AI普法调解员"等关键词的全网新闻，打通数据获取→处理→推送完整链路
+                            </p>
+                            <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-3">
+                                设计飞书多维表格数据存储层，利用字段捷径功能实现AI自动分类总结、情绪判断（正面/负面/中性）、关键词提取，替代人工反复刷新闻的低效行为
+                            </p>
+                            <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-3">
+                                搭建飞书群机器人自动推送机制，设计标准化消息格式（标题/时间/链接/来源/摘要），配置多维表格自动化规则实现有效信息零延迟触达
+                            </p>
+                            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                                探索并验证WEWERSS接入方案，解决微信公众号内容无法被常规搜索API覆盖的结构性盲区，本地环境验证可行；规划三阶段路线图：MVP验证→稳定化→方案模板化推广至不同部门情报场景
+                            </p>
+                        </div>
+
+                        <!-- 量化指标 -->
+                        <div>
+                            <h4 class="text-lg font-semibold text-candy-pink mb-3 flex items-center gap-2">
+                                <i class="fas fa-chart-line"></i>
+                                量化指标
+                            </h4>
+                            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                                3阶段产品路线规划、0→1完整链路搭建、全自动替代人工搜索、3类线上部署方案评估
+                            </p>
+                        </div>
+
+                        <!-- 方法论 -->
+                        <div>
+                            <h4 class="text-lg font-semibold text-candy-orange mb-3 flex items-center gap-2">
+                                <i class="fas fa-book"></i>
+                                方法论
+                            </h4>
+                            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                                完成云函数定时触发、n8n自动化工作流、扣子（Coze）三套线上部署方案的优劣评估，基于MVP阶段轻量化原则选择云函数方案；沉淀通用舆情监控产品框架，设计从政务情报到部门项目追踪的场景扩展路径，形成可复用的AI信息监控产品方法论
                             </p>
                         </div>
                     </div>
@@ -1790,6 +2240,70 @@
 
         // 关闭弹窗
         modals1.forEach(modal => {
+            const closeBtn = modal.querySelector('.modal-close');
+            const overlay = modal.querySelector('.modal-overlay');
+
+            // 点击关闭按钮
+            if (closeBtn) {
+                closeBtn.addEventListener('click', () => {
+                    modal.classList.add('hidden');
+                    document.body.style.overflow = ''; // 恢复背景滚动
+                });
+            }
+
+            // 点击遮罩关闭
+            if (overlay) {
+                overlay.addEventListener('click', () => {
+                    modal.classList.add('hidden');
+                    document.body.style.overflow = ''; // 恢复背景滚动
+                });
+            }
+
+            // ESC键关闭
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                    modal.classList.add('hidden');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+
+        // ==================== 项目卡片 Tab 切换 - 句子互动 ====================
+        const projectTabs2 = document.querySelectorAll('.project-tab-2');
+        const projectContents2 = document.querySelectorAll('.project-content-2');
+
+        projectTabs2.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetTab = tab.dataset.tab;
+
+                // 移除所有active状态
+                projectTabs2.forEach(t => t.classList.remove('active'));
+                projectContents2.forEach(c => c.classList.remove('active'));
+
+                // 添加active状态
+                tab.classList.add('active');
+                document.querySelector(`[data-content="${targetTab}"]`).classList.add('active');
+            });
+        });
+
+        // ==================== Modal 弹窗 - 句子互动 ====================
+        const modalTriggers2 = document.querySelectorAll('.modal-trigger-2');
+        const modals2 = document.querySelectorAll('[id^="juzi-modal-"]');
+
+        // 打开弹窗
+        modalTriggers2.forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const modalId = trigger.dataset.modal;
+                const modal = document.getElementById(modalId);
+                if (modal) {
+                    modal.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden'; // 禁止背景滚动
+                }
+            });
+        });
+
+        // 关闭弹窗
+        modals2.forEach(modal => {
             const closeBtn = modal.querySelector('.modal-close');
             const overlay = modal.querySelector('.modal-overlay');
 
