@@ -636,14 +636,14 @@
                             <div class="project-content-1 active" data-content="together-project-1">
                                 <div class="grid md:grid-cols-2 gap-6">
                                     <!-- 左侧视频 -->
-                                    <div class="relative">
+                                    <div>
                                         <div class="aspect-[4/3] rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-800 overflow-hidden">
                                             <video src="images/个性化讲题.mp4" alt="个性化习题讲解视频生成系统" class="w-full h-full object-cover" controls preload="metadata" poster="images/封面.png">
                                                 您的浏览器不支持视频播放。
                                             </video>
                                         </div>
-                                        <!-- 左下角数据角标 -->
-                                        <div class="absolute bottom-20 left-4 bg-gradient-to-r from-candy-blue to-candy-purple text-white rounded-xl px-4 py-3 shadow-lg">
+                                        <!-- 数据角标 -->
+                                        <div class="mt-3 inline-block bg-gradient-to-r from-candy-blue to-candy-purple text-white rounded-xl px-4 py-3 shadow-lg">
                                             <div class="text-2xl font-bold">60%+</div>
                                             <div class="text-xs opacity-90">成本降低</div>
                                         </div>
@@ -1741,7 +1741,7 @@
 
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <!-- 左侧：雷达图 -->
-                <div class="flex justify-center reveal-element">
+                <div class="flex justify-center reveal-element px-8">
                     <div class="relative w-80 h-80">
                         <!-- 背景圆环 -->
                         <div class="absolute inset-0 bg-gradient-to-r from-candy-blue/20 to-candy-pink/20 rounded-full blur-xl"></div>
@@ -1773,11 +1773,11 @@
                             </g>
                             <!-- 标签 -->
                             <text x="150" y="15" text-anchor="middle" fill="#6366F1" font-size="12" font-weight="600">产品思维</text>
-                            <text x="260" y="85" text-anchor="start" fill="#8B5CF6" font-size="12" font-weight="600">数据分析</text>
-                            <text x="260" y="195" text-anchor="start" fill="#EC4899" font-size="12" font-weight="600">AI能力</text>
+                            <text x="245" y="85" text-anchor="start" fill="#8B5CF6" font-size="12" font-weight="600">数据分析</text>
+                            <text x="245" y="195" text-anchor="start" fill="#EC4899" font-size="12" font-weight="600">AI能力</text>
                             <text x="150" y="280" text-anchor="middle" fill="#F97316" font-size="12" font-weight="600">设计能力</text>
-                            <text x="40" y="195" text-anchor="end" fill="#06B6D4" font-size="12" font-weight="600">工程实现</text>
-                            <text x="40" y="85" text-anchor="end" fill="#6366F1" font-size="12" font-weight="600">沟通协调</text>
+                            <text x="55" y="195" text-anchor="end" fill="#06B6D4" font-size="12" font-weight="600">工程实现</text>
+                            <text x="55" y="85" text-anchor="end" fill="#6366F1" font-size="12" font-weight="600">沟通协调</text>
                         </svg>
                     </div>
                 </div>
@@ -1786,53 +1786,77 @@
                 <div class="space-y-6 reveal-element">
                     <h3 class="font-display text-xl font-bold text-slate-800 dark:text-white">工具熟练度</h3>
 
-                    <div class="skill-item">
-                        <div class="flex justify-between mb-2">
-                            <span class="text-slate-600 dark:text-slate-300 font-medium">Python 数据分析</span>
-                            <span class="text-candy-purple font-bold skill-percent" data-target="90">0%</span>
+                    <!-- 产品能力分组 -->
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-2 mb-2">
+                            <div class="w-1 h-4 bg-purple-500 rounded-full"></div>
+                            <h4 class="text-sm font-semibold text-purple-600 dark:text-purple-400">产品能力</h4>
                         </div>
-                        <div class="h-3 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
-                            <div class="skill-progress candy-progress h-full rounded-full" style="width: 0%" data-width="90"></div>
+
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-slate-600 dark:text-slate-300 font-medium">Figma / 原型设计</span>
+                                <span class="text-purple-600 dark:text-purple-400 font-bold skill-percent" data-target="82">0%</span>
+                            </div>
+                            <div class="h-3 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+                                <div class="skill-progress h-full rounded-full bg-gradient-to-r from-purple-500 to-pink-500" style="width: 0%" data-width="82"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-slate-600 dark:text-slate-300 font-medium">产品分析 / PRD</span>
+                                <span class="text-purple-600 dark:text-purple-400 font-bold skill-percent" data-target="87">0%</span>
+                            </div>
+                            <div class="h-3 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+                                <div class="skill-progress h-full rounded-full bg-gradient-to-r from-purple-500 to-pink-500" style="width: 0%" data-width="87"></div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="skill-item">
-                        <div class="flex justify-between mb-2">
-                            <span class="text-slate-600 dark:text-slate-300 font-medium">SQL / 数据治理</span>
-                            <span class="text-candy-blue font-bold skill-percent" data-target="85">0%</span>
+                    <!-- AI能力分组 -->
+                    <div class="space-y-3 pt-2">
+                        <div class="flex items-center gap-2 mb-2">
+                            <div class="w-1 h-4 bg-orange-500 rounded-full"></div>
+                            <h4 class="text-sm font-semibold text-orange-600 dark:text-orange-400">AI能力</h4>
                         </div>
-                        <div class="h-3 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
-                            <div class="skill-progress candy-progress h-full rounded-full" style="width: 0%" data-width="85"></div>
+
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-slate-600 dark:text-slate-300 font-medium">AI Agent / Prompt</span>
+                                <span class="text-orange-600 dark:text-orange-400 font-bold skill-percent" data-target="88">0%</span>
+                            </div>
+                            <div class="h-3 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+                                <div class="skill-progress h-full rounded-full bg-gradient-to-r from-orange-500 to-red-500" style="width: 0%" data-width="88"></div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="skill-item">
-                        <div class="flex justify-between mb-2">
-                            <span class="text-slate-600 dark:text-slate-300 font-medium">AI Agent / Prompt</span>
-                            <span class="text-candy-pink font-bold skill-percent" data-target="88">0%</span>
+                    <!-- 数据能力分组 -->
+                    <div class="space-y-3 pt-2">
+                        <div class="flex items-center gap-2 mb-2">
+                            <div class="w-1 h-4 bg-blue-500 rounded-full"></div>
+                            <h4 class="text-sm font-semibold text-blue-600 dark:text-blue-400">数据能力</h4>
                         </div>
-                        <div class="h-3 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
-                            <div class="skill-progress candy-progress h-full rounded-full" style="width: 0%" data-width="88"></div>
-                        </div>
-                    </div>
 
-                    <div class="skill-item">
-                        <div class="flex justify-between mb-2">
-                            <span class="text-slate-600 dark:text-slate-300 font-medium">Figma / 原型设计</span>
-                            <span class="text-candy-orange font-bold skill-percent" data-target="82">0%</span>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-slate-600 dark:text-slate-300 font-medium">Python 数据分析</span>
+                                <span class="text-blue-600 dark:text-blue-400 font-bold skill-percent" data-target="90">0%</span>
+                            </div>
+                            <div class="h-3 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+                                <div class="skill-progress h-full rounded-full bg-gradient-to-r from-blue-500 to-blue-600" style="width: 0%" data-width="90"></div>
+                            </div>
                         </div>
-                        <div class="h-3 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
-                            <div class="skill-progress candy-progress h-full rounded-full" style="width: 0%" data-width="82"></div>
-                        </div>
-                    </div>
 
-                    <div class="skill-item">
-                        <div class="flex justify-between mb-2">
-                            <span class="text-slate-600 dark:text-slate-300 font-medium">产品分析 / PRD</span>
-                            <span class="text-candy-purple font-bold skill-percent" data-target="87">0%</span>
-                        </div>
-                        <div class="h-3 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
-                            <div class="skill-progress candy-progress h-full rounded-full" style="width: 0%" data-width="87"></div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-slate-600 dark:text-slate-300 font-medium">SQL / 数据治理</span>
+                                <span class="text-blue-600 dark:text-blue-400 font-bold skill-percent" data-target="85">0%</span>
+                            </div>
+                            <div class="h-3 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+                                <div class="skill-progress h-full rounded-full bg-gradient-to-r from-blue-500 to-blue-600" style="width: 0%" data-width="85"></div>
+                            </div>
                         </div>
                     </div>
 
@@ -1972,11 +1996,11 @@
         function downloadResume() {
             // 创建一个隐藏的a标签来触发下载
             const link = document.createElement('a');
-            link.href = 'files/resume.pdf';
-            link.download = '林承列-AI产品经理简历-2025.pdf';
+            link.href = 'files/林承列-天津师范大学-可立刻入职-每周5天-可持续6个月.pdf';
+            link.download = '林承列-天津师范大学-可立刻入职-每周5天-可持续6个月.pdf';
 
             // 使用fetch获取文件，确保作为附件下载
-            fetch('files/resume.pdf')
+            fetch('files/林承列-天津师范大学-可立刻入职-每周5天-可持续6个月.pdf')
                 .then(response => response.blob())
                 .then(blob => {
                     const url = window.URL.createObjectURL(blob);
@@ -1989,7 +2013,7 @@
                 .catch(error => {
                     console.error('下载失败:', error);
                     // 如果fetch失败，直接使用原链接
-                    link.href = 'files/resume.pdf';
+                    link.href = 'files/林承列-天津师范大学-可立刻入职-每周5天-可持续6个月.pdf';
                     link.target = '_blank';
                     document.body.appendChild(link);
                     link.click();
