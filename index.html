@@ -252,6 +252,24 @@
             max-height: 36px;
             object-fit: contain;
             filter: brightness(0.85);
+            transition: all 0.3s ease;
+        }
+
+        .company-logo:hover {
+            filter: brightness(1);
+            transform: scale(1.1);
+        }
+
+        /* 项目卡片图片样式 - 可点击预览 */
+        .project-content-1 img,
+        .project-content-2 img {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .project-content-1 img:hover,
+        .project-content-2 img:hover {
+            filter: brightness(1.1);
         }
 
         /* 进度条糖果色 */
@@ -513,14 +531,14 @@
 
                 <!-- 社交链接 -->
                 <div class="hero-element flex gap-4 pt-4">
-                    <a href="#" class="w-10 h-10 rounded-full bg-white dark:bg-slate-800 shadow-lg shadow-slate-200 dark:shadow-none flex items-center justify-center text-slate-600 dark:text-slate-300 hover:text-candy-blue hover:scale-110 transition-all">
+                    <a href="https://github.com/SAMLAY-c" target="_blank" class="w-10 h-10 rounded-full bg-white dark:bg-slate-800 shadow-lg shadow-slate-200 dark:shadow-none flex items-center justify-center text-slate-600 dark:text-slate-300 hover:text-candy-blue hover:scale-110 transition-all">
                         <i class="fab fa-github text-lg"></i>
                     </a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-white dark:bg-slate-800 shadow-lg shadow-slate-200 dark:shadow-none flex items-center justify-center text-slate-600 dark:text-slate-300 hover:text-green-500 hover:scale-110 transition-all">
+                    <a href="#" id="weixin-icon" class="w-10 h-10 rounded-full bg-white dark:bg-slate-800 shadow-lg shadow-slate-200 dark:shadow-none flex items-center justify-center text-slate-600 dark:text-slate-300 hover:text-green-500 hover:scale-110 transition-all">
                         <i class="fab fa-weixin text-lg"></i>
                     </a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-white dark:bg-slate-800 shadow-lg shadow-slate-200 dark:shadow-none flex items-center justify-center text-slate-600 dark:text-slate-300 hover:text-blue-500 hover:scale-110 transition-all">
-                        <i class="fab fa-linkedin text-lg"></i>
+                    <a href="#" id="email-icon" class="w-10 h-10 rounded-full bg-white dark:bg-slate-800 shadow-lg shadow-slate-200 dark:shadow-none flex items-center justify-center text-slate-600 dark:text-slate-300 hover:text-blue-500 hover:scale-110 transition-all">
+                        <i class="fas fa-envelope text-lg"></i>
                     </a>
                 </div>
             </div>
@@ -625,7 +643,7 @@
                                             </video>
                                         </div>
                                         <!-- 左下角数据角标 -->
-                                        <div class="absolute bottom-16 left-4 bg-gradient-to-r from-candy-blue to-candy-purple text-white rounded-xl px-4 py-3 shadow-lg">
+                                        <div class="absolute bottom-20 left-4 bg-gradient-to-r from-candy-blue to-candy-purple text-white rounded-xl px-4 py-3 shadow-lg">
                                             <div class="text-2xl font-bold">60%+</div>
                                             <div class="text-xs opacity-90">成本降低</div>
                                         </div>
@@ -638,7 +656,7 @@
                                         </h3>
                                         <p class="text-slate-500 dark:text-slate-400 flex items-center gap-2 mb-6">
                                             <i class="fas fa-map-marker-alt text-candy-purple"></i>
-                                            北京 · 2024
+                                            北京 · 2025.07-2025.12
                                         </p>
 
                                         <!-- 三条核心亮点 -->
@@ -713,7 +731,7 @@
                                         </h3>
                                         <p class="text-slate-500 dark:text-slate-400 flex items-center gap-2 mb-6">
                                             <i class="fas fa-map-marker-alt text-candy-purple"></i>
-                                            北京 · 2024
+                                            北京 · 2025.07-2025.12
                                         </p>
 
                                         <!-- 三条核心亮点 -->
@@ -788,7 +806,7 @@
                                         </h3>
                                         <p class="text-slate-500 dark:text-slate-400 flex items-center gap-2 mb-6">
                                             <i class="fas fa-map-marker-alt text-candy-purple"></i>
-                                            北京 · 2024
+                                            北京 · 2025.07-2025.12
                                         </p>
 
                                         <!-- 三条核心亮点 -->
@@ -863,7 +881,7 @@
                                         </h3>
                                         <p class="text-slate-500 dark:text-slate-400 flex items-center gap-2 mb-6">
                                             <i class="fas fa-map-marker-alt text-candy-purple"></i>
-                                            北京 · 2024
+                                            北京 · 2025.07-2025.12
                                         </p>
 
                                         <!-- 三条核心亮点 -->
@@ -1651,62 +1669,35 @@
                 <div class="w-16 h-0.5 bg-gradient-to-r from-candy-blue via-candy-purple to-candy-pink mx-auto rounded-full opacity-60"></div>
             </div>
 
-            <!-- 瀑布流布局 -->
+            <!-- 横向并排布局 -->
             <div class="grid md:grid-cols-2 gap-6">
-                <!-- 项目1 - 大图 -->
-                <div class="project-card-candy glass-card rounded-3xl overflow-hidden group md:row-span-2 reveal-element">
-                    <div class="relative h-64 md:h-80 overflow-hidden">
-                        <img src="images/project_stats.png" alt="统计建模大赛项目截图" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
-                        <div class="absolute top-4 left-4">
-                            <span class="candy-tag bg-white/90 text-slate-800 backdrop-blur text-xs">数据分析竞赛</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-display text-xl font-bold text-slate-800 dark:text-white mb-2">第十一届全国大学生统计建模大赛</h3>
-                        <p class="text-candy-purple font-medium mb-3">天津赛区二等奖 🥈</p>
-                        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-4">
-                            基于真实业务数据进行增长洞察分析，使用 LSTM 时间序列模型预测用户行为，结合高德 API 进行选址优化。
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="candy-tag bg-slate-100 text-slate-600">Python</span>
-                            <span class="candy-tag bg-slate-100 text-slate-600">LSTM</span>
-                            <span class="candy-tag bg-slate-100 text-slate-600">高德API</span>
-                        </div>
-                        <div class="flex gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                            <a href="#" class="flex-1 bg-slate-800 text-white py-2 rounded-xl text-center text-sm hover:bg-slate-700 transition-colors">
-                                <i class="fab fa-github mr-1"></i> GitHub
-                            </a>
-                            <a href="#" class="flex-1 btn-gradient text-white py-2 rounded-xl text-center text-sm">
-                                <i class="fas fa-external-link-alt mr-1"></i> Demo
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 项目2 - 中图 -->
+                <!-- 项目1 - 统计建模大赛 -->
                 <div class="project-card-candy glass-card rounded-3xl overflow-hidden group reveal-element">
-                    <div class="relative h-48 overflow-hidden">
-                        <img src="images/project_dashboard.jpg" alt="数据看板项目截图" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
-                        <div class="absolute top-4 left-4">
-                            <span class="candy-tag bg-white/90 text-slate-800 backdrop-blur text-xs">数据实践</span>
+                    <div class="grid md:grid-cols-3">
+                        <div class="relative h-48 md:h-auto overflow-hidden">
+                            <img src="images/project_stats.png" alt="统计建模大赛项目截图" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                            <div class="absolute inset-0 bg-gradient-to-r from-transparent to-white/20 md:block hidden"></div>
                         </div>
-                    </div>
-                    <div class="p-5">
-                        <h3 class="font-display text-lg font-bold text-slate-800 dark:text-white mb-2">数据看板建设实践</h3>
-                        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-3">
-                            协同业务与数据团队统一指标口径，构建实时数据可视化看板。
-                        </p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="candy-tag bg-slate-100 text-slate-600">DataEase</span>
-                            <span class="candy-tag bg-slate-100 text-slate-600">SQL</span>
+                        <div class="md:col-span-2 p-6 flex flex-col justify-center">
+                            <div class="flex items-center gap-3 mb-3">
+                                <span class="candy-tag bg-slate-800 text-white text-xs">数据分析竞赛</span>
+                                <span class="text-slate-500 dark:text-slate-400 font-medium text-sm">天津赛区二等奖 🥈</span>
+                            </div>
+                            <h3 class="font-display text-xl font-bold text-slate-800 dark:text-white mb-3">第十一届全国大学生统计建模大赛</h3>
+                            <p class="text-slate-500 dark:text-slate-400 leading-relaxed mb-4">
+                                基于真实业务数据进行增长洞察分析，使用 LSTM 时间序列模型预测用户行为，结合高德 API 进行选址优化。
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="candy-tag bg-slate-100 text-slate-600">Python</span>
+                                <span class="candy-tag bg-slate-100 text-slate-600">LSTM</span>
+                                <span class="candy-tag bg-slate-100 text-slate-600">高德API</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- 项目3 - 横向卡片 -->
-                <div class="project-card-candy glass-card rounded-3xl overflow-hidden group md:col-span-2 reveal-element">
+                <!-- 项目2 - AI应用创新大赛 -->
+                <div class="project-card-candy glass-card rounded-3xl overflow-hidden group reveal-element">
                     <div class="grid md:grid-cols-3">
                         <div class="relative h-48 md:h-auto overflow-hidden">
                             <img src="images/project_ai_edu.png" alt="AI教育项目截图" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
@@ -1715,27 +1706,20 @@
                         <div class="md:col-span-2 p-6 flex flex-col justify-center">
                             <div class="flex items-center gap-3 mb-3">
                                 <span class="candy-tag bg-slate-800 text-white text-xs">AI 应用创新</span>
-                                <span class="text-slate-500 dark:text-slate-400 font-medium text-sm">校级一等奖</span>
+                                <span class="text-slate-500 dark:text-slate-400 font-medium text-sm">校级一等奖 🥇</span>
                             </div>
                             <h3 class="font-display text-xl font-bold text-slate-800 dark:text-white mb-3">首届全国人工智能应用创新大赛</h3>
                             <p class="text-slate-500 dark:text-slate-400 leading-relaxed mb-4">
                                 使用百度 AppBuilder 构建 AI 应用，结合知识图谱实现个性化试卷生成系统，解决教育资源个性化适配难题。
                             </p>
-                            <div class="flex flex-wrap gap-2 mb-4">
+                            <div class="flex flex-wrap gap-2">
                                 <span class="candy-tag bg-slate-100 text-slate-600">Python</span>
                                 <span class="candy-tag bg-slate-100 text-slate-600">Figma</span>
                                 <span class="candy-tag bg-slate-100 text-slate-600">Agent</span>
                             </div>
-                            <div class="flex gap-3">
-                                <a href="#" class="px-4 py-2 bg-slate-800 text-white rounded-xl text-sm hover:bg-slate-700 transition-colors">
-                                    <i class="fab fa-github mr-1"></i> GitHub
-                                </a>
-                                <a href="#" class="px-4 py-2 btn-gradient text-white rounded-xl text-sm">
-                                    <i class="fas fa-external-link-alt mr-1"></i> 在线Demo
-                                </a>
-                            </div>
                         </div>
                     </div>
+                </div>
                 </div>
             </div>
         </div>
@@ -1913,7 +1897,7 @@
                     <div class="relative">
                         <div class="absolute -inset-4 bg-gradient-to-r from-candy-blue via-candy-purple to-candy-pink rounded-3xl opacity-20 blur-xl"></div>
                         <div class="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
-                            <img src="images/education_scene.jpg" alt="天津师范大学教育场景" class="w-full h-full object-cover" loading="lazy">
+                            <img src="images/TUN.jpg" alt="天津师范大学教育场景" class="w-full h-full object-cover" loading="lazy">
                         </div>
                         
                         <!-- 简洁装饰 -->
@@ -1942,14 +1926,14 @@
                         专注于大模型应用落地
                     </p>
                     <div class="flex gap-3">
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-candy-blue transition-colors">
+                        <a href="https://github.com/SAMLAY-c" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-candy-blue transition-colors">
                             <i class="fab fa-github"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-green-500 transition-colors">
+                        <a href="#" id="weixin-icon-footer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-green-500 transition-colors">
                             <i class="fab fa-weixin"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-blue-500 transition-colors">
-                            <i class="fab fa-linkedin"></i>
+                        <a href="#" id="email-icon-footer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-blue-500 transition-colors">
+                            <i class="fas fa-envelope"></i>
                         </a>
                     </div>
                 </div>
@@ -2349,6 +2333,227 @@
             });
         });
 
+    </script>
+
+    <!-- 图片预览模态框 -->
+    <div id="image-preview-modal" class="fixed inset-0 z-[60] hidden">
+        <div class="absolute inset-0 bg-black/90 backdrop-blur-sm"></div>
+        <div class="absolute inset-0 flex items-center justify-center p-4">
+            <button id="close-image-preview" class="absolute top-6 right-6 text-white hover:text-candy-pink transition-colors z-10">
+                <i class="fas fa-times text-3xl"></i>
+            </button>
+            <img id="preview-image" src="" alt="预览图片" class="max-w-[90vw] max-h-[90vh] object-contain rounded-lg shadow-2xl">
+        </div>
+    </div>
+
+    <!-- 微信二维码模态框 -->
+    <div id="weixin-modal" class="fixed inset-0 z-[60] hidden">
+        <div class="absolute inset-0 bg-black/90 backdrop-blur-sm"></div>
+        <div class="absolute inset-0 flex items-center justify-center p-4">
+            <button id="close-weixin-modal" class="absolute top-6 right-6 text-white hover:text-green-400 transition-colors z-10">
+                <i class="fas fa-times text-3xl"></i>
+            </button>
+            <div class="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-2xl max-w-sm w-full">
+                <div class="text-center mb-6">
+                    <h3 class="text-2xl font-bold text-slate-800 dark:text-white mb-2">扫码添加微信</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">欢迎交流合作</p>
+                </div>
+                <div class="flex justify-center mb-4">
+                    <img src="images/wx.jpg" alt="微信二维码" class="w-64 h-64 object-contain rounded-lg">
+                </div>
+                <p class="text-center text-slate-400 dark:text-slate-500 text-xs">扫描二维码或搜索微信号</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 邮箱显示模态框 -->
+    <div id="email-modal" class="fixed inset-0 z-[60] hidden">
+        <div class="absolute inset-0 bg-black/90 backdrop-blur-sm"></div>
+        <div class="absolute inset-0 flex items-center justify-center p-4">
+            <button id="close-email-modal" class="absolute top-6 right-6 text-white hover:text-blue-400 transition-colors z-10">
+                <i class="fas fa-times text-3xl"></i>
+            </button>
+            <div class="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-2xl max-w-md w-full">
+                <div class="text-center mb-6">
+                    <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-envelope text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-800 dark:text-white mb-2">联系邮箱</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm mb-4">欢迎通过邮件与我联系</p>
+                </div>
+                <div class="bg-slate-50 dark:bg-slate-900 rounded-lg p-4 mb-6">
+                    <p id="email-address" class="text-lg text-slate-800 dark:text-white font-mono text-center break-all">15396631779@163.com</p>
+                </div>
+                <div class="flex gap-3">
+                    <button id="copy-email-btn" class="flex-1 bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3 rounded-xl font-medium hover:shadow-lg transition-all flex items-center justify-center gap-2">
+                        <i class="fas fa-copy"></i>
+                        <span>复制邮箱</span>
+                    </button>
+                    <a href="mailto:15396631779@163.com" class="flex-1 bg-slate-800 dark:bg-slate-700 text-white py-3 rounded-xl font-medium hover:bg-slate-700 dark:hover:bg-slate-600 transition-all flex items-center justify-center gap-2">
+                        <i class="fas fa-paper-plane"></i>
+                        <span>发送邮件</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 图片预览功能
+        const imagePreviewModal = document.getElementById('image-preview-modal');
+        const previewImage = document.getElementById('preview-image');
+        const closeImagePreview = document.getElementById('close-image-preview');
+
+        // 选择所有项目卡片中的图片
+        const projectImages = document.querySelectorAll('.project-content-1 img, .project-content-2 img');
+
+        // 点击项目图片打开预览
+        projectImages.forEach(img => {
+            img.style.cursor = 'pointer';
+            img.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const imageSrc = img.getAttribute('src');
+                previewImage.setAttribute('src', imageSrc);
+                previewImage.setAttribute('alt', img.getAttribute('alt'));
+                imagePreviewModal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // 关闭预览
+        closeImagePreview.addEventListener('click', () => {
+            imagePreviewModal.classList.add('hidden');
+            document.body.style.overflow = '';
+        });
+
+        // 点击背景关闭
+        imagePreviewModal.addEventListener('click', (e) => {
+            if (e.target === imagePreviewModal || e.target.classList.contains('bg-black')) {
+                imagePreviewModal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // ESC键关闭
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !imagePreviewModal.classList.contains('hidden')) {
+                imagePreviewModal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        });
+    </script>
+
+    <script>
+        // 微信二维码弹窗功能
+        const weixinModal = document.getElementById('weixin-modal');
+        const closeWeixinModal = document.getElementById('close-weixin-modal');
+        const weixinIcon = document.getElementById('weixin-icon');
+        const weixinIconFooter = document.getElementById('weixin-icon-footer');
+
+        // 点击微信图标打开弹窗
+        const openWeixinModal = (e) => {
+            e.preventDefault();
+            weixinModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        };
+
+        if (weixinIcon) {
+            weixinIcon.addEventListener('click', openWeixinModal);
+        }
+
+        if (weixinIconFooter) {
+            weixinIconFooter.addEventListener('click', openWeixinModal);
+        }
+
+        // 关闭弹窗
+        closeWeixinModal.addEventListener('click', () => {
+            weixinModal.classList.add('hidden');
+            document.body.style.overflow = '';
+        });
+
+        // 点击背景关闭
+        weixinModal.addEventListener('click', (e) => {
+            if (e.target === weixinModal || e.target.classList.contains('bg-black')) {
+                weixinModal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // ESC键关闭
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !weixinModal.classList.contains('hidden')) {
+                weixinModal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        });
+    </script>
+
+    <script>
+        // 邮箱显示弹窗功能
+        const emailModal = document.getElementById('email-modal');
+        const closeEmailModal = document.getElementById('close-email-modal');
+        const emailIcon = document.getElementById('email-icon');
+        const emailIconFooter = document.getElementById('email-icon-footer');
+        const copyEmailBtn = document.getElementById('copy-email-btn');
+        const emailAddress = '15396631779@163.com';
+
+        // 点击邮箱图标打开弹窗
+        const openEmailModal = (e) => {
+            e.preventDefault();
+            emailModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        };
+
+        if (emailIcon) {
+            emailIcon.addEventListener('click', openEmailModal);
+        }
+
+        if (emailIconFooter) {
+            emailIconFooter.addEventListener('click', openEmailModal);
+        }
+
+        // 关闭弹窗
+        closeEmailModal.addEventListener('click', () => {
+            emailModal.classList.add('hidden');
+            document.body.style.overflow = '';
+        });
+
+        // 点击背景关闭
+        emailModal.addEventListener('click', (e) => {
+            if (e.target === emailModal || e.target.classList.contains('bg-black')) {
+                emailModal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // 复制邮箱功能
+        copyEmailBtn.addEventListener('click', async () => {
+            try {
+                await navigator.clipboard.writeText(emailAddress);
+                const originalText = copyEmailBtn.innerHTML;
+                copyEmailBtn.innerHTML = '<i class="fas fa-check"></i><span>已复制</span>';
+                copyEmailBtn.classList.add('bg-green-500');
+                copyEmailBtn.classList.remove('from-blue-500', 'to-blue-600');
+
+                setTimeout(() => {
+                    copyEmailBtn.innerHTML = originalText;
+                    copyEmailBtn.classList.remove('bg-green-500');
+                    copyEmailBtn.classList.add('from-blue-500', 'to-blue-600');
+                }, 2000);
+            } catch (err) {
+                console.error('复制失败:', err);
+                alert('复制失败，请手动复制邮箱：' + emailAddress);
+            }
+        });
+
+        // ESC键关闭
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !emailModal.classList.contains('hidden')) {
+                emailModal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        });
     </script>
 
 </body>
